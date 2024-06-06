@@ -1,11 +1,11 @@
 package com.raven.main;
 import com.raven.event.EventMenuSelected;
-import com.admin.view.Form_A;
-import com.admin.view.Form_B;
-import com.admin.view.Form_C;
-import com.admin.view.Form_D;
-import com.admin.view.Form_E;
-import com.admin.view.Form_F;
+//import com.admin.view.Form_A;
+//import com.admin.view.Form_B;
+//import com.admin.view.Form_C;
+//import com.admin.view.Form_D;
+//import com.admin.view.Form_E;
+//import com.admin.view.Form_F;
 import com.admin.view.dashboard;
 import com.raven.form.Form_Home;
 import java.awt.Color;
@@ -14,64 +14,64 @@ import javax.swing.JOptionPane;
 
 public class Main extends javax.swing.JFrame {
 
-    private dashboard admin_dashboard;
-    private Form_A form_a;
-    private Form_B form_b;
-    private Form_C form_c;
-    private Form_D form_d;
-    private Form_E form_e;
-    private Form_F form_f;
+//    private dashboard admin_dashboard;
+//    private Form_A form_a;
+//    private Form_B form_b;
+//    private Form_C form_c;
+//    private Form_D form_d;
+//    private Form_E form_e;
+//    private Form_F form_f;
 
     public Main() {
-        initComponents();
-        setBackground(new Color(0, 0, 0, 0));
-        admin_dashboard = new dashboard();
-        form_a = new Form_A();
-        form_b = new Form_B();
-        form_c = new Form_C();
-        form_d = new Form_D();
-        form_e = new Form_E();
-        form_f = new Form_F();
-        //form_g = new Form_G();
-        menu.initMoving(Main.this);
-        menu.addEventMenuSelected(new EventMenuSelected() {
-            @Override
-            public void selected(int index) {
-                  switch (index) {
-                    case 0:
-                        setForm(admin_dashboard);
-                        break;
-                    case 1:
-                        setForm(form_a);
-                        break;
-                    case 2:
-                        setForm(form_b);
-                        break;
-                    case 3:
-                        setForm(form_c);
-                        break;
-                    case 4:
-                        setForm(form_d);
-                        break;
-                    case 5:
-                        setForm(form_e);
-                        break;
-                    case 6:
-                        setForm(form_f);
-                        break;
-                    case 7:
-                        int jawaban = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
-                        if (jawaban == JOptionPane.YES_OPTION) {
-                            System.exit(0);
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
-
-        setForm(new dashboard());
+//        initComponents();
+//        setBackground(new Color(0, 0, 0, 0));
+//        admin_dashboard = new dashboard();
+//        form_a = new Form_A();
+//        form_b = new Form_B();
+//        form_c = new Form_C();
+//        form_d = new Form_D();
+//        form_e = new Form_E();
+//        form_f = new Form_F();
+//        //form_g = new Form_G();
+//        menu.initMoving(Main.this);
+//        menu.addEventMenuSelected(new EventMenuSelected() {
+//            @Override
+//            public void selected(int index) {
+//                  switch (index) {
+//                    case 0:
+//                        setForm(admin_dashboard);
+//                        break;
+//                    case 1:
+//                        setForm(form_a);
+//                        break;
+//                    case 2:
+//                        setForm(form_b);
+//                        break;
+//                    case 3:
+//                        setForm(form_c);
+//                        break;
+//                    case 4:
+//                        setForm(form_d);
+//                        break;
+//                    case 5:
+//                        setForm(form_e);
+//                        break;
+//                    case 6:
+//                        setForm(form_f);
+//                        break;
+//                    case 7:
+//                        int jawaban = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+//                        if (jawaban == JOptionPane.YES_OPTION) {
+//                            System.exit(0);
+//                        }
+//                        break;
+//                    default:
+//                        break;
+//                }
+//            }
+//        });
+//
+//        setForm(new dashboard());
     }
 
     private void setForm(JComponent com) {

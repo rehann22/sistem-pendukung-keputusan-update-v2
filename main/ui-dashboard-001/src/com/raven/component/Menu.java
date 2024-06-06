@@ -1,11 +1,9 @@
 package com.raven.component;
 
 import com.admin.controler.SessionAdmin;
-import com.admin.view.Form_M;
 import com.raven.event.EventMenuSelected;
 import com.raven.model.Model_Menu;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -14,9 +12,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 public class Menu extends javax.swing.JPanel {
     String logName = SessionAdmin.log_nama();
@@ -37,11 +32,10 @@ public class Menu extends javax.swing.JPanel {
 
     private void init() { 
         listMenu1.addItem(new Model_Menu("1", "Dashboard", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("virus", "Data Penyakit", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("dna", "Data Gejala", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("2", "Data Pengguna", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("6", "Rule /Aturan", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("stethoscope", "Diagnosa ", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("virus", "Data Kurir", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("dna", "Data Kriteria", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("6", "Penilaian Kurir", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("stethoscope", "Proses Perhitungan", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("laporan", "Laporan", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("4", " ", Model_Menu.MenuType.EMPTY));
         listMenu1.addItem(new Model_Menu("4", "Refresh", Model_Menu.MenuType.MENU)); 
@@ -63,16 +57,14 @@ public class Menu extends javax.swing.JPanel {
 
             jLabel1.setFont(new java.awt.Font("sansserif", 1, 16)); // NOI18N
             jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-            jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-            jLabel1.setText("Admin Pakar");
+            jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            jLabel1.setText("Admin");
 
             javax.swing.GroupLayout panelMovingLayout = new javax.swing.GroupLayout(panelMoving);
             panelMoving.setLayout(panelMovingLayout);
             panelMovingLayout.setHorizontalGroup(
                   panelMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMovingLayout.createSequentialGroup()
-                        .addGap(0, 54, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                  .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
             );
             panelMovingLayout.setVerticalGroup(
                   panelMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

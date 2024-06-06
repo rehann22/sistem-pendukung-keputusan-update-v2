@@ -100,7 +100,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="30" width="430" height="310"/>
+              <AbsoluteConstraints x="10" y="50" width="430" height="290"/>
             </Constraint>
           </Constraints>
 
@@ -116,7 +116,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="7a" green="67" red="61" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Persentase Konsultasi Perbulan"/>
+            <Property name="text" type="java.lang.String" value="Pengirman Paket Perbulan"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -150,7 +150,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="7a" green="67" red="61" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Data Penyakit Terbanyak"/>
+            <Property name="text" type="java.lang.String" value="Kurir Terbaik"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

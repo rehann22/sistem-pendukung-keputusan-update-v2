@@ -1,4 +1,4 @@
-package koneksi.db;
+package com.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +13,7 @@ public class ConnectionDb {
             } catch (ClassNotFoundException ex) {
                   System.out.println("Gagal koneksi" + ex);
             }
-            String url = "jdbc:mysql://localhost:3306/db_sistempakar";
+            String url = "jdbc:mysql://localhost:3306/spk_kurir_terbaik";
             
             try {
                   connectionDb = DriverManager.getConnection(url, "root" , "");
