@@ -1,8 +1,8 @@
 package com.admin.main;
 import com.admin.view.DataAdmin;
-import com.admin.view.DataKriteria;
-import com.admin.view.DataKurir;
 import com.admin.view.Laporan;
+import com.admin.view.PageDataKriteria;
+import com.admin.view.PageDataKurir;
 import com.admin.view.PenilaianKurir;
 import com.admin.view.ProsesPerhitungan;
 import com.raven.event.EventMenuSelected;
@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 public class MainDashboard extends javax.swing.JFrame {
 
     private dashboard admin_dashboard;
-    private DataKurir dataKurir;
-    private DataKriteria datakriteria;
+    private PageDataKurir dataKurir;
+    private PageDataKriteria datakriteria;
     private PenilaianKurir penilaianKurir;
     private ProsesPerhitungan prosesPerhitungan;
     private Laporan laporan;
@@ -26,8 +26,8 @@ public class MainDashboard extends javax.swing.JFrame {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         admin_dashboard = new dashboard();
-        dataKurir = new DataKurir();
-        datakriteria = new DataKriteria();
+        dataKurir = new PageDataKurir();
+        datakriteria = new PageDataKriteria();
         penilaianKurir = new PenilaianKurir();
         prosesPerhitungan = new ProsesPerhitungan();
         laporan = new Laporan();
