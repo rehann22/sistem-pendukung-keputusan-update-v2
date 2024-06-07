@@ -1,83 +1,89 @@
 package com.admin.main;
+import com.admin.controler.DataKriteria;
+import com.admin.controler.DataKurir;
 import com.admin.view.DataAdmin;
 import com.admin.view.Laporan;
 import com.admin.view.PageDataKriteria;
 import com.admin.view.PageDataKurir;
-import com.admin.view.PenilaianKurir;
-import com.admin.view.ProsesPerhitungan;
+import com.admin.view.PagePenilaianKurir;
+import com.admin.view.PageProsesPerhitungan;
 import com.raven.event.EventMenuSelected;
 import com.admin.view.dashboard;
+import com.raven.swing.ModernScrollBarUI;
 import java.awt.Color;
 import javaswingdev.chart.PieChart;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 public class MainDashboard extends javax.swing.JFrame {
 
-    private dashboard admin_dashboard;
-    private PageDataKurir dataKurir;
-    private PageDataKriteria datakriteria;
-    private PenilaianKurir penilaianKurir;
-    private ProsesPerhitungan prosesPerhitungan;
-    private Laporan laporan;
-    private DataAdmin dataAdmin;
+      private dashboard admin_dashboard;
+      private PageDataKurir dataKurir;
+      private PageDataKriteria datakriteria;
+      private PagePenilaianKurir penilaianKurir;
+      private PageProsesPerhitungan prosesPerhitungan;
+      private Laporan laporan;
+      private DataAdmin dataAdmin;
+      
+      public MainDashboard() {
+            initComponents();
+            setBackground(new Color(0, 0, 0, 0));
+            admin_dashboard = new dashboard();
+            dataKurir = new PageDataKurir();
+            datakriteria = new PageDataKriteria();
+            penilaianKurir = new PagePenilaianKurir();
+            prosesPerhitungan = new PageProsesPerhitungan();
+            laporan = new Laporan();
+            dataAdmin = new DataAdmin();
+            menu.initMoving(MainDashboard.this);
+            menu.addEventMenuSelected(new EventMenuSelected() {
+                @Override
+                public void selected(int index) {
+                        if (index == 0) {
+                            setForm(admin_dashboard);
+                        } else if (index == 1) {
+                            setForm(dataKurir);
+                        } else if (index == 2) {
+                            setForm(datakriteria);
+                        } else if (index == 3) {
+                            setForm(penilaianKurir);
+                        } else if (index == 4) {
+                            setForm(prosesPerhitungan);
+                        } else if (index == 5) {
+                            setForm(laporan);
+                        } else if (index == 8) {  //profile  
+                            System.out.println("Data Admin");
+                        } else if (index == 11) { //logout
+                            int jawaban = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+                            if (jawaban == JOptionPane.YES_OPTION) {
+                                System.exit(0);
+                            }
+                    }
+                }
+            });
 
-    public MainDashboard() {
-        initComponents();
-        setBackground(new Color(0, 0, 0, 0));
-        admin_dashboard = new dashboard();
-        dataKurir = new PageDataKurir();
-        datakriteria = new PageDataKriteria();
-        penilaianKurir = new PenilaianKurir();
-        prosesPerhitungan = new ProsesPerhitungan();
-        laporan = new Laporan();
-        dataAdmin = new DataAdmin();
-        menu.initMoving(MainDashboard.this);
-        menu.addEventMenuSelected(new EventMenuSelected() {
-            @Override
-            public void selected(int index) {
-                  
-                  if (index == 0) {
-                  setForm(admin_dashboard);
-                  } else if (index == 1) {
-                         setForm(dataKurir);
-                  } else if (index == 2) {
-                         setForm(datakriteria);
-                  } else if (index == 3) {
-                         setForm(penilaianKurir);
-                  } else if (index == 4) {
-                         setForm(prosesPerhitungan);
-                  } else if (index == 5) {
-                        setForm(laporan);
-                  } else if (index == 6) {
-                         //setForm(form_f);
-                  } else if (index == 7) {
-                        refreshAll();
-                        System.out.println("refresh");
-                  }else if (index == 8) {  //profile  
-                        System.out.println("Data Admin");
-                  } else if (index == 11) { //logout
-                        int jawaban = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
-                        if (jawaban == JOptionPane.YES_OPTION) {
-                             System.exit(0);
-                        }
-                  }
-            }
-        });
+            setForm(new dashboard());
+        }
 
-        setForm(new dashboard());
-    }
+      private void setForm(JComponent com) {
+              mainPanel.removeAll();
 
-    private void setForm(JComponent com) {
-        mainPanel.removeAll();
-        mainPanel.add(com);
-        mainPanel.repaint();
-        mainPanel.revalidate();
-    }
-    
-    private void refreshAll () {           
-          admin_dashboard.refreshDashboard();
-    }
+              // Create a JScrollPane and add the component
+              JScrollPane scrollPane = new JScrollPane(com); // <-- Corrected variable name here
+              scrollPane.setBorder(null); // Remove the border
+              scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+              scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+              // Set the custom UI for the scrollbars
+              scrollPane.getHorizontalScrollBar().setUI(new ModernScrollBarUI());
+              scrollPane.getVerticalScrollBar().setUI(new ModernScrollBarUI());
+
+              mainPanel.add(scrollPane);
+              mainPanel.repaint();
+              mainPanel.revalidate();
+      }
+
 
 
     @SuppressWarnings("unchecked")

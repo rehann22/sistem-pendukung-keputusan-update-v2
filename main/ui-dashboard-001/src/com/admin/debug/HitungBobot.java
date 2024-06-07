@@ -1,5 +1,6 @@
-package com.admin.controler;
+package com.admin.debug;
 
+import com.admin.controler.*;
 import com.database.ConnectionDb;
 
 import java.sql.Connection;
@@ -7,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Debug {
+public class HitungBobot {
       
 public int getTotalNilai() {
     int totalNilai = 0;
@@ -62,7 +63,7 @@ public void bagiNilaiDenganTotal() {
 
 public static void main(String[] args) {
     // Misalnya kelas Anda bernama MainClass
-    Debug mainClass = new Debug();
+    HitungBobot mainClass = new HitungBobot();
     mainClass.getTotalNilai();
     mainClass.bagiNilaiDenganTotal();
 }

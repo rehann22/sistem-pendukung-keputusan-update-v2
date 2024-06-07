@@ -1,27 +1,25 @@
 package com.admin.view;
 
-import com.admin.controler.DataKurir;
+import com.admin.controler.PenilaianKurir;
 import com.raven.swing.ScrollBar;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class PageDataKurir extends javax.swing.JPanel {
+public class PagePenilaianKurir extends javax.swing.JPanel {
 
-    public PageDataKurir() {
-      initComponents();
-      DataKurir data  = new DataKurir();
-      data.TabelKurir(tblKurir);
+    public PagePenilaianKurir() {
+            initComponents();
+            PenilaianKurir pnl = new PenilaianKurir();
+            pnl.TabelPenilaian(tblPenilaianKurir);
 
-      //  add row table
-      spTable.setVerticalScrollBar(new ScrollBar());
-      spTable.getVerticalScrollBar().setBackground(Color.WHITE);
-      spTable.getViewport().setBackground(Color.WHITE);
-      JPanel p = new JPanel();
-      p.setBackground(Color.WHITE);
-      spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);     
+            spTable.setVerticalScrollBar(new ScrollBar());
+            spTable.getVerticalScrollBar().setBackground(Color.WHITE);
+            spTable.getViewport().setBackground(Color.WHITE);
+            JPanel p = new JPanel();
+            p.setBackground(Color.WHITE);
+            spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
     }
-    
 
     @SuppressWarnings("unchecked")
       // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -30,9 +28,9 @@ public class PageDataKurir extends javax.swing.JPanel {
             panelBorder = new com.raven.swing.PanelBorder();
             jLabel1 = new javax.swing.JLabel();
             spTable = new javax.swing.JScrollPane();
-            tblKurir = new com.raven.swing.Table();
-            btn_tambah = new swing.ButtonGradient();
+            tblPenilaianKurir = new com.raven.swing.Table();
             btn_hapus = new swing.ButtonGradient();
+            btn_Tambah = new swing.ButtonGradient();
             btn_ubah = new swing.ButtonGradient();
 
             setBackground(new java.awt.Color(242, 242, 242));
@@ -43,18 +41,12 @@ public class PageDataKurir extends javax.swing.JPanel {
 
             jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel1.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel1.setText("Data Kurir");
-            jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-                  public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        jLabel1MouseClicked(evt);
-                  }
-            });
+            jLabel1.setText("Penilaian Kurir");
             panelBorder.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
             spTable.setBorder(null);
 
-            tblKurir.setModel(new javax.swing.table.DefaultTableModel(
+            tblPenilaianKurir.setModel(new javax.swing.table.DefaultTableModel(
                   new Object [][] {
 
                   },
@@ -70,19 +62,9 @@ public class PageDataKurir extends javax.swing.JPanel {
                         return canEdit [columnIndex];
                   }
             });
-            spTable.setViewportView(tblKurir);
+            spTable.setViewportView(tblPenilaianKurir);
 
             panelBorder.add(spTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 870, 480));
-
-            btn_tambah.setText("Tambah");
-            btn_tambah.setColor1(new java.awt.Color(35, 20, 226));
-            btn_tambah.setColor2(new java.awt.Color(209, 18, 235));
-            btn_tambah.addActionListener(new java.awt.event.ActionListener() {
-                  public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_tambahActionPerformed(evt);
-                  }
-            });
-            panelBorder.add(btn_tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 110, 30));
 
             btn_hapus.setText("Hapus");
             btn_hapus.setColor1(new java.awt.Color(35, 20, 226));
@@ -93,6 +75,16 @@ public class PageDataKurir extends javax.swing.JPanel {
                   }
             });
             panelBorder.add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, 110, 30));
+
+            btn_Tambah.setText("Tambah");
+            btn_Tambah.setColor1(new java.awt.Color(35, 20, 226));
+            btn_Tambah.setColor2(new java.awt.Color(209, 18, 235));
+            btn_Tambah.addActionListener(new java.awt.event.ActionListener() {
+                  public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        btn_TambahActionPerformed(evt);
+                  }
+            });
+            panelBorder.add(btn_Tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 110, 30));
 
             btn_ubah.setText("Ubah");
             btn_ubah.setColor1(new java.awt.Color(35, 20, 226));
@@ -107,37 +99,27 @@ public class PageDataKurir extends javax.swing.JPanel {
             add(panelBorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 915, 570));
       }// </editor-fold>//GEN-END:initComponents
 
-      private void btn_tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahActionPerformed
-            TambahDataKurir data = new TambahDataKurir();
+      private void btn_TambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TambahActionPerformed
+            TambahPenilaian data = new TambahPenilaian();
             data.setVisible(true);
-      }//GEN-LAST:event_btn_tambahActionPerformed
-
-      private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
-            DataKurir data = new DataKurir();
-            TambahDataKurir add = new TambahDataKurir();
-            add.setVisible(true);
-            data.tampilFormEditKurir(tblKurir, add.txtIdKurir, add.txtNamaKurir, add.txtAlamat, add.txtEmail, add.txtNoTelp, add.tglBergabung);
-      }//GEN-LAST:event_btn_ubahActionPerformed
+      }//GEN-LAST:event_btn_TambahActionPerformed
 
       private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
-            DataKurir data = new DataKurir();
-            TambahDataKurir add = new TambahDataKurir();    
-            data.HapusDataKurir(tblKurir);
+
       }//GEN-LAST:event_btn_hapusActionPerformed
 
-      private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-            DataKurir data  = new DataKurir();
-            data.TabelKurir(tblKurir);
-      }//GEN-LAST:event_jLabel1MouseClicked
+      private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
+            // TODO add your handling code here:
+      }//GEN-LAST:event_btn_ubahActionPerformed
 
 
       // Variables declaration - do not modify//GEN-BEGIN:variables
+      private swing.ButtonGradient btn_Tambah;
       private swing.ButtonGradient btn_hapus;
-      private swing.ButtonGradient btn_tambah;
       private swing.ButtonGradient btn_ubah;
       private javax.swing.JLabel jLabel1;
       private com.raven.swing.PanelBorder panelBorder;
       private javax.swing.JScrollPane spTable;
-      public com.raven.swing.Table tblKurir;
+      public com.raven.swing.Table tblPenilaianKurir;
       // End of variables declaration//GEN-END:variables
 }
