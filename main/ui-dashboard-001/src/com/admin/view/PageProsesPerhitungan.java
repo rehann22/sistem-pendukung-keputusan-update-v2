@@ -1,7 +1,7 @@
 package com.admin.view;
 
 import com.admin.controler.ProsesPerhitungan;
-import com.raven.swing.ScrollBar;
+import com.swing.ScrollBar;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -12,37 +12,55 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
             initComponents();
             ProsesPerhitungan hitung = new ProsesPerhitungan();
             hitung.TabelPenilaianKurir(tabelPenilaianKurir);
+            hitung.HitungNormalisasi(tabelNormalisasi);
+            hitung.HasilTotalNormalisasi(tabelHasilNormalisasi);
+            hitung.HasilPerankingan(tabelPerankingan);
 
-            spTable.setVerticalScrollBar(new ScrollBar());
-            spTable.getVerticalScrollBar().setBackground(Color.WHITE);
-            spTable.getViewport().setBackground(Color.WHITE);
+            TScrolPane(spTable1);
+            TScrolPane(spTable2);
+            TScrolPane(spTable3);
+            TScrolPane(spTable4);
+    }
+    
+    private void TScrolPane (JScrollPane scroll) {
+            scroll.setVerticalScrollBar(new ScrollBar());
+            scroll.getVerticalScrollBar().setBackground(Color.WHITE);
+            scroll.getViewport().setBackground(Color.WHITE);
             JPanel p = new JPanel();
             p.setBackground(Color.WHITE);
-            spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
+            scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
     }
 
     @SuppressWarnings("unchecked")
       // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
       private void initComponents() {
 
-            panelBorder = new com.raven.swing.PanelBorder();
-            jLabel1 = new javax.swing.JLabel();
-            spTable = new javax.swing.JScrollPane();
-            tabelPenilaianKurir = new com.raven.swing.Table();
+            panelBorder = new com.swing.PanelBorder();
+            spTable1 = new javax.swing.JScrollPane();
+            tabelPenilaianKurir = new com.swing.Table();
+            jLabel2 = new javax.swing.JLabel();
+            panelBorder2 = new com.swing.PanelBorder();
+            spTable2 = new javax.swing.JScrollPane();
+            tabelNormalisasi = new com.swing.Table();
+            jLabel3 = new javax.swing.JLabel();
+            panelBorder1 = new com.swing.PanelBorder();
+            spTable3 = new javax.swing.JScrollPane();
+            tabelPerankingan = new com.swing.Table();
+            jLabel4 = new javax.swing.JLabel();
+            panelBorder3 = new com.swing.PanelBorder();
+            spTable4 = new javax.swing.JScrollPane();
+            tabelHasilNormalisasi = new com.swing.Table();
+            jLabel5 = new javax.swing.JLabel();
 
             setBackground(new java.awt.Color(242, 242, 242));
-            setPreferredSize(new java.awt.Dimension(900, 950));
+            setPreferredSize(new java.awt.Dimension(900, 1388));
             setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
             panelBorder.setBackground(new java.awt.Color(255, 255, 255));
+            panelBorder.setPreferredSize(new java.awt.Dimension(870, 460));
             panelBorder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-            jLabel1.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel1.setText("Proses Perhitungan");
-            panelBorder.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 180, -1));
-
-            spTable.setBorder(null);
+            spTable1.setBorder(null);
 
             tabelPenilaianKurir.setModel(new javax.swing.table.DefaultTableModel(
                   new Object [][] {
@@ -60,18 +78,131 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
                         return canEdit [columnIndex];
                   }
             });
-            spTable.setViewportView(tabelPenilaianKurir);
+            spTable1.setViewportView(tabelPenilaianKurir);
 
-            panelBorder.add(spTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 850, 470));
+            panelBorder.add(spTable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 370));
 
-            add(panelBorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 900, 570));
+            jLabel2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+            jLabel2.setForeground(new java.awt.Color(97, 103, 122));
+            jLabel2.setText("Hitung Nilai Preferensi");
+            panelBorder.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 220, -1));
+
+            add(panelBorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 900, 460));
+
+            panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
+            panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+            spTable2.setBorder(null);
+
+            tabelNormalisasi.setModel(new javax.swing.table.DefaultTableModel(
+                  new Object [][] {
+
+                  },
+                  new String [] {
+                        "Name", "Email", "User Type", "Joined", "Status"
+                  }
+            ) {
+                  boolean[] canEdit = new boolean [] {
+                        false, false, false, false, false
+                  };
+
+                  public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit [columnIndex];
+                  }
+            });
+            spTable2.setViewportView(tabelNormalisasi);
+
+            panelBorder2.add(spTable2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 370));
+
+            jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+            jLabel3.setForeground(new java.awt.Color(97, 103, 122));
+            jLabel3.setText("Proses Normalisasi");
+            panelBorder2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 180, -1));
+
+            add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 900, 460));
+
+            panelBorder1.setBackground(new java.awt.Color(255, 255, 255));
+            panelBorder1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+            spTable3.setBorder(null);
+
+            tabelPerankingan.setModel(new javax.swing.table.DefaultTableModel(
+                  new Object [][] {
+
+                  },
+                  new String [] {
+                        "Name", "Email", "User Type", "Joined", "Status"
+                  }
+            ) {
+                  boolean[] canEdit = new boolean [] {
+                        false, false, false, false, false
+                  };
+
+                  public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit [columnIndex];
+                  }
+            });
+            spTable3.setViewportView(tabelPerankingan);
+
+            panelBorder1.add(spTable3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 390, 280));
+
+            jLabel4.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+            jLabel4.setForeground(new java.awt.Color(97, 103, 122));
+            jLabel4.setText("Perankingan");
+            panelBorder1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 180, -1));
+
+            add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 990, 440, 370));
+
+            panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
+            panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+            spTable4.setBorder(null);
+
+            tabelHasilNormalisasi.setModel(new javax.swing.table.DefaultTableModel(
+                  new Object [][] {
+
+                  },
+                  new String [] {
+                        "Name", "Email", "User Type", "Joined", "Status"
+                  }
+            ) {
+                  boolean[] canEdit = new boolean [] {
+                        false, false, false, false, false
+                  };
+
+                  public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit [columnIndex];
+                  }
+            });
+            spTable4.setViewportView(tabelHasilNormalisasi);
+
+            panelBorder3.add(spTable4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 400, 280));
+
+            jLabel5.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+            jLabel5.setForeground(new java.awt.Color(97, 103, 122));
+            jLabel5.setText("Jumlah");
+            panelBorder3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 180, -1));
+
+            add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 990, 440, 370));
       }// </editor-fold>//GEN-END:initComponents
 
 
       // Variables declaration - do not modify//GEN-BEGIN:variables
-      private javax.swing.JLabel jLabel1;
-      private com.raven.swing.PanelBorder panelBorder;
-      private javax.swing.JScrollPane spTable;
-      public com.raven.swing.Table tabelPenilaianKurir;
+      private javax.swing.JLabel jLabel2;
+      private javax.swing.JLabel jLabel3;
+      private javax.swing.JLabel jLabel4;
+      private javax.swing.JLabel jLabel5;
+      private com.swing.PanelBorder panelBorder;
+      private com.swing.PanelBorder panelBorder1;
+      private com.swing.PanelBorder panelBorder2;
+      private com.swing.PanelBorder panelBorder3;
+      private javax.swing.JScrollPane spTable1;
+      private javax.swing.JScrollPane spTable2;
+      private javax.swing.JScrollPane spTable3;
+      private javax.swing.JScrollPane spTable4;
+      public com.swing.Table tabelHasilNormalisasi;
+      public com.swing.Table tabelNormalisasi;
+      public com.swing.Table tabelPenilaianKurir;
+      public com.swing.Table tabelPerankingan;
       // End of variables declaration//GEN-END:variables
 }

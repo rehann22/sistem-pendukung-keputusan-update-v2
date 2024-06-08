@@ -1,7 +1,7 @@
 package com.admin.view;
 
 import com.admin.controler.PenilaianKurir;
-import com.raven.swing.ScrollBar;
+import com.swing.ScrollBar;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -25,10 +25,10 @@ public class PagePenilaianKurir extends javax.swing.JPanel {
       // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
       private void initComponents() {
 
-            panelBorder = new com.raven.swing.PanelBorder();
+            panelBorder = new com.swing.PanelBorder();
             jLabel1 = new javax.swing.JLabel();
             spTable = new javax.swing.JScrollPane();
-            tblPenilaianKurir = new com.raven.swing.Table();
+            tblPenilaianKurir = new com.swing.Table();
             btn_hapus = new swing.ButtonGradient();
             btn_Tambah = new swing.ButtonGradient();
             btn_ubah = new swing.ButtonGradient();
@@ -118,8 +118,8 @@ public class PagePenilaianKurir extends javax.swing.JPanel {
       private swing.ButtonGradient btn_hapus;
       private swing.ButtonGradient btn_ubah;
       private javax.swing.JLabel jLabel1;
-      private com.raven.swing.PanelBorder panelBorder;
+      private com.swing.PanelBorder panelBorder;
       private javax.swing.JScrollPane spTable;
-      public com.raven.swing.Table tblPenilaianKurir;
+      public com.swing.Table tblPenilaianKurir;
       // End of variables declaration//GEN-END:variables
 }

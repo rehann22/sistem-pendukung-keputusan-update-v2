@@ -11,7 +11,7 @@ public class Laporan extends javax.swing.JPanel {
       // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
       private void initComponents() {
 
-            panelBorder = new com.raven.swing.PanelBorder();
+            panelBorder = new com.swing.PanelBorder();
             jLabel1 = new javax.swing.JLabel();
             btn_hapus = new swing.ButtonGradient();
 
@@ -47,6 +47,6 @@ public class Laporan extends javax.swing.JPanel {
       // Variables declaration - do not modify//GEN-BEGIN:variables
       private swing.ButtonGradient btn_hapus;
       private javax.swing.JLabel jLabel1;
-      private com.raven.swing.PanelBorder panelBorder;
+      private com.swing.PanelBorder panelBorder;
       // End of variables declaration//GEN-END:variables
 }

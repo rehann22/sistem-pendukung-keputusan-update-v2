@@ -69,12 +69,12 @@ public class DataKriteria {
                       double scaledValue = e * 100;
                       double roundedValue;
 
-                      // Jika nilai lebih besar dari .50 bulatkan ke atas, jika lebih kecil atau sama dengan .50 bulatkan ke bawah
-                      if (scaledValue % 1 >= 0.5) {
-                          roundedValue = Math.ceil(scaledValue);
-                      } else {
-                          roundedValue = Math.floor(scaledValue);
-                      }
+                              // Jika nilai lebih besar dari .50 bulatkan ke atas, jika lebih kecil atau sama dengan .50 bulatkan ke bawah
+                              if (scaledValue % 1 >= 0.5) {
+                                  roundedValue = Math.ceil(scaledValue);
+                              } else {
+                                  roundedValue = Math.floor(scaledValue);
+                              }
 
                       // Kembalikan ke dua angka desimal
                       roundedValue /= 100;
@@ -85,7 +85,7 @@ public class DataKriteria {
                       tabMode.addRow(data);
                   }
 
-                // Tambahkan baris footer
+//                // Tambahkan baris footer
                 String formattedTotalBobot = String.format("%.2f", totalBobot);
                 String[] footer = {"", "Total", String.valueOf(totalNilai), "", formattedTotalBobot};
                 tabMode.addRow(footer);

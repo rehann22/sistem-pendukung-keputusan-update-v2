@@ -1,15 +1,13 @@
 package com.admin.main;
-import com.admin.controler.DataKriteria;
-import com.admin.controler.DataKurir;
 import com.admin.view.DataAdmin;
 import com.admin.view.Laporan;
 import com.admin.view.PageDataKriteria;
 import com.admin.view.PageDataKurir;
 import com.admin.view.PagePenilaianKurir;
 import com.admin.view.PageProsesPerhitungan;
-import com.raven.event.EventMenuSelected;
+import com.event.EventMenuSelected;
 import com.admin.view.dashboard;
-import com.raven.swing.ModernScrollBarUI;
+import com.swing.ModernScrollBarUI;
 import java.awt.Color;
 import javaswingdev.chart.PieChart;
 import javax.swing.JComponent;
@@ -90,9 +88,9 @@ public class MainDashboard extends javax.swing.JFrame {
       // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
       private void initComponents() {
 
-            panelBorder1 = new com.raven.swing.PanelBorder();
-            menu = new com.raven.component.Menu();
-            header2 = new com.raven.component.Header();
+            panelBorder1 = new com.swing.PanelBorder();
+            menu = new com.component.Menu();
+            header2 = new com.component.Header();
             mainPanel = new javax.swing.JPanel();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -180,9 +178,9 @@ public class MainDashboard extends javax.swing.JFrame {
     }
 
       // Variables declaration - do not modify//GEN-BEGIN:variables
-      private com.raven.component.Header header2;
+      private com.component.Header header2;
       private javax.swing.JPanel mainPanel;
-      private com.raven.component.Menu menu;
-      private com.raven.swing.PanelBorder panelBorder1;
+      private com.component.Menu menu;
+      private com.swing.PanelBorder panelBorder1;
       // End of variables declaration//GEN-END:variables
 }

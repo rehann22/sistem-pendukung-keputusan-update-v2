@@ -1,7 +1,7 @@
 package com.admin.view;
 
-import com.raven.model.Model_Card;
-import com.raven.swing.ScrollBar;
+import com.model.Model_Card;
+import com.swing.ScrollBar;
 import java.awt.Color;
 import javaswingdev.chart.PieChart;
 import javax.swing.ImageIcon;
@@ -13,10 +13,10 @@ public class dashboard extends javax.swing.JPanel {
     public dashboard() {
           
         initComponents();        
-        card1.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/raven/icon/icons8-virus-64.png")), "NULL",  0));
-        card2.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/raven/icon/icons8-virus-64 (1).png")), "NULL", 0));
-        card3.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/raven/icon/icons8-algorithm-50 (1).png")), "NULL", 0));
-        card4.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/raven/icon/icons8-person-64.png")), "NULL", 0));
+        card1.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/icons8-virus-64.png")), "NULL",  0));
+        card2.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/icons8-virus-64 (1).png")), "NULL", 0));
+        card3.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/icons8-algorithm-50 (1).png")), "NULL", 0));
+        card4.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/icons8-person-64.png")), "NULL", 0));
         
         //  add row table
         spTable.setVerticalScrollBar(new ScrollBar());
@@ -45,17 +45,17 @@ public class dashboard extends javax.swing.JPanel {
       private void initComponents() {
 
             panel = new javax.swing.JLayeredPane();
-            card1 = new com.raven.component.Card();
-            card2 = new com.raven.component.Card();
-            card3 = new com.raven.component.Card();
-            card4 = new com.raven.component.Card();
-            panelBorder1 = new com.raven.swing.PanelBorder();
+            card1 = new com.component.Card();
+            card2 = new com.component.Card();
+            card3 = new com.component.Card();
+            card4 = new com.component.Card();
+            panelBorder1 = new com.swing.PanelBorder();
             pie_chart = new javaswingdev.chart.PieChart();
             jLabel3 = new javax.swing.JLabel();
-            panelBorder2 = new com.raven.swing.PanelBorder();
+            panelBorder2 = new com.swing.PanelBorder();
             jLabel2 = new javax.swing.JLabel();
             spTable = new javax.swing.JScrollPane();
-            tabel_dashboard = new com.raven.swing.Table();
+            tabel_dashboard = new com.swing.Table();
 
             setBackground(new java.awt.Color(242, 242, 242));
             setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -126,17 +126,17 @@ public class dashboard extends javax.swing.JPanel {
 
 
       // Variables declaration - do not modify//GEN-BEGIN:variables
-      private com.raven.component.Card card1;
-      private com.raven.component.Card card2;
-      private com.raven.component.Card card3;
-      private com.raven.component.Card card4;
+      private com.component.Card card1;
+      private com.component.Card card2;
+      private com.component.Card card3;
+      private com.component.Card card4;
       private javax.swing.JLabel jLabel2;
       private javax.swing.JLabel jLabel3;
       private javax.swing.JLayeredPane panel;
-      private com.raven.swing.PanelBorder panelBorder1;
-      private com.raven.swing.PanelBorder panelBorder2;
+      private com.swing.PanelBorder panelBorder1;
+      private com.swing.PanelBorder panelBorder2;
       public javaswingdev.chart.PieChart pie_chart;
       private javax.swing.JScrollPane spTable;
-      public com.raven.swing.Table tabel_dashboard;
+      public com.swing.Table tabel_dashboard;
       // End of variables declaration//GEN-END:variables
 }
