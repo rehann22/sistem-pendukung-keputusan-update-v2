@@ -10,27 +10,27 @@ import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 
 public class TambahDataKurir extends javax.swing.JFrame {
+      
 
       public TambahDataKurir() {
             initComponents();
-            customizeDateChooser(tglBergabung);
-            
+//            customizeDateChooser(tglBergabung);
       }
       
-      private void customizeDateChooser(JDateChooser tgl) {
-            // Mengatur latar belakang menjadi putih
-            tgl.getDateEditor().getUiComponent().setBackground(Color.WHITE);
-
-            // Mengatur border hanya di bawah
-            ((JTextField)tgl.getDateEditor().getUiComponent()).setBorder(
-                BorderFactory.createMatteBorder(0, 0, 1, 0, (new Color(97, 103, 122))) // Menggunakan warna hitam untuk border bawah
-            );
-
-            tgl.getDateEditor().getUiComponent().setForeground(new Color(97, 103, 122));
-
-            // Mengatur font
-            tgl.getDateEditor().getUiComponent().setFont(new Font("Segoe UI", Font.PLAIN, 12));
-       }
+//      public void customizeDateChooser(JDateChooser tgl) {
+//            // Mengatur latar belakang menjadi putih
+//            tgl.getDateEditor().getUiComponent().setBackground(Color.WHITE);
+//
+//            // Mengatur border hanya di bawah
+//            ((JTextField)tgl.getDateEditor().getUiComponent()).setBorder(
+//                BorderFactory.createMatteBorder(0, 0, 1, 0, (new Color(97, 103, 122))) // Menggunakan warna hitam untuk border bawah
+//            );
+//
+//            tgl.getDateEditor().getUiComponent().setForeground(new Color(97, 103, 122));
+//
+//            // Mengatur font
+//            tgl.getDateEditor().getUiComponent().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+//       }
 
       
       @SuppressWarnings("unchecked")
@@ -104,7 +104,21 @@ public class TambahDataKurir extends javax.swing.JFrame {
             txtEmail.setForeground(new java.awt.Color(97, 103, 122));
             txtEmail.setLabelText("Email");
             jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 290, 40));
+
+            tglBergabung.setBackground(new java.awt.Color(255, 255, 255));
+            tglBergabung.setForeground(new java.awt.Color(97, 103, 122));
             jPanel1.add(tglBergabung, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 290, 30));
+            tglBergabung.getDateEditor().getUiComponent().setBackground(Color.WHITE);
+
+            // Mengatur border hanya di bawah
+            ((JTextField)tglBergabung.getDateEditor().getUiComponent()).setBorder(
+                  BorderFactory.createMatteBorder(0, 0, 1, 0, (new Color(97, 103, 122))) // Menggunakan warna hitam untuk border bawah
+            );
+
+            tglBergabung.getDateEditor().getUiComponent().setForeground(new Color(97, 103, 122));
+
+            // Mengatur font
+            tglBergabung.getDateEditor().getUiComponent().setFont(new Font("Segoe UI", Font.PLAIN, 12));
 
             jLabel1.setForeground(new java.awt.Color(97, 103, 122));
             jLabel1.setText("Tanggal Bergabung");

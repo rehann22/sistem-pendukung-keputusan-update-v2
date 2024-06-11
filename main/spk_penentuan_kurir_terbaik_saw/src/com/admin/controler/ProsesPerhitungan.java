@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -19,6 +20,11 @@ public class ProsesPerhitungan {
       
       private DefaultTableModel tabMode;
       private DefaultTableModel normalizedTabMode;
+      
+      static {
+        // Atur locale default ke Locale.US
+        Locale.setDefault(Locale.US);
+       }
       
       public void TabelPenilaianKurir(JTable tabel) {
             Object[] rows = {"Id Kurir", "Nama Kurir", "Kecepatan Pengiriman", "Keandalan", "Kepuasan Pelanggan",

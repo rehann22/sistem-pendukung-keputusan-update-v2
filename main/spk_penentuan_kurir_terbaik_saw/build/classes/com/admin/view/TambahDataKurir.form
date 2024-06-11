@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
@@ -185,7 +185,16 @@
           </Constraints>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="tglBergabung">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="7a" green="67" red="61" type="rgb"/>
+            </Property>
+          </Properties>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="tglBergabung.getDateEditor().getUiComponent().setBackground(Color.WHITE);&#xa;&#xa;// Mengatur border hanya di bawah&#xa;((JTextField)tglBergabung.getDateEditor().getUiComponent()).setBorder(&#xa;    BorderFactory.createMatteBorder(0, 0, 1, 0, (new Color(97, 103, 122))) // Menggunakan warna hitam untuk border bawah&#xa;);&#xa;&#xa;tglBergabung.getDateEditor().getUiComponent().setForeground(new Color(97, 103, 122));&#xa;&#xa;// Mengatur font&#xa;tglBergabung.getDateEditor().getUiComponent().setFont(new Font(&quot;Segoe UI&quot;, Font.PLAIN, 12));"/>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
           <Constraints>

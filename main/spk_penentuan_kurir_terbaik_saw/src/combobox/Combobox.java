@@ -183,16 +183,24 @@ public class Combobox<E> extends JComboBox<E> {
         protected ComboPopup createPopup() {
             BasicComboPopup pop = new BasicComboPopup(comboBox) {
                 @Override
-                protected JScrollPane createScroller() {
-                    list.setFixedCellHeight(30);
-                    JScrollPane scroll = new JScrollPane(list);
-                    scroll.setBackground(Color.WHITE);
-                    ScrollBarCustom sb = new ScrollBarCustom();
-                    sb.setUnitIncrement(30);
-                    sb.setForeground(new Color(180, 180, 180));
-                    scroll.setVerticalScrollBar(sb);
-                    return scroll;
-                }
+                  protected JScrollPane createScroller() {
+                          list.setFixedCellHeight(30);
+                          JScrollPane scroll = new JScrollPane(list);
+                          scroll.setBackground(Color.WHITE);
+
+                          ScrollBarCustom verticalSB = new ScrollBarCustom();
+                          verticalSB.setUnitIncrement(30);
+                          verticalSB.setForeground(new Color(180, 180, 180));
+
+                          ScrollBarCustom horizontalSB = new ScrollBarCustom();
+                          horizontalSB.setUnitIncrement(30);
+                          horizontalSB.setForeground(new Color(180, 180, 180));
+
+                          scroll.setVerticalScrollBar(verticalSB);
+                          scroll.setHorizontalScrollBar(horizontalSB);
+
+                      return scroll;
+                  }
             };
             pop.setBorder(new LineBorder(new Color(200, 200, 200), 1));
             return pop;

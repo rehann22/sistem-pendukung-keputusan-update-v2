@@ -110,6 +110,7 @@ public class PageDataKurir extends javax.swing.JPanel {
       private void btn_tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahActionPerformed
             TambahDataKurir data = new TambahDataKurir();
             data.setVisible(true);
+            
       }//GEN-LAST:event_btn_tambahActionPerformed
 
       private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed

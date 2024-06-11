@@ -109,6 +109,7 @@ public class PageDataKriteria extends javax.swing.JPanel {
       private void btn_tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahActionPerformed
             DataKriteria data = new DataKriteria();
             TambahDataKriteria form = new TambahDataKriteria();
+            data.autoNumber(form.txtKodeKriteria);
             form.setVisible(true);
       }//GEN-LAST:event_btn_tambahActionPerformed
 
@@ -121,7 +122,8 @@ public class PageDataKriteria extends javax.swing.JPanel {
       }//GEN-LAST:event_btn_ubahActionPerformed
 
       private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
-           
+             DataKriteria data = new DataKriteria();
+             data.HapusKriteria(tblKriteria);
       }//GEN-LAST:event_btn_hapusActionPerformed
 
       private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
