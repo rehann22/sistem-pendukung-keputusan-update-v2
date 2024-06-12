@@ -1,332 +1,290 @@
 package com.admin.controler;
 
 import com.admin.view.PageDataKriteria;
-import com.admin.view.PageProsesPerhitungan;
 import com.database.ConnectionDb;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Locale;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
-
 
 public class ProsesPerhitungan {
-      
+
       private DefaultTableModel tabMode;
-      private DefaultTableModel normalizedTabMode;
-      
+      private DefaultTableModel tabelNormalisasi;
+
       static {
-        // Atur locale default ke Locale.US
-        Locale.setDefault(Locale.US);
-       }
+          // Atur locale default ke Locale.US
+          Locale.setDefault(Locale.US);
+      }
       
-      public void TabelPenilaianKurir(JTable tabel) {
-            Object[] rows = {"Id Kurir", "Nama Kurir", "Kecepatan Pengiriman", "Keandalan", "Kepuasan Pelanggan",
-                             "Jumlah Pengiriman Perbulan", "Komunikasi dengan pelanggan", "Disiplin & kehadiran",
-                             "Pemahaman rute", "Tingkat Pengembalian Perbulan"};
-            tabMode = new DefaultTableModel(null, rows);
+      // Method untuk memperbarui nilai maksimum dan minimum untuk setiap kriteria
+      private static void updateMinMaxValues(double[] maxValues, double[] minValues, double... values) {
+            for (int i = 0; i < values.length; i++) {
+                if (values[i] > maxValues[i]) {
+                    maxValues[i] = values[i];
+                }
+                if (values[i] < minValues[i]) {
+                    minValues[i] = values[i];
+                }
+            }
+      }
+
+      public void DataPenilaianAlternatif(JTable tabel) {
+            Object[] rows = {"Id Kurir", "Nama Kurir", "Kesalahan Pengiriman", "Lama Bekerja", "Kecepatan Pengiriman", "Paket Dikirim / Bulan"};
+            DefaultTableModel tabMode = new DefaultTableModel(null, rows);
             tabel.setModel(tabMode);
 
-            // Query untuk mengambil tipe kriteria dari database
-            String[] criteriaType = getCriteriaTypesFromDatabase();
-
             try {
-                Connection conn = new ConnectionDb().connect();
-                String query = "SELECT * FROM tbl_penilaian";
-                PreparedStatement ps = conn.prepareStatement(query);
-                ResultSet rs = ps.executeQuery();
+                  Connection conn = new ConnectionDb().connect();
 
-                double[] maxValues = new double[8];
-                double[] minValues = new double[8];
-                for (int i = 0; i < 8; i++) {
-                    maxValues[i] = Double.NEGATIVE_INFINITY;
-                    minValues[i] = Double.POSITIVE_INFINITY;
-                }
+                  // Query untuk mengambil data dari tbl_penilaian
+                  String query = "SELECT * FROM tbl_penilaian";
+                  PreparedStatement ps = conn.prepareStatement(query);
+                  ResultSet rs = ps.executeQuery();
 
-                while (rs.next()) {
-                  String a = rs.getString("id_kurir");
-                  String b = rs.getString("nama_kurir");
-                  double[] values = new double[8];
-                  values[0] = rs.getDouble("kecepatan_pengiriman");
-                  values[1] = rs.getDouble("keandalan");
-                  values[2] = rs.getDouble("kepuasan_pelanggan");
-                  values[3] = rs.getDouble("jml_pengiriman_perbulan");
-                  values[4] = rs.getDouble("komunikasi_dengan_pelanggan");
-                  values[5] = rs.getDouble("disiplin_kehadiran");
-                  values[6] = rs.getDouble("pemahaman_rute");
-                  values[7] = rs.getDouble("tingkat_pengembalian_perbulan");
-
-                  String[] data = {a, b, String.valueOf(values[0]), String.valueOf(values[1]), String.valueOf(values[2]),
-                                   String.valueOf(values[3]), String.valueOf(values[4]), String.valueOf(values[5]),
-                                   String.valueOf(values[6]), String.valueOf(values[7])};
-                  tabMode.addRow(data);
-
-                  // Update max and min values for normalization
-                  for (int i = 0; i < values.length; i++) {
-                      if (values[i] > maxValues[i]) {
-                          maxValues[i] = values[i];
-                      }
-                      if (values[i] < minValues[i]) {
-                          minValues[i] = values[i];
-                      }
+                  // Menyimpan nilai maksimum dan minimum untuk setiap kriteria
+                  double[] maxValues = new double[5];
+                  double[] minValues = new double[5];
+                  for (int i = 0; i < 5; i++) {
+                      maxValues[i] = Double.NEGATIVE_INFINITY;
+                      minValues[i] = Double.POSITIVE_INFINITY;
                   }
-              }
 
-                  // Create the footer row with divider values
-                  String[] footer = new String[12];
-                  footer[0] = "";
-                  footer[1] = "Pembagi";
-                  for (int i = 0; i < maxValues.length; i++) {
-                      if (criteriaType[i].equalsIgnoreCase("cost")) {
-                          footer[i + 2] = String.valueOf(minValues[i]);
-                      } else {
-                          footer[i + 2] = String.valueOf(maxValues[i]);
-                      }
+                // Memproses hasil query
+                  while (rs.next()) {
+                        String idKurir = rs.getString("id_kurir");
+                        String namaKurir = rs.getString("nama_kurir");
+                        String kesalahanPengiriman = rs.getString("kesalahan_pengiriman");
+                        String lamaBekerja = rs.getString("lama_bekerja");
+                        String kecepatanPengiriman = rs.getString("kecepatan_pengiriman");
+                        String paketDikirimPerbulan = rs.getString("paket_dikirim_perbulan");
+
+                        // Mendapatkan bobot untuk setiap kriteria
+                        double bobotKesalahanPengiriman = getBobot(kesalahanPengiriman);
+                        double bobotLamaBekerja = getBobot(lamaBekerja);
+                        double bobotKecepatanPengiriman = getBobot(kecepatanPengiriman);
+                        double bobotPaketDikirimPerbulan = getBobot(paketDikirimPerbulan);
+
+                        // Memperbarui nilai maksimum dan minimum untuk setiap kriteria
+                        updateMinMaxValues(maxValues, minValues, bobotKesalahanPengiriman, bobotLamaBekerja, bobotKecepatanPengiriman, bobotPaketDikirimPerbulan);
+
+                        // Menambahkan data ke dalam tabel
+                        Object[] data = {idKurir, namaKurir, bobotKesalahanPengiriman, bobotLamaBekerja, bobotKecepatanPengiriman, bobotPaketDikirimPerbulan};
+                        tabMode.addRow(data);
+
                   }
-                  tabMode.addRow(footer);
 
-                conn.close();
+            // Menambahkan footer untuk nilai maksimum ("Benefit") dan nilai minimum ("Cost")
+            Object[] maxFooter = {"", "Nilai Max", maxValues[0], maxValues[1], maxValues[2], maxValues[3], maxValues[4]};
+            tabMode.addRow(maxFooter);
 
-            } catch (SQLException e) {
+            Object[] minFooter = {"", "Nilai Min", minValues[0], minValues[1], minValues[2], minValues[3], minValues[4]};
+            tabMode.addRow(minFooter);            
+            conn.close();
+            rs.close();
+            ps.close();
+            } catch (Exception e) {
+                System.out.println("Eror Method DataPenilaianAlternatif");
                 e.printStackTrace();
             }
+      }
+      public void DataPenilaianAlternatif_2(JTable tabel) {
+            Object[] rows = {"Id Kurir", "Nama Kurir", "Kesalahan Pengiriman", "Lama Bekerja", "Kecepatan Pengiriman", "Paket Dikirim / Bulan"};
+            DefaultTableModel tabMode = new DefaultTableModel(null, rows);
+            tabel.setModel(tabMode);
+
+            try {
+                  Connection conn = new ConnectionDb().connect();
+
+                  // Query untuk mengambil data dari tbl_penilaian
+                  String query = "SELECT * FROM tbl_penilaian";
+                  PreparedStatement ps = conn.prepareStatement(query);
+                  ResultSet rs = ps.executeQuery();
+
+                  // Menyimpan nilai maksimum dan minimum untuk setiap kriteria
+                  double[] maxValues = new double[5];
+                  double[] minValues = new double[5];
+                  for (int i = 0; i < 5; i++) {
+                      maxValues[i] = Double.NEGATIVE_INFINITY;
+                      minValues[i] = Double.POSITIVE_INFINITY;
+                  }
+
+                // Memproses hasil query
+                  while (rs.next()) {
+                        String idKurir = rs.getString("id_kurir");
+                        String namaKurir = rs.getString("nama_kurir");
+                        String kesalahanPengiriman = rs.getString("kesalahan_pengiriman");
+                        String lamaBekerja = rs.getString("lama_bekerja");
+                        String kecepatanPengiriman = rs.getString("kecepatan_pengiriman");
+                        String paketDikirimPerbulan = rs.getString("paket_dikirim_perbulan");
+
+                        // Mendapatkan bobot untuk setiap kriteria
+                        double bobotKesalahanPengiriman = getBobot(kesalahanPengiriman);
+                        double bobotLamaBekerja = getBobot(lamaBekerja);
+                        double bobotKecepatanPengiriman = getBobot(kecepatanPengiriman);
+                        double bobotPaketDikirimPerbulan = getBobot(paketDikirimPerbulan);
+
+                        // Memperbarui nilai maksimum dan minimum untuk setiap kriteria
+                        updateMinMaxValues(maxValues, minValues, bobotKesalahanPengiriman, bobotLamaBekerja, bobotKecepatanPengiriman, bobotPaketDikirimPerbulan);
+
+                        // Menambahkan data ke dalam tabel
+                        Object[] data = {idKurir, namaKurir, bobotKesalahanPengiriman, bobotLamaBekerja, bobotKecepatanPengiriman, bobotPaketDikirimPerbulan};
+                        tabMode.addRow(data);
+
+            }
+            
+            conn.close();
+            rs.close();
+            ps.close();
+            } catch (Exception e) {
+                System.out.println("Eror Method DataPenilaianAlternatif");
+                e.printStackTrace();
+            }
+            HitungPenilaianAlternatif(tabel, tabMode);
+      }
+
+      // Method untuk mendapatkan bobot berdasarkan keterangan
+      private static double getBobot(String keterangan) {
+            double bobot = 0; // Default value jika tidak ditemukan
+            try {
+                  Connection conn = new ConnectionDb().connect();
+                  String query = "SELECT bobot FROM tbl_sub_kriteria WHERE keterangan = ?";
+                  PreparedStatement ps = conn.prepareStatement(query);
+                  ps.setString(1, keterangan);
+                  ResultSet rs = ps.executeQuery();
+
+                  if (rs.next()) {
+                      bobot = rs.getDouble("bobot");
+                  }
+
+                  conn.close();
+                  rs.close();
+                  ps.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+          return bobot;
       }
 
       // Metode untuk mengambil tipe kriteria dari database
       private String[] getCriteriaTypesFromDatabase() {
-            String[] criteriaType = new String[8];
+            String[] criteriaType = new String[4];
             try {
-                Connection conn = new ConnectionDb().connect();
-                String query = "SELECT jenis FROM tbl_kriteria";
-                PreparedStatement ps = conn.prepareStatement(query);
-                ResultSet rs = ps.executeQuery();
-                int index = 0;
-                while (rs.next()) {
-                    criteriaType[index++] = rs.getString("jenis");
-                }
-                conn.close();
+                  Connection conn = new ConnectionDb().connect();
+                  String query = "SELECT jenis FROM tbl_kriteria";
+                  PreparedStatement ps = conn.prepareStatement(query);
+                  ResultSet rs = ps.executeQuery();
+                  int index = 0;
+                  while (rs.next()) {
+                      criteriaType[index] = rs.getString("jenis");
+                      System.out.println("Kriteria " + (index + 1) + ": " + criteriaType[index]);
+                      index++;
+                  }
+                  conn.close();
+                  rs.close();
+                  ps.close();
             } catch (SQLException e) {
-                System.out.println("Error getting criteria types: " + e.getMessage());
+                  System.out.println("Error getting criteria types: " + e.getMessage());
             }
             return criteriaType;
       }
 
-
-
-      public void HitungNormalisasi(JTable normalizedTabel) {
-            Object[] normalizedRows = {"Id Kurir", "Nama Kurir", "Kecepatan Pengiriman", "Keandalan", "Kepuasan Pelanggan",
-                                       "Jumlah Pengiriman Perbulan", "Komunikasi dengan pelanggan", "Disiplin & kehadiran",
-                                       "Pemahaman rute", "Tingkat Pengembalian Perbulan"};
-            normalizedTabMode = new DefaultTableModel(null, normalizedRows);
-            normalizedTabel.setModel(normalizedTabMode);
+      public void HitungPenilaianAlternatif(JTable tabel, DefaultTableModel tab) {
+            Object[] rows = {"Id Kurir", "Nama Kurir", "Kesalahan Pengiriman", "Lama Bekerja", "Kecepatan Pengiriman", "Paket Dikirim / Bulan"};
+            tabelNormalisasi = new DefaultTableModel(null, rows);
+            tabel.setModel(tabelNormalisasi);
 
             String[] criteriaType = getCriteriaTypesFromDatabase();
-            double[] maxValues = new double[8];
-            double[] minValues = new double[8];
-            for (int i = 0; i < 8; i++) {
+            double[] maxValues = new double[4];
+            double[] minValues = new double[4];
+            for (int i = 0; i < 4; i++) {
                 maxValues[i] = Double.NEGATIVE_INFINITY;
                 minValues[i] = Double.POSITIVE_INFINITY;
             }
+          
+            //print isi dari tabmode
+            for (int row = 0; row < tab.getRowCount(); row++) {
+              for (int col = 0; col < tab.getColumnCount(); col++) {
+                  Object value = tab.getValueAt(row, col);
+                  System.out.print(value + "\t");
+            }
+            System.out.println();
+            }
 
             // Hitung max dan min
-            for (int row = 0; row < tabMode.getRowCount(); row++) {
-                  for (int col = 2; col < 10; col++) {
-                      double value = Double.parseDouble(tabMode.getValueAt(row, col).toString());
-                      int criteriaIndex = col - 2;
-                      if (value > maxValues[criteriaIndex]) {
-                          maxValues[criteriaIndex] = value;
-                      }
-                      if (value < minValues[criteriaIndex]) {
-                          minValues[criteriaIndex] = value;
-                      }
-                }
+            for (int row = 0; row < tab.getRowCount(); row++) {
+                  for (int col = 2; col < 6; col++) {
+                        Object cellValue = tab.getValueAt(row, col);
+                        if (cellValue != null && isNumeric(cellValue.toString())) {
+                            double value = Double.parseDouble(cellValue.toString());
+                            int criteriaIndex = col - 2;
+                            if (value > maxValues[criteriaIndex]) {
+                                maxValues[criteriaIndex] = value;
+                            }
+                            if (value < minValues[criteriaIndex]) {
+                                minValues[criteriaIndex] = value;
+                            }
+                        } else {
+                            System.err.println("Non-numeric value in row " + row + ", col " + col + ": " + cellValue);
+                        }
+                  }
             }
 
             // Normalisasi dan tambahkan ke tabel normalizedTabMode
-            for (int row = 0; row < tabMode.getRowCount(); row++) {
-                double[] normalizedValues = new double[8];
-                String idKurir = tabMode.getValueAt(row, 0).toString();
-                String namaKurir = tabMode.getValueAt(row, 1).toString();
+            for (int row = 0; row < tab.getRowCount(); row++) {
+                double[] normalizedValues = new double[4];
+                String idKurir = tab.getValueAt(row, 0).toString();
+                String namaKurir = tab.getValueAt(row, 1).toString();
 
-             for (int col = 2; col < 10; col++) {
-                 double value = Double.parseDouble(tabMode.getValueAt(row, col).toString());
-                 int criteriaIndex = col - 2;
+                  for (int col = 2; col < 6; col++) {
+                        Object cellValue = tab.getValueAt(row, col);
+                        if (cellValue != null && isNumeric(cellValue.toString())) {
+                            double value = Double.parseDouble(cellValue.toString());
+                            int criteriaIndex = col - 2;
 
-                  if (criteriaType[criteriaIndex].equalsIgnoreCase("cost")) {
-                      normalizedValues[criteriaIndex] = minValues[criteriaIndex] / value;
-                  } else {
-                      normalizedValues[criteriaIndex] = value / maxValues[criteriaIndex];
-                  }
-             }
+                            if (criteriaType[criteriaIndex].equalsIgnoreCase("Cost")) {
+                                normalizedValues[criteriaIndex] = minValues[criteriaIndex] / value;
+                            } else {
+                                normalizedValues[criteriaIndex] = value / maxValues[criteriaIndex];
+                            }
 
-                  String[] normalizedData = {idKurir, namaKurir, 
-                                             String.format("%.2f", normalizedValues[0]), 
-                                             String.format("%.2f", normalizedValues[1]),
-                                             String.format("%.2f", normalizedValues[2]), 
-                                             String.format("%.2f", normalizedValues[3]),
-                                             String.format("%.2f", normalizedValues[4]), 
-                                             String.format("%.2f", normalizedValues[5]),
-                                             String.format("%.2f", normalizedValues[6]), 
-                                             String.format("%.2f", normalizedValues[7])};
-                  normalizedTabMode.addRow(normalizedData);
-
-            }
-            
-            // Hapus baris terakhir (footer) dari model normalizedTabMode
-            if (normalizedTabMode.getRowCount() > 0) {
-                normalizedTabMode.removeRow(normalizedTabMode.getRowCount() - 1);
-
-                  // Create the footer row with divider values
-                  String[] footer = new String[12];
-                  footer[0] = "";
-                  footer[1] = "Pembobotan";
-
-                  PageDataKriteria data = new PageDataKriteria();
-                  for (int i = 0; i < data.tblKriteria.getRowCount(); i++) {
-                         footer[i + 2] = data.tblKriteria.getValueAt(i, 4).toString(); // Kolom ke-4 (indeks 3)
-                  }
-                  normalizedTabMode.addRow(footer);  
-            }  
-      }
-      
-   public void HasilTotalNormalisasi (JTable tabelPerankingan) {
-      Object[] rankingRows = {"Id Kurir", "Nama", "Hasil Perhitungan"};
-      DefaultTableModel rankingTabMode = new DefaultTableModel(null, rankingRows);
-      tabelPerankingan.setModel(rankingTabMode);
-
-      String[] criteriaType = getCriteriaTypesFromDatabase();
-      PageDataKriteria data = new PageDataKriteria();
-      int rowCount = data.tblKriteria.getRowCount();
-      double[] bobot = new double[rowCount - 1]; // Mengurangi 1 untuk mengabaikan baris terakhir
-
-      for (int i = 0; i < rowCount - 1; i++) { // Mengubah batas iterasi
-          bobot[i] = Double.parseDouble(data.tblKriteria.getValueAt(i, 4).toString());
-      }
-
-      // Print array bobot
-      for (int i = 0; i < rowCount - 1; i++) {
-          System.out.println("Bobot[" + i + "]: " + bobot[i]);
-      }
-
-      // Hitung nilai total preferensi
-      int rowCount2 = normalizedTabMode.getRowCount();
-      double[] nilaiPreferensiTotal = new double[rowCount2 - 1]; // Inisialisasi array untuk menyimpan nilai total preferensi untuk setiap baris
-      for (int row = 0; row < rowCount2 - 1; row++) { 
-            double nilaiPreferensi = 0;
-            for (int col = 2; col < 10; col++) { // Loop melalui kolom nilai normalisasi
-                double value = Double.parseDouble(normalizedTabMode.getValueAt(row, col).toString());
-                nilaiPreferensi += bobot[col - 2] * value; // Perkalian bobot dengan nilai normalisasi
-            }
-            nilaiPreferensiTotal[row] = nilaiPreferensi; // Simpan nilai preferensi total untuk baris saat ini
-            String idKurir = normalizedTabMode.getValueAt(row, 0).toString();
-            String namaKurir = normalizedTabMode.getValueAt(row, 1).toString();
-
-            // Membulatkan nilai preferensi menjadi dua angka di belakang koma
-            double scaledValue = nilaiPreferensi * 100; // Memindahkan dua angka di belakang koma ke digit pertama
-            double roundedValue;
-                  if ((scaledValue % 10) > 5) { // Jika digit ketiga > 5, bulatkan ke atas
-                      roundedValue = Math.ceil(scaledValue / 10); // Bulatkan ke atas
-                  } else {
-                      roundedValue = Math.floor(scaledValue / 10); // Biarkan saja
+                            // Format nilai ke dua angka di belakang koma
+                            String formattedValue = String.format("%.2f", normalizedValues[criteriaIndex]);
+                            normalizedValues[criteriaIndex] = Double.parseDouble(formattedValue);
+                        } else {
+                            normalizedValues[col - 2] = 0; // or handle appropriately for non-numeric values
+                            System.err.println("Non-numeric value in row " + row + ", col " + col + ": " + cellValue);
                         }
-                // Kembalikan ke dua angka desimal
-                double roundedValueInDecimal = roundedValue / 100;
+                  }
 
-            // Tambahkan data ke tabel dengan nilai nilaiPreferensiTotal
-            String[] rankingData = {idKurir, namaKurir, String.format("%.2f", nilaiPreferensiTotal[row])};
-            rankingTabMode.addRow(rankingData);
+                  Object[] dataNormalisasi = {idKurir, namaKurir, String.format("%.2f", normalizedValues[0]), String.format("%.2f", normalizedValues[1]), String.format("%.2f", normalizedValues[2]), String.format("%.2f", normalizedValues[3])};
+                  tabelNormalisasi.addRow(dataNormalisasi);
+            }
+
+
+            // Create the footer row with divider values
+            String[] footer = new String[6];
+            footer[0] = "";
+            footer[1] = "Pembobotan";
+
+            PageDataKriteria data = new PageDataKriteria();
+            for (int i = 0; i < data.tblKriteria.getRowCount(); i++) {
+                footer[i + 2] = data.tblKriteria.getValueAt(i, 2).toString(); // Kolom ke-4 (indeks 3)
+            }
+            tabelNormalisasi.addRow(footer);
+      }     
+      // Helper method to check if a string is numeric
+      private boolean isNumeric(String str) {
+          try {
+              Double.parseDouble(str);
+              return true;
+          } catch (NumberFormatException e) {
+              return false;
+          }
       }
 
-      // Cetak nilai total preferensi untuk setiap baris
-      System.out.println("Nilai Preferensi Total untuk Setiap Baris:");
-      for (int row = 0; row < rowCount2 - 1; row++) { // Iterasi hingga baris sebelum baris terakhir
-          System.out.println("Baris " + row + ": " + String.format("%.2f", nilaiPreferensiTotal[row]));
-      }
-      
-      // Atur lebar kolom
-    TableColumnModel columnModel = tabelPerankingan.getColumnModel();
-    columnModel.getColumn(0).setPreferredWidth(70); // Id Kurir
-    columnModel.getColumn(1).setPreferredWidth(150); // Nama
-    columnModel.getColumn(2).setPreferredWidth(100); // Hasil Perhitungan
-
-   }
-   
- public void HasilPerankingan(JTable tabelPerankingan) {
-    Object[] rankingRows = {"Ranking", "Id Kurir", "Nama", "Skor"};
-    DefaultTableModel rankingTabMode = new DefaultTableModel(null, rankingRows);
-    tabelPerankingan.setModel(rankingTabMode);
-
-    PageDataKriteria data = new PageDataKriteria();
-    int rowCount = data.tblKriteria.getRowCount();
-    double[] bobot = new double[rowCount - 1]; // Mengurangi 1 untuk mengabaikan baris terakhir
-
-    for (int i = 0; i < rowCount - 1; i++) { // Mengubah batas iterasi
-        bobot[i] = Double.parseDouble(data.tblKriteria.getValueAt(i, 4).toString());
-    }
-
-    int rowCount2 = normalizedTabMode.getRowCount();
-    List<String[]> dataList = new ArrayList<>(); // List untuk menyimpan data sementara
-
-    for (int row = 0; row < rowCount2 - 1; row++) {
-        double nilaiPreferensi = 0;
-        for (int col = 2; col < 10; col++) { // Loop melalui kolom nilai normalisasi
-            double value = Double.parseDouble(normalizedTabMode.getValueAt(row, col).toString());
-            nilaiPreferensi += bobot[col - 2] * value; // Perkalian bobot dengan nilai normalisasi
-        }
-
-        String idKurir = normalizedTabMode.getValueAt(row, 0).toString();
-        String namaKurir = normalizedTabMode.getValueAt(row, 1).toString();
-
-        // Membulatkan nilai preferensi menjadi dua angka di belakang koma
-        double scaledValue = nilaiPreferensi * 100; // Memindahkan dua angka di belakang koma ke digit pertama
-        double roundedValue;
-        if (scaledValue % 1 >= 0.5) { // Jika digit ketiga > 5, bulatkan ke atas
-            roundedValue = Math.ceil(scaledValue); // Bulatkan ke atas
-        } else {
-            roundedValue = Math.floor(scaledValue); // Biarkan saja
-        }
-        // Kembalikan ke dua angka desimal
-        double roundedValueInDecimal = roundedValue / 100;
-
-        // Simpan data dalam list dengan nilai preferensi yang sudah dibulatkan
-        String[] rankingData = {idKurir, namaKurir, String.format("%.2f", roundedValueInDecimal)};
-        dataList.add(rankingData);
-    }
-
-    // Urutkan dataList berdasarkan nilai preferensi secara menurun
-    dataList.sort((a, b) -> Double.compare(Double.parseDouble(b[2]), Double.parseDouble(a[2])));
-
-    // Tambahkan data yang diurutkan ke tabel dengan kolom Ranking
-    int ranking = 1;
-    for (String[] rowData : dataList) {
-        String[] rowWithRanking = {String.valueOf(ranking), rowData[0], rowData[1], rowData[2]};
-        rankingTabMode.addRow(rowWithRanking);
-        ranking++;
-    }
-
-    // Atur lebar kolom
-    TableColumnModel columnModel = tabelPerankingan.getColumnModel();
-    columnModel.getColumn(0).setPreferredWidth(40);  // Ranking
-    columnModel.getColumn(1).setPreferredWidth(50); // Id Kurir
-    columnModel.getColumn(2).setPreferredWidth(150); // Nama
-    columnModel.getColumn(3).setPreferredWidth(50); // skor
-
-    // Cetak nilai total preferensi untuk setiap baris (optional)
-    System.out.println("Nilai Preferensi Total untuk Setiap Baris:");
-    for (int row = 0; row < rowCount2 - 1; row++) { // Iterasi hingga baris sebelum baris terakhir
-        System.out.println("Baris " + row + ": " + String.format("%.2f", Double.parseDouble(dataList.get(row)[2])));
-    }
 }
-}
-
-
-
-
-
 

@@ -8,7 +8,7 @@ public class TambahDataKriteria extends javax.swing.JFrame {
       public TambahDataKriteria() {
             initComponents();
             DataKriteria data = new DataKriteria();
-            data.autoNumber(txtKodeKriteria);
+            //data.autoNumber(txtKodeKriteria);
       }
 
       @SuppressWarnings("unchecked")
@@ -78,12 +78,12 @@ public class TambahDataKriteria extends javax.swing.JFrame {
 
       private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
             DataKriteria data = new DataKriteria();
-            data.SimpanKriteria(txtKodeKriteria, txtNamaKriteria, txtNilai, cbbJenis);
+            //data.SimpanKriteria(txtKodeKriteria, txtNamaKriteria, txtNilai, cbbJenis);
       }//GEN-LAST:event_btn_simpanActionPerformed
 
       private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
            DataKriteria data = new DataKriteria();
-           data.UbahKriteria(txtKodeKriteria, txtNamaKriteria, txtNilai, cbbJenis);
+           //data.UbahKriteria(txtKodeKriteria, txtNamaKriteria, txtNilai, cbbJenis);
             
       }//GEN-LAST:event_btn_ubahActionPerformed
 

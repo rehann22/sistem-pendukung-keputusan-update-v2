@@ -41,13 +41,13 @@ public class PagePenilaianKurir extends javax.swing.JPanel {
 
             jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel1.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel1.setText("Penilaian Kurir");
+            jLabel1.setText("Penilaian Alternatif");
             jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
                   public void mouseClicked(java.awt.event.MouseEvent evt) {
                         jLabel1MouseClicked(evt);
                   }
             });
-            panelBorder.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+            panelBorder.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 190, -1));
 
             spTable.setBorder(null);
 

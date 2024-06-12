@@ -15,7 +15,7 @@ public class PenilaianKurir {
 
       
       public void TabelPenilaian(JTable tabel) {
-          Object[] rows = {"Id Kurir", "Nama Kurir", "Kecepatan Pengiriman", "Keandalan", "Kepuasan Pelanggan", "Jumlah Pengiriman Perbulan", "Komunikasi dengan pelanggan", "Disiplin & kehadiran", "Pemahaman rute", "Tingkat Pengembalian Perbulan"};
+          Object[] rows = {"Id Kurir", "Nama Kurir", "Kesalahan Pengiriman", "Lama Bekerja", "Kecepatan Pengiriman", "Paket Dikirim / Bulan"};
           tabMode = new DefaultTableModel(null, rows);
           tabel.setModel(tabMode);
 
@@ -28,16 +28,11 @@ public class PenilaianKurir {
                   while (rs.next()) {
                       String a = rs.getString("id_kurir");
                       String b = rs.getString("nama_kurir");
-                      String c = rs.getString("kecepatan_pengiriman");
-                      String d = rs.getString("keandalan");
-                      String e = rs.getString("kepuasan_pelanggan");
-                      String f = rs.getString("jml_pengiriman_perbulan");
-                      String g = rs.getString("komunikasi_dengan_pelanggan");
-                      String h = rs.getString("disiplin_kehadiran");
-                      String i = rs.getString("pemahaman_rute");
-                      String j = rs.getString("tingkat_pengembalian_perbulan");
-
-                      String[] data = {a,b,c,d,e,f,g,h,i,j};
+                      String c = rs.getString("kesalahan_pengiriman");
+                      String d = rs.getString("lama_bekerja");
+                      String e = rs.getString("kecepatan_pengiriman");
+                      String f = rs.getString("paket_dikirim_perbulan");
+                      String[] data = {a,b,c,d,e,f};
                       tabMode.addRow(data);
                   }
                   conn.close();

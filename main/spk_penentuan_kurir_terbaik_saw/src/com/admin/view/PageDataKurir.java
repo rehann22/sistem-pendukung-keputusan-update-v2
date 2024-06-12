@@ -43,7 +43,7 @@ public class PageDataKurir extends javax.swing.JPanel {
 
             jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel1.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel1.setText("Data Kurir");
+            jLabel1.setText("Data Alternatif");
             jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
                   public void mouseClicked(java.awt.event.MouseEvent evt) {

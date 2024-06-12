@@ -3,6 +3,7 @@ import com.admin.view.DataAdmin;
 import com.admin.view.Laporan;
 import com.admin.view.PageDataKriteria;
 import com.admin.view.PageDataKurir;
+import com.admin.view.PageDataSubKriteria;
 import com.admin.view.PagePenilaianKurir;
 import com.admin.view.PageProsesPerhitungan;
 import com.event.EventMenuSelected;
@@ -19,10 +20,10 @@ public class MainDashboard extends javax.swing.JFrame {
       private dashboard admin_dashboard;
       private PageDataKurir dataKurir;
       private PageDataKriteria datakriteria;
+      private PageDataSubKriteria dataSubKriteria;
       private PagePenilaianKurir penilaianKurir;
       private PageProsesPerhitungan prosesPerhitungan;
       private Laporan laporan;
-      private DataAdmin dataAdmin;
       
       public MainDashboard() {
             initComponents();
@@ -30,10 +31,10 @@ public class MainDashboard extends javax.swing.JFrame {
             admin_dashboard = new dashboard();
             dataKurir = new PageDataKurir();
             datakriteria = new PageDataKriteria();
+            dataSubKriteria = new PageDataSubKriteria();
             penilaianKurir = new PagePenilaianKurir();
             prosesPerhitungan = new PageProsesPerhitungan();
             laporan = new Laporan();
-            dataAdmin = new DataAdmin();
             menu.initMoving(MainDashboard.this);
             menu.addEventMenuSelected(new EventMenuSelected() {
                 @Override
@@ -45,18 +46,20 @@ public class MainDashboard extends javax.swing.JFrame {
                         } else if (index == 2) {
                             setForm(datakriteria);
                         } else if (index == 3) {
-                            setForm(penilaianKurir);
+                            setForm(dataSubKriteria);
                         } else if (index == 4) {
-                            setForm(prosesPerhitungan);
+                            setForm(penilaianKurir);
                         } else if (index == 5) {
-                            setForm(laporan);
-                        } else if (index == 8) {  //profile  
-                            System.out.println("Data Admin");
+                            setForm(prosesPerhitungan);
+                        } else if (index == 7) {  
+                              setForm(laporan);
+                        } else if (index == 8) {
+                              System.out.println("data admin");
                         } else if (index == 11) { //logout
                             int jawaban = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
                             if (jawaban == JOptionPane.YES_OPTION) {
                                 System.exit(0);
-                            }
+                        }
                     }
                 }
             });
