@@ -390,7 +390,7 @@ public class ProsesPerhitungan {
                             Object cellValue = tabelNormalisasi.getValueAt(row, col);
                             if (cellValue != null && isNumeric(cellValue.toString())) {
                                 BigDecimal value = new BigDecimal(cellValue.toString());
-                                BigDecimal weight = BigDecimal.valueOf(bobot[col - 2]);
+                                BigDecimal weight = BigDecimal.valueOf(bobot[col-2]);
                                 BigDecimal weightedValue = value.multiply(weight); // Perkalian bobot dengan nilai normalisasi
                                 weightedValue = weightedValue.setScale(2, RoundingMode.HALF_UP);
                                 weightedValuesRow[col] = weightedValue; // Simpan weightedValue ke array baris
@@ -417,11 +417,11 @@ public class ProsesPerhitungan {
                   for (int row = 0; row < rowCount2 - 1; row++) {
                   System.out.println("Baris " + row + " " + nilaiPreferensiTotal[row]);
                 }
-
             } else {
                 System.err.println("Tidak ada data yang tersedia untuk dihitung.");
             }
       }
+
 
 }
 

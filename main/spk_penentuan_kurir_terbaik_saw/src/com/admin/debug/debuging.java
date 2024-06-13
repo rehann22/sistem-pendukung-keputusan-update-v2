@@ -70,7 +70,7 @@ public class debuging {
 
         try {
             stmt = connection.createStatement();
-            String query = "SELECT bobot FROM tbl_data_crips WHERE keterangan = '" + keterangan + "'";
+            String query = "SELECT bobot FROM tbl_sub_kriteria WHERE keterangan = '" + keterangan + "'";
             rs = stmt.executeQuery(query);
 
             if (rs.next()) {

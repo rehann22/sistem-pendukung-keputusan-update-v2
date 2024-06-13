@@ -28,6 +28,29 @@ public class DataKriteria {
       }
 
       public void TabelKriteria(JTable tabel) {
-            
+            Object[] rows = {"Kode Kriteria", "Nama Kriteria", "Bobot", "Jenis"};
+            tabMode = new DefaultTableModel(null, rows);
+            tabel.setModel(tabMode);
+
+              try {
+                  Connection conn = new ConnectionDb().connect();
+                  String query = "SELECT * FROM `tbl_kriteria`";
+                  PreparedStatement ps = conn.prepareStatement(query);
+                  ResultSet rs = ps.executeQuery();
+
+                    while (rs.next()) {
+                        String a = rs.getString("kode_kriteria");
+                        String b = rs.getString("nama_kriteria");
+                        String c = rs.getString("bobot");
+                        String d = rs.getString("jenis");
+
+                        String[] data = {a, b, c, d};
+                        tabMode.addRow(data);
+                    }
+                    conn.close();
+
+              } catch (SQLException e) {
+                  System.out.println("Error dataTabel: " + e.getMessage());
+            }
       }            
 }
