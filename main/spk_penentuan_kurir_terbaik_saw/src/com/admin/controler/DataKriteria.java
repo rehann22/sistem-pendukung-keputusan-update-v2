@@ -23,32 +23,11 @@ public class DataKriteria {
       public void bersihkanForm (JTextField kodeK, JTextField namaK, JTextField nilai, JComboBox jenis) {
             kodeK.setText("");
             namaK.setText("");
+            nilai.setText("");
             jenis.setSelectedIndex(0);
       }
 
       public void TabelKriteria(JTable tabel) {
-            Object[] rows = {"Kode Kriteria", "Kriteria", "Bobot", "Jenis"};
-            DefaultTableModel tabMode = new DefaultTableModel(null, rows);
-            tabel.setModel(tabMode);
             
-            try {
-                Connection conn = new ConnectionDb().connect();
-                String query = "SELECT * FROM tbl_kriteria";
-                PreparedStatement ps = conn.prepareStatement(query);
-                ResultSet rs = ps.executeQuery();
-                  while (rs.next()) {
-                      String a = rs.getString("kode_kriteria");
-                      String b = rs.getString("nama_kriteria");
-                      String c = rs.getString("bobot");  
-                      String d = rs.getString("jenis");
-                      
-                      String[] data = {a, b, c, d};
-                      tabMode.addRow(data);
-                  }
-            } catch (SQLException ex) {
-                System.out.println("Error dataTabel: " + ex.getMessage());
-            }      
-      }
-
-             
+      }            
 }

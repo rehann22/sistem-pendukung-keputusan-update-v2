@@ -35,6 +35,7 @@ public class PenilaianKurir {
                       String[] data = {a,b,c,d,e,f};
                       tabMode.addRow(data);
                   }
+                  tabel.getColumnModel().getColumn(0).setPreferredWidth(0); 
                   conn.close();
 
             } catch (SQLException e) {

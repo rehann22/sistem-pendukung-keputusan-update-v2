@@ -7,8 +7,7 @@ public class TambahDataKriteria extends javax.swing.JFrame {
 
       public TambahDataKriteria() {
             initComponents();
-            DataKriteria data = new DataKriteria();
-            //data.autoNumber(txtKodeKriteria);
+
       }
 
       @SuppressWarnings("unchecked")
@@ -31,7 +30,7 @@ public class TambahDataKriteria extends javax.swing.JFrame {
 
             txtNilai.setBackground(new java.awt.Color(255, 255, 255));
             txtNilai.setForeground(new java.awt.Color(97, 103, 122));
-            txtNilai.setLabelText("Nilai");
+            txtNilai.setLabelText("Bobot");
             jPanel1.add(txtNilai, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 250, -1));
 
             txtNamaKriteria.setBackground(new java.awt.Color(255, 255, 255));
@@ -77,14 +76,11 @@ public class TambahDataKriteria extends javax.swing.JFrame {
       }// </editor-fold>//GEN-END:initComponents
 
       private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
-            DataKriteria data = new DataKriteria();
-            //data.SimpanKriteria(txtKodeKriteria, txtNamaKriteria, txtNilai, cbbJenis);
+           
       }//GEN-LAST:event_btn_simpanActionPerformed
 
       private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
-           DataKriteria data = new DataKriteria();
-           //data.UbahKriteria(txtKodeKriteria, txtNamaKriteria, txtNilai, cbbJenis);
-            
+
       }//GEN-LAST:event_btn_ubahActionPerformed
 
       public static void main(String args[]) {

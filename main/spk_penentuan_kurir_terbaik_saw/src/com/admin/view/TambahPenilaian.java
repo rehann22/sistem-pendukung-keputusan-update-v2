@@ -18,17 +18,10 @@ public class TambahPenilaian extends javax.swing.JFrame {
             jPanel1 = new javax.swing.JPanel();
             btn_ubah = new swing.ButtonGradient();
             btn_simpan = new swing.ButtonGradient();
-            txtKodeKriteria1 = new textfield.TextField();
-            txtKodeKriteria3 = new textfield.TextField();
-            txtKodeKriteria4 = new textfield.TextField();
-            txtKodeKriteria5 = new textfield.TextField();
-            txtKodeKriteria6 = new textfield.TextField();
-            txtKodeKriteria7 = new textfield.TextField();
-            txtKodeKriteria8 = new textfield.TextField();
-            txtKodeKriteria9 = new textfield.TextField();
             cbb_IdKurir = new combobox.Combobox();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+            setPreferredSize(new java.awt.Dimension(390, 500));
             getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
             jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -43,7 +36,7 @@ public class TambahPenilaian extends javax.swing.JFrame {
                         btn_ubahActionPerformed(evt);
                   }
             });
-            jPanel1.add(btn_ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, 140, 30));
+            jPanel1.add(btn_ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, 140, 30));
 
             btn_simpan.setText("Simpan");
             btn_simpan.setColor1(new java.awt.Color(35, 20, 226));
@@ -53,53 +46,13 @@ public class TambahPenilaian extends javax.swing.JFrame {
                         btn_simpanActionPerformed(evt);
                   }
             });
-            jPanel1.add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 140, 30));
-
-            txtKodeKriteria1.setBackground(new java.awt.Color(255, 255, 255));
-            txtKodeKriteria1.setForeground(new java.awt.Color(97, 103, 122));
-            txtKodeKriteria1.setLabelText("Pemahaman Rute");
-            jPanel1.add(txtKodeKriteria1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 190, 50));
-
-            txtKodeKriteria3.setBackground(new java.awt.Color(255, 255, 255));
-            txtKodeKriteria3.setForeground(new java.awt.Color(97, 103, 122));
-            txtKodeKriteria3.setLabelText("Kepuasan Pelanggan");
-            jPanel1.add(txtKodeKriteria3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 190, 50));
-
-            txtKodeKriteria4.setBackground(new java.awt.Color(255, 255, 255));
-            txtKodeKriteria4.setForeground(new java.awt.Color(97, 103, 122));
-            txtKodeKriteria4.setLabelText("Jumlah Return perbulan");
-            jPanel1.add(txtKodeKriteria4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 190, 50));
-
-            txtKodeKriteria5.setBackground(new java.awt.Color(255, 255, 255));
-            txtKodeKriteria5.setForeground(new java.awt.Color(97, 103, 122));
-            txtKodeKriteria5.setLabelText("Kecepatan Pengiriman");
-            jPanel1.add(txtKodeKriteria5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 190, 50));
-
-            txtKodeKriteria6.setBackground(new java.awt.Color(255, 255, 255));
-            txtKodeKriteria6.setForeground(new java.awt.Color(97, 103, 122));
-            txtKodeKriteria6.setLabelText("Keandalan");
-            jPanel1.add(txtKodeKriteria6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 190, 50));
-
-            txtKodeKriteria7.setBackground(new java.awt.Color(255, 255, 255));
-            txtKodeKriteria7.setForeground(new java.awt.Color(97, 103, 122));
-            txtKodeKriteria7.setLabelText("Jumlah Pengiriman Perbulan");
-            jPanel1.add(txtKodeKriteria7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 190, 50));
-
-            txtKodeKriteria8.setBackground(new java.awt.Color(255, 255, 255));
-            txtKodeKriteria8.setForeground(new java.awt.Color(97, 103, 122));
-            txtKodeKriteria8.setLabelText("Komunikasi Dengan Pelanggan");
-            jPanel1.add(txtKodeKriteria8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 190, 50));
-
-            txtKodeKriteria9.setBackground(new java.awt.Color(255, 255, 255));
-            txtKodeKriteria9.setForeground(new java.awt.Color(97, 103, 122));
-            txtKodeKriteria9.setLabelText("Kehadiran");
-            jPanel1.add(txtKodeKriteria9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 190, 50));
+            jPanel1.add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 140, 30));
 
             cbb_IdKurir.setForeground(new java.awt.Color(97, 103, 122));
             cbb_IdKurir.setLabeText("Id Kurir");
-            jPanel1.add(cbb_IdKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 190, 50));
+            jPanel1.add(cbb_IdKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 270, 50));
 
-            getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 500));
+            getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 500));
 
             pack();
             setLocationRelativeTo(null);
@@ -128,13 +81,5 @@ public class TambahPenilaian extends javax.swing.JFrame {
       private swing.ButtonGradient btn_ubah;
       private combobox.Combobox cbb_IdKurir;
       private javax.swing.JPanel jPanel1;
-      public textfield.TextField txtKodeKriteria1;
-      public textfield.TextField txtKodeKriteria3;
-      public textfield.TextField txtKodeKriteria4;
-      public textfield.TextField txtKodeKriteria5;
-      public textfield.TextField txtKodeKriteria6;
-      public textfield.TextField txtKodeKriteria7;
-      public textfield.TextField txtKodeKriteria8;
-      public textfield.TextField txtKodeKriteria9;
       // End of variables declaration//GEN-END:variables
 }

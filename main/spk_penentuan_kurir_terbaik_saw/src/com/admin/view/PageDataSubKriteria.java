@@ -362,51 +362,51 @@ public class PageDataSubKriteria extends javax.swing.JPanel {
       }//GEN-LAST:event_jLabel1MouseClicked
 
       private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-            // TODO add your handling code here:
+
       }//GEN-LAST:event_jLabel2MouseClicked
 
       private void btn_tambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambah1ActionPerformed
-            // TODO add your handling code here:
+
       }//GEN-LAST:event_btn_tambah1ActionPerformed
 
       private void btn_hapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapus1ActionPerformed
-            // TODO add your handling code here:
+
       }//GEN-LAST:event_btn_hapus1ActionPerformed
 
       private void btn_ubah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubah1ActionPerformed
-            // TODO add your handling code here:
+
       }//GEN-LAST:event_btn_ubah1ActionPerformed
 
       private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-            // TODO add your handling code here:
+
       }//GEN-LAST:event_jLabel3MouseClicked
 
       private void btn_tambah2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambah2ActionPerformed
-            // TODO add your handling code here:
+
       }//GEN-LAST:event_btn_tambah2ActionPerformed
 
       private void btn_hapus2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapus2ActionPerformed
-            // TODO add your handling code here:
+
       }//GEN-LAST:event_btn_hapus2ActionPerformed
 
       private void btn_ubah2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubah2ActionPerformed
-            // TODO add your handling code here:
+    
       }//GEN-LAST:event_btn_ubah2ActionPerformed
 
       private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-            // TODO add your handling code here:
+     
       }//GEN-LAST:event_jLabel4MouseClicked
 
       private void btn_tambah3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambah3ActionPerformed
-            // TODO add your handling code here:
+ 
       }//GEN-LAST:event_btn_tambah3ActionPerformed
 
       private void btn_hapus3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapus3ActionPerformed
-            // TODO add your handling code here:
+            
       }//GEN-LAST:event_btn_hapus3ActionPerformed
 
       private void btn_ubah3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubah3ActionPerformed
-            // TODO add your handling code here:
+            
       }//GEN-LAST:event_btn_ubah3ActionPerformed
 
 
