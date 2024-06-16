@@ -1,6 +1,6 @@
 package com.admin.main;
 import com.admin.view.DataAdmin;
-import com.admin.view.Laporan;
+import com.admin.view.PageLaporan;
 import com.admin.view.PageDataKriteria;
 import com.admin.view.PageDataKurir;
 import com.admin.view.PageDataSubKriteria;
@@ -23,7 +23,7 @@ public class MainDashboard extends javax.swing.JFrame {
       private PageDataSubKriteria dataSubKriteria;
       private PagePenilaianKurir penilaianKurir;
       private PageProsesPerhitungan prosesPerhitungan;
-      private Laporan laporan;
+      private PageLaporan laporan;
       
       public MainDashboard() {
             initComponents();
@@ -34,7 +34,7 @@ public class MainDashboard extends javax.swing.JFrame {
             dataSubKriteria = new PageDataSubKriteria();
             penilaianKurir = new PagePenilaianKurir();
             prosesPerhitungan = new PageProsesPerhitungan();
-            laporan = new Laporan();
+            laporan = new PageLaporan();
             menu.initMoving(MainDashboard.this);
             menu.addEventMenuSelected(new EventMenuSelected() {
                 @Override

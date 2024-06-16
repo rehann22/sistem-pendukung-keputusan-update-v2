@@ -21,7 +21,6 @@ public class TambahPenilaian extends javax.swing.JFrame {
             cbb_IdKurir = new combobox.Combobox();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-            setPreferredSize(new java.awt.Dimension(390, 500));
             getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
             jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -36,7 +35,7 @@ public class TambahPenilaian extends javax.swing.JFrame {
                         btn_ubahActionPerformed(evt);
                   }
             });
-            jPanel1.add(btn_ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, 140, 30));
+            jPanel1.add(btn_ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 140, 30));
 
             btn_simpan.setText("Simpan");
             btn_simpan.setColor1(new java.awt.Color(35, 20, 226));
@@ -46,11 +45,11 @@ public class TambahPenilaian extends javax.swing.JFrame {
                         btn_simpanActionPerformed(evt);
                   }
             });
-            jPanel1.add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 140, 30));
+            jPanel1.add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 140, 30));
 
             cbb_IdKurir.setForeground(new java.awt.Color(97, 103, 122));
             cbb_IdKurir.setLabeText("Id Kurir");
-            jPanel1.add(cbb_IdKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 270, 50));
+            jPanel1.add(cbb_IdKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 270, 50));
 
             getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 500));
 

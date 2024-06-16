@@ -1,6 +1,7 @@
 package com.admin.controler;
 
 import com.admin.view.PageDataKriteria;
+import com.admin.view.PageProsesPerhitungan;
 import com.database.ConnectionDb;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +12,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProsesPerhitungan {
 
@@ -346,82 +349,180 @@ public class ProsesPerhitungan {
 //            }
 //      }
       
-      public void HasilNormalisasi(JTable tabel, JTable tabelPembobotan) {
-            Object[] rankingRows = {"Id Kurir", "Nama", "Hasil Perhitungan"};
-            DefaultTableModel rankingTabMode = new DefaultTableModel(null, rankingRows);
-            tabel.setModel(rankingTabMode);
+//      public void HasilNormalisasi(JTable tabel, JTable tabelPembobotan) {
+//
+//            // Model untuk tabel pembobotan
+//            Object[] hasilPembobotan = {"Id Kurir", "Nama Kurir", "Kesalahan Pengiriman", "Lama Bekerja", "Kecepatan Pengiriman", "Paket Dikirim / Bulan", "Total"};
+//            DefaultTableModel pembobotanTabmode = new DefaultTableModel(null, hasilPembobotan);
+//            tabelPembobotan.setModel(pembobotanTabmode);
+//            
+//            Object[] rankingRows = {"Id Kurir", "Nama", "Hasil Perhitungan", "Peringkat"};
+//            DefaultTableModel rankingTabMode = new DefaultTableModel(null, rankingRows);
+//            tabel.setModel(rankingTabMode);
+//            
+//            //nomor peringkat
+//            PageProsesPerhitungan tab= new PageProsesPerhitungan();
+//            int peringkat = 1;
+//            for (peringkat; peringkat <= tab.tabelPerankingan.getRowCount(); peringkat ++) {
+//                  System.out.println(peringkat);
+//            }
+//
+//            PageDataKriteria data = new PageDataKriteria();
+//            int rowCount = data.tblKriteria.getRowCount();
+//            double[] bobot = new double[rowCount];
+//
+//            for (int i = 0; i < rowCount; i++) {
+//                bobot[i] = Double.parseDouble(data.tblKriteria.getValueAt(i, 2).toString());
+//            }
+//
+//            // Print array bobot
+//            System.out.println("\n" + "Bobot");
+//            for (int i = 0; i < rowCount; i++) {
+//                System.out.println("Bobot[" + i + "]: " + bobot[i]);
+//            }
+//
+//            // Hitung nilai total preferensi
+//            System.out.println("\n" + "Tabel Normalisasi");
+//            int rowCount2 = tabelNormalisasi.getRowCount(); // Menggunakan rowCount langsung tanpa mengurangi
+//            if (rowCount2 > 1) { // Pastikan ada baris untuk dihitung
+//                BigDecimal[] nilaiPreferensiTotal = new BigDecimal[rowCount2 - 1]; // Mengurangi 1 karena baris terakhir adalah footer
+//
+//                  for (int row = 0; row < rowCount2 - 1; row++) {
+//                      BigDecimal nilaiPreferensi = BigDecimal.ZERO;
+//                      String idKurir = tabelNormalisasi.getValueAt(row, 0).toString();
+//                      String namaKurir = tabelNormalisasi.getValueAt(row, 1).toString();
+//                      Object[] weightedValuesRow = new Object[6];
+//                      weightedValuesRow[0] = idKurir;
+//                      weightedValuesRow[1] = namaKurir;
+//
+//                      System.out.println("Baris " + row + ":");
+//
+//                        for (int col = 2; col <= 5; col++) { // Loop melalui kolom nilai normalisasi
+//                            Object cellValue = tabelNormalisasi.getValueAt(row, col);
+//                            if (cellValue != null && isNumeric(cellValue.toString())) {
+//                                BigDecimal value = new BigDecimal(cellValue.toString());
+//                                BigDecimal weight = BigDecimal.valueOf(bobot[col-2]);
+//                                BigDecimal weightedValue = value.multiply(weight); // Perkalian bobot dengan nilai normalisasi
+//                                weightedValue = weightedValue.setScale(2, RoundingMode.HALF_UP);
+//                                weightedValuesRow[col] = weightedValue; // Simpan weightedValue ke array baris
+//                                nilaiPreferensi = nilaiPreferensi.add(weightedValue);
+//                                System.out.println("    Nilai: " + value + ", Bobot: " + weight + ", Setelah Perkalian: " + weightedValue);
+//                            } else {
+//                                System.err.println("Non-numeric value in row " + row + ", col " + col + ": " + cellValue);
+//                            }
+//                        }
+//                      System.out.println("");
+//
+//                      pembobotanTabmode.addRow(weightedValuesRow); // Tambahkan baris ke tabel pembobotan
+//
+//                      nilaiPreferensi = nilaiPreferensi.setScale(2, RoundingMode.HALF_UP); // Membulatkan nilai preferensi ke dua angka di belakang koma
+//                      nilaiPreferensiTotal[row] = nilaiPreferensi; // Simpan nilai preferensi total untuk baris saat ini
+//
+//                      // Tambahkan data ke tabel dengan nilai nilaiPreferensiTotal
+//                      String[] rankingData = {idKurir, namaKurir, nilaiPreferensi.toString(), String.valueOf(peringkat)};
+//                      rankingTabMode.addRow(rankingData);
+//                  }
+//
+//                  // Cetak nilai total preferensi untuk setiap baris
+//                  System.out.println("\n" + "Nilai Preferensi Total untuk Setiap Baris:");
+//                  for (int row = 0; row < rowCount2 - 1; row++) {
+//                  System.out.println("Baris " + row + " " + nilaiPreferensiTotal[row]);
+//                }
+//            } else {
+//                System.err.println("Tidak ada data yang tersedia untuk dihitung.");
+//            }
+//      }
+      
+   
 
-            // Model untuk tabel pembobotan
-            Object[] hasilPembobotan = {"Id Kurir", "Nama Kurir", "Kesalahan Pengiriman", "Lama Bekerja", "Kecepatan Pengiriman", "Paket Dikirim / Bulan"};
-            DefaultTableModel pembobotanTabmode = new DefaultTableModel(null, hasilPembobotan);
-            tabelPembobotan.setModel(pembobotanTabmode);
+    public void HasilNormalisasi(JTable tblHasilPembobotan, JTable tabelPerankingan) {
 
-            PageDataKriteria data = new PageDataKriteria();
-            int rowCount = data.tblKriteria.getRowCount();
-            double[] bobot = new double[rowCount];
+        // Model untuk tabel pembobotan
+        Object[] hasilPembobotan = {"Id Kurir", "Nama Kurir", "Kesalahan Pengiriman", "Lama Bekerja", "Kecepatan Pengiriman", "Paket Dikirim / Bulan", "Total"};
+        DefaultTableModel pembobotanTabmode = new DefaultTableModel(null, hasilPembobotan);
+        tblHasilPembobotan.setModel(pembobotanTabmode);
+        
+        // Model untuk tabel peringkat
+        Object[] rankingRows = {"Id Kurir", "Nama", "Hasil Perhitungan", "Peringkat"};
+        DefaultTableModel rankingTabMode = new DefaultTableModel(null, rankingRows);
+        tabelPerankingan.setModel(rankingTabMode);
+        
+        // Mendapatkan bobot kriteria
+        PageDataKriteria data = new PageDataKriteria();
+        int rowCount = data.tblKriteria.getRowCount();
+        double[] bobot = new double[rowCount];
 
-            for (int i = 0; i < rowCount; i++) {
-                bobot[i] = Double.parseDouble(data.tblKriteria.getValueAt(i, 2).toString());
-            }
+        for (int i = 0; i < rowCount; i++) {
+            bobot[i] = Double.parseDouble(data.tblKriteria.getValueAt(i, 2).toString());
+        }
 
-            // Print array bobot
-            System.out.println("\n" + "Bobot");
-            for (int i = 0; i < rowCount; i++) {
-                System.out.println("Bobot[" + i + "]: " + bobot[i]);
-            }
+        // Print array bobot
+        System.out.println("\n" + "Bobot");
+        for (int i = 0; i < rowCount; i++) {
+            System.out.println("Bobot[" + i + "]: " + bobot[i]);
+        }
 
-            // Hitung nilai total preferensi
-            System.out.println("\n" + "Tabel Normalisasi");
-            int rowCount2 = tabelNormalisasi.getRowCount(); // Menggunakan rowCount langsung tanpa mengurangi
-            if (rowCount2 > 1) { // Pastikan ada baris untuk dihitung
-                BigDecimal[] nilaiPreferensiTotal = new BigDecimal[rowCount2 - 1]; // Mengurangi 1 karena baris terakhir adalah footer
+        // Hitung nilai total preferensi
+        System.out.println("\n" + "Tabel Normalisasi");
+        int rowCount2 = tabelNormalisasi.getRowCount(); // Menggunakan rowCount langsung tanpa mengurangi
+        if (rowCount2 > 1) { // Pastikan ada baris untuk dihitung
+            //BigDecimal[] nilaiPreferensiTotal = new BigDecimal[rowCount2 - 1]; // Mengurangi 1 karena baris terakhir adalah footer
+            List<Object[]> nilaiPreferensiTotal = new ArrayList<>();
+            
+            for (int row = 0; row < rowCount2 - 1; row++) {
+                BigDecimal nilaiPreferensi = BigDecimal.ZERO;
+                String idKurir = tabelNormalisasi.getValueAt(row, 0).toString();
+                String namaKurir = tabelNormalisasi.getValueAt(row, 1).toString();
+                Object[] weightedValuesRow = new Object[7]; // Menambah kolom untuk Total
+                weightedValuesRow[0] = idKurir;
+                weightedValuesRow[1] = namaKurir;
 
-                  for (int row = 0; row < rowCount2 - 1; row++) {
-                      BigDecimal nilaiPreferensi = BigDecimal.ZERO;
-                      String idKurir = tabelNormalisasi.getValueAt(row, 0).toString();
-                      String namaKurir = tabelNormalisasi.getValueAt(row, 1).toString();
-                      Object[] weightedValuesRow = new Object[6];
-                      weightedValuesRow[0] = idKurir;
-                      weightedValuesRow[1] = namaKurir;
+                System.out.println("Baris " + row + ":");
 
-                      System.out.println("Baris " + row + ":");
-
-                        for (int col = 2; col <= 5; col++) { // Loop melalui kolom nilai normalisasi
-                            Object cellValue = tabelNormalisasi.getValueAt(row, col);
-                            if (cellValue != null && isNumeric(cellValue.toString())) {
-                                BigDecimal value = new BigDecimal(cellValue.toString());
-                                BigDecimal weight = BigDecimal.valueOf(bobot[col-2]);
-                                BigDecimal weightedValue = value.multiply(weight); // Perkalian bobot dengan nilai normalisasi
-                                weightedValue = weightedValue.setScale(2, RoundingMode.HALF_UP);
-                                weightedValuesRow[col] = weightedValue; // Simpan weightedValue ke array baris
-                                nilaiPreferensi = nilaiPreferensi.add(weightedValue);
-                                System.out.println("    Nilai: " + value + ", Bobot: " + weight + ", Setelah Perkalian: " + weightedValue);
-                            } else {
-                                System.err.println("Non-numeric value in row " + row + ", col " + col + ": " + cellValue);
-                            }
-                        }
-                      System.out.println("");
-
-                      pembobotanTabmode.addRow(weightedValuesRow); // Tambahkan baris ke tabel pembobotan
-
-                      nilaiPreferensi = nilaiPreferensi.setScale(2, RoundingMode.HALF_UP); // Membulatkan nilai preferensi ke dua angka di belakang koma
-                      nilaiPreferensiTotal[row] = nilaiPreferensi; // Simpan nilai preferensi total untuk baris saat ini
-
-                      // Tambahkan data ke tabel dengan nilai nilaiPreferensiTotal
-                      String[] rankingData = {idKurir, namaKurir, nilaiPreferensi.toString()};
-                      rankingTabMode.addRow(rankingData);
-                  }
-
-                  // Cetak nilai total preferensi untuk setiap baris
-                  System.out.println("\n" + "Nilai Preferensi Total untuk Setiap Baris:");
-                  for (int row = 0; row < rowCount2 - 1; row++) {
-                  System.out.println("Baris " + row + " " + nilaiPreferensiTotal[row]);
+                for (int col = 2; col <= 5; col++) { // Loop melalui kolom nilai normalisasi
+                    Object cellValue = tabelNormalisasi.getValueAt(row, col);
+                    if (cellValue != null && isNumeric(cellValue.toString())) {
+                        BigDecimal value = new BigDecimal(cellValue.toString());
+                        BigDecimal weight = BigDecimal.valueOf(bobot[col-2]);
+                        BigDecimal weightedValue = value.multiply(weight); // Perkalian bobot dengan nilai normalisasi
+                        weightedValue = weightedValue.setScale(2, RoundingMode.HALF_UP);
+                        weightedValuesRow[col] = weightedValue; // Simpan weightedValue ke array baris
+                        nilaiPreferensi = nilaiPreferensi.add(weightedValue);
+                        System.out.println("    Nilai: " + value + ", Bobot: " + weight + ", Setelah Perkalian: " + weightedValue);
+                    } else {
+                        System.err.println("Non-numeric value in row " + row + ", col " + col + ": " + cellValue);
+                    }
                 }
-            } else {
-                System.err.println("Tidak ada data yang tersedia untuk dihitung.");
-            }
-      }
 
+                // Tambahkan total preferensi ke kolom Total
+               // Tambahkan total preferensi ke kolom Total
+                nilaiPreferensi = nilaiPreferensi.setScale(2, RoundingMode.HALF_UP); // Membulatkan nilai preferensi ke dua angka di belakang koma
+                weightedValuesRow[6] = nilaiPreferensi; // Tambahkan total preferensi ke array baris
+                nilaiPreferensiTotal.add(weightedValuesRow); // Simpan nilai preferensi total untuk baris saat ini
+
+                pembobotanTabmode.addRow(weightedValuesRow); // Tambahkan baris ke tabel pembobotan
+            }
+
+            // Mengurutkan nilai preferensi total dari yang terbesar ke terkecil
+            nilaiPreferensiTotal.sort((row1, row2) -> ((BigDecimal) row2[6]).compareTo((BigDecimal) row1[6]));
+
+            // Menambahkan peringkat ke tabel
+            for (int i = 0; i < nilaiPreferensiTotal.size(); i++) {
+                Object[] row = nilaiPreferensiTotal.get(i);
+                String[] rankingData = {row[0].toString(), row[1].toString(), row[6].toString(), String.valueOf(i + 1)};
+                rankingTabMode.addRow(rankingData);
+            }
+            
+            // Cetak nilai total preferensi untuk setiap baris
+            System.out.println("\n" + "Nilai Preferensi Total untuk Setiap Baris:");
+            for (int row = 0; row < nilaiPreferensiTotal.size(); row++) {
+                System.out.println("Baris " + row + " " + nilaiPreferensiTotal.get(row)[6]);
+            }
+
+        } else {
+            System.err.println("Tidak ada data yang tersedia untuk dihitung.");
+        }
+    }
 
 }
 

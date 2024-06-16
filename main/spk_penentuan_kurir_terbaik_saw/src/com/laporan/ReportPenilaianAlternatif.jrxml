@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="974c4159-70ff-4692-a5d1-0922b544f545">
+	<property name="ireport.zoom" value="1.210000000000002"/>
+	<property name="ireport.x" value="12"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM tbl_penilaian]]>
+	</queryString>
+	<field name="id_kurir" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_kurir" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kesalahan_pengiriman" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lama_bekerja" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kecepatan_pengiriman" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="paket_dikirim_perbulan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="109" splitType="Stretch">
+			<image>
+				<reportElement x="1" y="13" width="113" height="65" uuid="5f495673-b02e-4181-86ad-6a93fa4190ee"/>
+				<imageExpression><![CDATA["C:\\Users\\hafid\\Downloads\\sapx-logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="13" width="555" height="26" uuid="c7ce59dc-531c-4e32-8ef6-bd04751cdbc7"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PT. Satria Antaran Prima Tbk]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="97" width="555" height="1" uuid="e8100ef8-2e59-4565-adf3-6bf6fc747fc5"/>
+			</line>
+			<staticText>
+				<reportElement x="124" y="39" width="325" height="39" uuid="81cc5c71-a7ef-449a-9562-b3462d6602fa"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Jl. Komodor Halim Perdana Kusuma No. 28, Halim Perdana Kusuma, Makasar, Jakarta Timur, DKI Jakarta. 13610
+Email: customercare@sap-express.co.id]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="19" width="555" height="26" uuid="818105bf-acb3-46c6-a338-6f7e3d8d6df2"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Data Penilaian Alternatif]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="93" y="0" width="134" height="44" uuid="7b663a53-3272-4afa-90cf-62149c214f8d"/>
+				<box topPadding="15">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Kurir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="0" width="59" height="44" uuid="4e800c33-b9a2-4e14-bd15-49927ee9f8ea"/>
+				<box topPadding="15">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id Kurir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="0" width="79" height="44" uuid="768a9006-b45a-497a-8e43-7813fed3e024"/>
+				<box topPadding="10">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Paket Dikirim
+Perbulan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="0" width="76" height="44" uuid="b91ee784-f439-4a47-b506-8c1d0cac20e0"/>
+				<box topPadding="15">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lama Bekerja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="0" width="33" height="44" uuid="122ae820-01be-4d53-9d66-9e3e9f82e346"/>
+				<box topPadding="15">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="227" y="0" width="87" height="44" uuid="c2da251f-4457-446c-9372-3cb9a61335ec"/>
+				<box topPadding="10">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kesalahan
+Pengiriman]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="0" width="87" height="44" uuid="bbe3d03b-322e-4dd2-8ea6-504474f0ae58"/>
+				<box topPadding="10">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kecepatan
+Pengiriman]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="0" width="33" height="30" uuid="1f89ef82-10e3-4281-abbb-fc514a3171c7"/>
+				<box topPadding="5" leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="34" y="0" width="59" height="30" uuid="5c8fe817-79de-4a88-b2db-8e96d9b94c3e"/>
+				<box topPadding="5" leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id_kurir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="0" width="134" height="30" uuid="12ce2a0e-3ac7-4ffb-a747-79cf867f7128"/>
+				<box topPadding="5" leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nama_kurir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="314" y="0" width="76" height="30" uuid="df213322-324d-4b18-95a5-227bd56018af"/>
+				<box topPadding="5" leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{lama_bekerja}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="0" width="87" height="30" uuid="a9124ed5-ac01-4be1-a455-b6c1b8e07992"/>
+				<box topPadding="5" leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{kesalahan_pengiriman}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="87" height="30" uuid="8761ce86-ab63-4c89-994a-30035e912188"/>
+				<box topPadding="5" leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{kecepatan_pengiriman}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="0" width="79" height="30" uuid="35cb0116-a4a6-42ca-b24c-bfc64ffa112d"/>
+				<box topPadding="5" leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{paket_dikirim_perbulan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="456" y="25" width="100" height="20" uuid="028c1ddd-63d0-4e18-9bda-e7f5142fccab"/>
+				<text><![CDATA[www.sap-express.id]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

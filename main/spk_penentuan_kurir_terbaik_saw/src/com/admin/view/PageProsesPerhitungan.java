@@ -16,14 +16,14 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
               ProsesPerhitungan data = new ProsesPerhitungan();
               data.DataPenilaianAlternatif(tblDataPenilaianAlternatif);
-              data.HitungPenilaianAlternatif(tblDataNormalisasi);
-              data.HasilNormalisasi(tabelHasilNormalisasi, tblPembobotan);
+              data.HitungPenilaianAlternatif(tblMatrixNormalisasi);
+              data.HasilNormalisasi(tblHasilPembobotan, tblPerankingan);
               
               tblPenilaianAlternatif.getColumnModel().getColumn(0).setPreferredWidth(0); 
               tblDataPenilaianAlternatif.getColumnModel().getColumn(0).setPreferredWidth(0); 
-              tblDataNormalisasi.getColumnModel().getColumn(0).setPreferredWidth(0); 
-              tabelHasilNormalisasi.getColumnModel().getColumn(0).setPreferredWidth(0); 
-              tblPembobotan.getColumnModel().getColumn(0).setPreferredWidth(0); 
+              tblMatrixNormalisasi.getColumnModel().getColumn(0).setPreferredWidth(0); 
+              tblPerankingan.getColumnModel().getColumn(0).setPreferredWidth(0); 
+              tblHasilPembobotan.getColumnModel().getColumn(0).setPreferredWidth(0); 
               
               TScrolPane(spTable1);
               TScrolPane(spTable2);
@@ -51,7 +51,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
             jLabel2 = new javax.swing.JLabel();
             panelBorder3 = new com.swing.PanelBorder();
             spTable4 = new javax.swing.JScrollPane();
-            tabelHasilNormalisasi = new com.swing.Table();
+            tblPerankingan = new com.swing.Table();
             jLabel5 = new javax.swing.JLabel();
             panelBorder2 = new com.swing.PanelBorder();
             spTable2 = new javax.swing.JScrollPane();
@@ -59,11 +59,11 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
             jLabel3 = new javax.swing.JLabel();
             panelBorder5 = new com.swing.PanelBorder();
             spTable6 = new javax.swing.JScrollPane();
-            tblPembobotan = new com.swing.Table();
+            tblHasilPembobotan = new com.swing.Table();
             jLabel7 = new javax.swing.JLabel();
             panelBorder4 = new com.swing.PanelBorder();
             spTable5 = new javax.swing.JScrollPane();
-            tblDataNormalisasi = new com.swing.Table();
+            tblMatrixNormalisasi = new com.swing.Table();
             jLabel6 = new javax.swing.JLabel();
 
             setBackground(new java.awt.Color(242, 242, 242));
@@ -108,8 +108,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             spTable4.setBorder(null);
 
-            tabelHasilNormalisasi.setAutoCreateRowSorter(true);
-            tabelHasilNormalisasi.setModel(new javax.swing.table.DefaultTableModel(
+            tblPerankingan.setModel(new javax.swing.table.DefaultTableModel(
                   new Object [][] {
 
                   },
@@ -125,7 +124,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
                         return canEdit [columnIndex];
                   }
             });
-            spTable4.setViewportView(tabelHasilNormalisasi);
+            spTable4.setViewportView(tblPerankingan);
 
             panelBorder3.add(spTable4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 280));
 
@@ -173,7 +172,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             spTable6.setBorder(null);
 
-            tblPembobotan.setModel(new javax.swing.table.DefaultTableModel(
+            tblHasilPembobotan.setModel(new javax.swing.table.DefaultTableModel(
                   new Object [][] {
 
                   },
@@ -189,7 +188,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
                         return canEdit [columnIndex];
                   }
             });
-            spTable6.setViewportView(tblPembobotan);
+            spTable6.setViewportView(tblHasilPembobotan);
 
             panelBorder5.add(spTable6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 370));
 
@@ -205,7 +204,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             spTable5.setBorder(null);
 
-            tblDataNormalisasi.setModel(new javax.swing.table.DefaultTableModel(
+            tblMatrixNormalisasi.setModel(new javax.swing.table.DefaultTableModel(
                   new Object [][] {
 
                   },
@@ -221,7 +220,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
                         return canEdit [columnIndex];
                   }
             });
-            spTable5.setViewportView(tblDataNormalisasi);
+            spTable5.setViewportView(tblMatrixNormalisasi);
 
             panelBorder4.add(spTable5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 370));
 
@@ -250,10 +249,10 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
       private javax.swing.JScrollPane spTable4;
       private javax.swing.JScrollPane spTable5;
       private javax.swing.JScrollPane spTable6;
-      public com.swing.Table tabelHasilNormalisasi;
-      public com.swing.Table tblDataNormalisasi;
       public com.swing.Table tblDataPenilaianAlternatif;
-      public com.swing.Table tblPembobotan;
+      public com.swing.Table tblHasilPembobotan;
+      public com.swing.Table tblMatrixNormalisasi;
       public com.swing.Table tblPenilaianAlternatif;
+      public com.swing.Table tblPerankingan;
       // End of variables declaration//GEN-END:variables
 }
