@@ -28,15 +28,20 @@ public class DataKurir {
       }
 
       public void TabelKurir(JTable tabel) {
-          Object[] rows = {"Id Kurir", "Nama Kurir", "Alamat", "Email", "No Telp", "Tanggal Bergabung"};
+          Object[] rows = {"Id Kurir", "Nama Kurir", "Alamat", "Email", "No Telp", "Tgl Bergabung", "Lama Berkerja"};
           tabMode = new DefaultTableModel(null, rows);
           tabel.setModel(tabMode);
 
             try {
-                Connection conn = new ConnectionDb().connect();
-                String query = "SELECT * FROM tbl_data_kurir";
-                PreparedStatement ps = conn.prepareStatement(query);
-                ResultSet rs = ps.executeQuery();
+                  Connection conn = new ConnectionDb().connect();
+                  String query = "SELECT id_kurir, nama, alamat, email, no_telp, tgl_bergabung,\n" +
+                                      " CONCAT(\n" +
+                                      " TIMESTAMPDIFF(YEAR, tgl_bergabung, CURDATE()), ' Tahun, ',\n" +
+                                      " TIMESTAMPDIFF(MONTH, tgl_bergabung, CURDATE()) % 12, ' Bulan'\n" +
+                                      " ) AS lama_bekerja\n" +
+                                  "FROM tbl_data_kurir";
+                  PreparedStatement ps = conn.prepareStatement(query);
+                  ResultSet rs = ps.executeQuery();
 
                   while (rs.next()) {
                       String a = rs.getString("id_kurir");
@@ -45,8 +50,9 @@ public class DataKurir {
                       String d = rs.getString("email");
                       String e = rs.getString("no_telp");
                       String f = rs.getString("tgl_bergabung");
+                      String g = rs.getString("lama_bekerja");
 
-                      String[] data = {a, b, c, d, e, f};
+                      String[] data = {a, b, c, d, e, f, g};
                       tabMode.addRow(data);
                   }
                   tabel.getColumnModel().getColumn(0).setPreferredWidth(0); 

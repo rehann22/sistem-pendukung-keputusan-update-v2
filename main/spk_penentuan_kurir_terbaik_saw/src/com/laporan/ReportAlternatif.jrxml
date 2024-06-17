@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="98f9c321-34d0-455a-976a-6c6812307657">
-	<property name="ireport.zoom" value="1.1000000000000052"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="1.2100000000000066"/>
+	<property name="ireport.x" value="13"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
-		<![CDATA[SELECT * FROM tbl_data_kurir;]]>
+	<queryString>
+		<![CDATA[SELECT id_kurir, nama, alamat, email, no_telp, tgl_bergabung,
+       CONCAT(
+           TIMESTAMPDIFF(YEAR, tgl_bergabung, CURDATE()), ' Tahun, ',
+           TIMESTAMPDIFF(MONTH, tgl_bergabung, CURDATE()) % 12, ' Bulan'
+       ) AS lama_bekerja
+FROM tbl_data_kurir;]]>
 	</queryString>
 	<field name="id_kurir" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -24,6 +29,7 @@
 	<field name="tgl_bergabung" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="lama_bekerja" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -56,7 +62,7 @@ Email: customercare@sap-express.co.id]]></text>
 	<pageHeader>
 		<band height="37" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="11" width="555" height="26" uuid="f05ec48a-e161-46e6-aace-bba3adc2fd2d"/>
+				<reportElement x="0" y="0" width="555" height="26" uuid="f05ec48a-e161-46e6-aace-bba3adc2fd2d"/>
 				<textElement textAlignment="Center">
 					<font size="16" isBold="true"/>
 				</textElement>
@@ -95,7 +101,7 @@ Email: customercare@sap-express.co.id]]></text>
 				<text><![CDATA[Id Kurir]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="92" y="10" width="108" height="39" uuid="5c7c9104-c217-424a-bc0e-5ed814a0cb6f"/>
+				<reportElement x="92" y="10" width="88" height="39" uuid="5c7c9104-c217-424a-bc0e-5ed814a0cb6f"/>
 				<box topPadding="11">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -109,7 +115,7 @@ Email: customercare@sap-express.co.id]]></text>
 				<text><![CDATA[Nama]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="200" y="10" width="109" height="39" uuid="75e0ca9b-9f8a-4ead-a3c4-ef8a2090533a"/>
+				<reportElement x="180" y="10" width="90" height="39" uuid="75e0ca9b-9f8a-4ead-a3c4-ef8a2090533a"/>
 				<box topPadding="11">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -123,7 +129,7 @@ Email: customercare@sap-express.co.id]]></text>
 				<text><![CDATA[Alamat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="309" y="10" width="106" height="39" uuid="c65c9bd0-f6fe-4e6f-a78b-ebfb75f98663"/>
+				<reportElement x="270" y="10" width="80" height="39" uuid="c65c9bd0-f6fe-4e6f-a78b-ebfb75f98663"/>
 				<box topPadding="11">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -137,7 +143,7 @@ Email: customercare@sap-express.co.id]]></text>
 				<text><![CDATA[Email]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="415" y="10" width="76" height="39" uuid="f9ebc61d-63cc-4351-a809-9783d0693745"/>
+				<reportElement x="350" y="10" width="76" height="39" uuid="f9ebc61d-63cc-4351-a809-9783d0693745"/>
 				<box topPadding="11">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -151,7 +157,7 @@ Email: customercare@sap-express.co.id]]></text>
 				<text><![CDATA[No Telp]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="491" y="10" width="64" height="39" uuid="0a38eadf-eb17-4ea7-a2d5-603820eedd7b"/>
+				<reportElement x="426" y="10" width="64" height="39" uuid="0a38eadf-eb17-4ea7-a2d5-603820eedd7b"/>
 				<box topPadding="6">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -164,13 +170,27 @@ Email: customercare@sap-express.co.id]]></text>
 				</textElement>
 				<text><![CDATA[Tanggal Bergabung]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="490" y="10" width="64" height="39" uuid="9a23edbd-1950-433c-b224-977e53ace829"/>
+				<box topPadding="6">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lama Bekerja]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="41">
 			<textField>
 				<reportElement x="33" y="0" width="59" height="41" uuid="1f29790d-0f6e-4b00-ac8b-e7b70e907015"/>
-				<box topPadding="8" leftPadding="6">
+				<box topPadding="4" leftPadding="5" rightPadding="5">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -183,8 +203,8 @@ Email: customercare@sap-express.co.id]]></text>
 				<textFieldExpression><![CDATA[$F{id_kurir}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="92" y="0" width="108" height="41" uuid="d783c751-4ec3-49f5-a415-0f47748e6fbe"/>
-				<box topPadding="8" leftPadding="6">
+				<reportElement x="92" y="0" width="88" height="41" uuid="d783c751-4ec3-49f5-a415-0f47748e6fbe"/>
+				<box topPadding="4" leftPadding="5" rightPadding="5">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -197,8 +217,8 @@ Email: customercare@sap-express.co.id]]></text>
 				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="200" y="0" width="109" height="41" uuid="10f63501-3c48-4a5f-9331-f83e56890020"/>
-				<box topPadding="8" leftPadding="6">
+				<reportElement x="180" y="0" width="90" height="41" uuid="10f63501-3c48-4a5f-9331-f83e56890020"/>
+				<box topPadding="4" leftPadding="5" rightPadding="5">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -211,8 +231,8 @@ Email: customercare@sap-express.co.id]]></text>
 				<textFieldExpression><![CDATA[$F{alamat}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="0" width="106" height="41" uuid="a392fed3-3964-4097-bb4e-2abad4bbcdfe"/>
-				<box topPadding="8" leftPadding="6">
+				<reportElement x="270" y="0" width="80" height="41" uuid="a392fed3-3964-4097-bb4e-2abad4bbcdfe"/>
+				<box topPadding="4" leftPadding="5" rightPadding="5">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -225,8 +245,8 @@ Email: customercare@sap-express.co.id]]></text>
 				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="415" y="0" width="76" height="41" uuid="a65c3cbf-82bc-422d-8895-c010d0efb48e"/>
-				<box topPadding="8" leftPadding="6">
+				<reportElement x="350" y="0" width="76" height="41" uuid="a65c3cbf-82bc-422d-8895-c010d0efb48e"/>
+				<box topPadding="4" leftPadding="5" rightPadding="5">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -238,9 +258,23 @@ Email: customercare@sap-express.co.id]]></text>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{no_telp}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="33" height="41" uuid="4487d0d1-d62f-425b-8cb1-02b9e8df2228"/>
+				<box topPadding="4" leftPadding="5" rightPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="491" y="0" width="64" height="41" uuid="cbe1f647-3717-4367-8c44-e48991bfeb2c"/>
-				<box topPadding="8" leftPadding="6">
+				<reportElement x="426" y="0" width="64" height="41" uuid="cbe1f647-3717-4367-8c44-e48991bfeb2c"/>
+				<box topPadding="4" leftPadding="5" rightPadding="5">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -253,18 +287,15 @@ Email: customercare@sap-express.co.id]]></text>
 				<textFieldExpression><![CDATA[$F{tgl_bergabung}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="0" width="33" height="41" uuid="4487d0d1-d62f-425b-8cb1-02b9e8df2228"/>
-				<box topPadding="8" leftPadding="6">
+				<reportElement x="490" y="0" width="64" height="41" uuid="e805e492-e95e-47d3-969e-c1b267c0fcb4"/>
+				<box topPadding="4" leftPadding="5" rightPadding="5">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{lama_bekerja}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
