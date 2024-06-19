@@ -15,7 +15,7 @@ public class AdminProfile {
       public void editData (JTextField id, JTextField nama, JTextField email, JTextField password) {
             try {
                   Connection conn = new ConnectionDb().connect();
-                  String query = "UPDATE `tbl_admin` SET `nama`=?, `email`=?, `password`=? WHERE `id_admin`=?";
+                  String query = "UPDATE `tbl_admin` SET `nama_admin`=?, `email_admin`=?, `password_admin`=? WHERE `id_admin`=?";
                   PreparedStatement st = conn.prepareStatement(query);
                   st.setString(1, nama.getText());
                   st.setString(2, email.getText());
@@ -26,7 +26,7 @@ public class AdminProfile {
                   JOptionPane.showMessageDialog(null, "Data Terupdate");
                   TampilData(id, nama, email, password);
             } catch (SQLException ex) {
-                  System.out.println("Eror edit data user\n" + ex);
+                  System.out.println("Eror edit data adminr\n" + ex);
             }
       }
       
@@ -42,9 +42,9 @@ public class AdminProfile {
               String[] data = new String[4];
               if (rs.next()) {
                   data[0] = rs.getString("id_admin");
-                  data[1] = rs.getString("nama");
-                  data[2] = rs.getString("email");
-                  data[3] = rs.getString("password");
+                  data[1] = rs.getString("nama_admin");
+                  data[2] = rs.getString("email_admin");
+                  data[3] = rs.getString("password_admin");
               }
               
               id.setText(data[0]);

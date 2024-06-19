@@ -12,21 +12,21 @@ public class MainLogin extends javax.swing.JFrame {
       }
       
       private void btnLoginOnClick () {
-            String idAdmin = txt_id.getText();
+            String email = txt_email.getText();
             char[] passwordChars = txt_password.getPassword();
             String password = new String(passwordChars);
 
-            if (idAdmin.trim().isEmpty() || password.isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "Username & password tidak boleh kosong");
+            if (email.trim().isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Email & Password tidak boleh kosong");
             } else {
                 AdminLogin log = new AdminLogin();
-               boolean loginSuccessful = log.isLogin(idAdmin, password);
+               boolean loginSuccessful = log.isLogin(email, password);
 
                 if (loginSuccessful) {
                     dispose(); // Hanya dispose jika login berhasil
                     System.out.println("Login Admin Berhasil");
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "id  atau password salah");
+                    JOptionPane.showMessageDialog(rootPane, "Email atau Password salah");
                 }
             }
      }
@@ -37,7 +37,7 @@ public class MainLogin extends javax.swing.JFrame {
 
             jPanel1 = new javax.swing.JPanel();
             btn_login = new swing.ButtonGradient();
-            txt_id = new textfield.TextField();
+            txt_email = new textfield.TextField();
             txt_password = new textfield.PasswordField();
             icon = new javax.swing.JLabel();
             jLabel2 = new javax.swing.JLabel();
@@ -59,10 +59,10 @@ public class MainLogin extends javax.swing.JFrame {
             });
             jPanel1.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 240, 30));
 
-            txt_id.setBackground(new java.awt.Color(255, 255, 255));
-            txt_id.setForeground(new java.awt.Color(97, 103, 122));
-            txt_id.setLabelText("Id Admin");
-            jPanel1.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 240, -1));
+            txt_email.setBackground(new java.awt.Color(255, 255, 255));
+            txt_email.setForeground(new java.awt.Color(97, 103, 122));
+            txt_email.setLabelText("Email");
+            jPanel1.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 240, -1));
 
             txt_password.setBackground(new java.awt.Color(255, 255, 255));
             txt_password.setForeground(new java.awt.Color(97, 103, 122));
@@ -121,7 +121,7 @@ public class MainLogin extends javax.swing.JFrame {
       private javax.swing.JLabel icon;
       private javax.swing.JLabel jLabel2;
       private javax.swing.JPanel jPanel1;
-      private textfield.TextField txt_id;
+      private textfield.TextField txt_email;
       private textfield.PasswordField txt_password;
       // End of variables declaration//GEN-END:variables
 }

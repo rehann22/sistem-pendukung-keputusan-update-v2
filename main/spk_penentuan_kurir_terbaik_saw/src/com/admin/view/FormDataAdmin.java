@@ -3,10 +3,12 @@ package com.admin.view;
 import com.admin.controler.AdminProfile;
 import com.formdev.flatlaf.FlatLightLaf;
 
-public class DataAdmin extends javax.swing.JFrame {
+public class FormDataAdmin extends javax.swing.JFrame {
 
-      public DataAdmin() {
+      public FormDataAdmin() {
             initComponents();
+            AdminProfile data = new AdminProfile();
+            data.TampilData(txt_id, txt_nama, txt_email, txt_password);
       }
 
       @SuppressWarnings("unchecked")
@@ -80,7 +82,7 @@ public class DataAdmin extends javax.swing.JFrame {
             /* Create and display the form */
             java.awt.EventQueue.invokeLater(new Runnable() {
                   public void run() {
-                        new DataAdmin().setVisible(true);
+                        new FormDataAdmin().setVisible(true);
                   }
             });
       }

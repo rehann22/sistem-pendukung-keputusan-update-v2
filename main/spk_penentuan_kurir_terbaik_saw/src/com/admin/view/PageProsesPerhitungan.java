@@ -16,8 +16,8 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
               ProsesPerhitungan data = new ProsesPerhitungan();
               data.DataPenilaianAlternatif(tblDataPenilaianAlternatif);
-              data.HitungPenilaianAlternatif(tblMatrixNormalisasi);
-              data.HasilNormalisasi(tblHasilPembobotan, tblPerankingan);
+              data.HitungNormalisasi(tblMatrixNormalisasi);
+              data.HitungPembobotan(tblHasilPembobotan, tblPerankingan);
               
               tblPenilaianAlternatif.getColumnModel().getColumn(0).setPreferredWidth(0); 
               tblDataPenilaianAlternatif.getColumnModel().getColumn(0).setPreferredWidth(0); 

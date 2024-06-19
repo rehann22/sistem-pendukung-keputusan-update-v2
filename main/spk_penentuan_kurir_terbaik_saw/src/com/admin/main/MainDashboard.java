@@ -1,5 +1,6 @@
 package com.admin.main;
-import com.admin.view.DataAdmin;
+import com.admin.controler.SessionAdmin;
+import com.admin.view.FormDataAdmin;
 import com.admin.view.PageLaporan;
 import com.admin.view.PageDataKriteria;
 import com.admin.view.PageDataKurir;
@@ -54,7 +55,8 @@ public class MainDashboard extends javax.swing.JFrame {
                         } else if (index == 7) {  
                               setForm(laporan);
                         } else if (index == 8) {
-                              System.out.println("data admin");
+                              FormDataAdmin data = new FormDataAdmin();
+                              data.setVisible(true);
                         } else if (index == 11) { //logout
                             int jawaban = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
                             if (jawaban == JOptionPane.YES_OPTION) {

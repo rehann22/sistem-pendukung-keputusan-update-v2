@@ -40,58 +40,58 @@ public class Report {
             } finally {
                   // Menutup InputStream dan koneksi database
                   if (reportStream != null) {
-                      try {
-                          reportStream.close();
-                      } catch (Exception e) {
-                          e.printStackTrace();
-                      }
+                        try {
+                            reportStream.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                   }
                   if (conn != null) {
-                      try {
-                          conn.close();
-                      } catch (Exception e) {
-                          e.printStackTrace();
-                      }
+                        try {
+                            conn.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                   }
             }
       }
       
       
-    public void reportFromJTable(JTable table) {
-        InputStream reportStream = null;
-        try {
-            // Menggunakan path relatif untuk file .jrxml
-            reportStream = getClass().getResourceAsStream("/com/laporan/ReportPeringkat.jrxml");
-            if (reportStream == null) {
-                throw new RuntimeException("File .jrxml tidak ditemukan.");
-            }
-
-            // Compile file .jrxml menjadi .jasper
-            JasperPrint jp = JasperFillManager.fillReport(
-            JasperCompileManager.compileReport(reportStream), new HashMap<>(), new JTableDataSource(table));
-
-            // Menampilkan laporan
-            JasperViewer.viewReport(jp, false); // false untuk menutup aplikasi tanpa menutup laporan
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Terjadi kesalahan: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            if (reportStream != null) {
-                try {
-                    reportStream.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-    
-     public void ReportPenilaianKurir() {
+      public void reportFromJTable(JTable table) {
             InputStream reportStream = null;
-            Connection conn = null;
-
             try {
+                  // Menggunakan path relatif untuk file .jrxml
+                  reportStream = getClass().getResourceAsStream("/com/laporan/ReportPeringkat.jrxml");
+                  if (reportStream == null) {
+                      throw new RuntimeException("File .jrxml tidak ditemukan.");
+                  }
+
+                  // Compile file .jrxml menjadi .jasper
+                  JasperPrint jp = JasperFillManager.fillReport(
+                  JasperCompileManager.compileReport(reportStream), new HashMap<>(), new JTableDataSource(table));
+
+                  // Menampilkan laporan
+                  JasperViewer.viewReport(jp, false); // false untuk menutup aplikasi tanpa menutup laporan
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Terjadi kesalahan: " + e.getMessage());
+                e.printStackTrace();
+            } finally {
+                  if (reportStream != null) {
+                        try {
+                            reportStream.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                  }
+            }
+      }
+    
+      public void ReportPenilaianKurir() {
+             InputStream reportStream = null;
+             Connection conn = null;
+
+             try {
                   // Mendapatkan path menuju file .jasper
                   reportStream = getClass().getResourceAsStream("/com/laporan/ReportPenilaianAlternatif.jasper");
                   if (reportStream == null) {
@@ -104,29 +104,29 @@ public class Report {
 
                   // Mengisi laporan dengan data dari database
                   JasperPrint jp = JasperFillManager.fillReport(reportStream, param, conn);
-                  
+
                   // Menampilkan laporan
                   JasperViewer.viewReport(jp, false); // false untuk menutup aplikasi tanpa menutup laporan
 
-            } catch (Exception e) {
+             } catch (Exception e) {
                   JOptionPane.showMessageDialog(null, "Terjadi kesalahan: " + e.getMessage());
                   e.printStackTrace();
-            } finally {
+             } finally {
                   // Menutup InputStream dan koneksi database
                   if (reportStream != null) {
-                      try {
-                          reportStream.close();
-                      } catch (Exception e) {
-                          e.printStackTrace();
-                      }
+                        try {
+                            reportStream.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                   }
                   if (conn != null) {
-                      try {
-                          conn.close();
-                      } catch (Exception e) {
-                          e.printStackTrace();
-                      }
+                        try {
+                            conn.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                   }
-            }
-      }
+             }
+       }
 }

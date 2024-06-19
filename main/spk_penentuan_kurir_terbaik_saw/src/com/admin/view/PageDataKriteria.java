@@ -82,7 +82,7 @@ public class PageDataKriteria extends javax.swing.JPanel {
                         btn_tambahActionPerformed(evt);
                   }
             });
-            panelBorder.add(btn_tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 110, 30));
+            panelBorder.add(btn_tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 90, 30));
 
             btn_hapus.setText("Hapus");
             btn_hapus.setColor1(new java.awt.Color(35, 20, 226));
@@ -92,7 +92,7 @@ public class PageDataKriteria extends javax.swing.JPanel {
                         btn_hapusActionPerformed(evt);
                   }
             });
-            panelBorder.add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, 110, 30));
+            panelBorder.add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 30, 90, 30));
 
             btn_ubah.setText("Ubah");
             btn_ubah.setColor1(new java.awt.Color(35, 20, 226));
@@ -102,7 +102,7 @@ public class PageDataKriteria extends javax.swing.JPanel {
                         btn_ubahActionPerformed(evt);
                   }
             });
-            panelBorder.add(btn_ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 110, 30));
+            panelBorder.add(btn_ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, 90, 30));
 
             add(panelBorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 915, 570));
       }// </editor-fold>//GEN-END:initComponents
