@@ -9,14 +9,15 @@
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/admin/debug/HitungBobot.java</file>
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/admin/controler/Report.java</file>
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/model/Model_Card.java</file>
-            <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/laporan/ReportPenilaianAlternatif.jrxml</file>
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/admin/view/dashboard.java</file>
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/admin/view/PageLaporan.java</file>
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/admin/controler/SessionAdmin.java</file>
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/admin/controler/DataKriteria.java</file>
+            <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/component/Test.java</file>
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/database/ConnectionDb.java</file>
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/admin/view/TambahDataKriteria.java</file>
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/admin/view/PageDataSubKriteria.java</file>
+            <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/component/Header.java</file>
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/admin/view/TambahDataKurir.java</file>
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/admin/controler/PenilaianKurir.java</file>
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/admin/main/MainDashboard.java</file>
@@ -34,6 +35,7 @@
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/admin/controler/AdminLogin.java</file>
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/component/Menu.java</file>
             <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/admin/view/FormDataAdmin.java</file>
+            <file>file:/D:/Netbeans/spk%20kurir%20terbaik/main/spk_penentuan_kurir_terbaik_saw/src/com/component/PanelGradasi.java</file>
         </group>
     </open-files>
 </project-private>

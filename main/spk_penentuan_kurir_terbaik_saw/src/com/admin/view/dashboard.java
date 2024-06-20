@@ -1,5 +1,6 @@
 package com.admin.view;
 
+import com.admin.controler.ProsesPerhitungan;
 import com.model.Model_Card;
 import com.swing.ScrollBar;
 import java.awt.Color;
@@ -10,24 +11,24 @@ import javax.swing.JScrollPane;
 
 public class dashboard extends javax.swing.JPanel {
 
-    public dashboard() {
+      public dashboard() {
           
-        initComponents();        
-        card1.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/1.png")), "NULL",  0));
-        card2.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/1.png")), "NULL", 0));
-        card3.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/1.png")), "NULL", 0));
-        card4.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/1.png")), "NULL", 0));
+            initComponents();        
+            card1.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/1.png")), "NULL",  0));
+            card2.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/1.png")), "NULL", 0));
+            card3.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/1.png")), "NULL", 0));
+            card4.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/1.png")), "NULL", 0));
+
+            //  add row table
+            spTable.setVerticalScrollBar(new ScrollBar());
+            spTable.getVerticalScrollBar().setBackground(Color.WHITE);
+            spTable.getViewport().setBackground(Color.WHITE);
+            JPanel p = new JPanel();
+            p.setBackground(Color.WHITE);
+            spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
         
-        //  add row table
-        spTable.setVerticalScrollBar(new ScrollBar());
-        spTable.getVerticalScrollBar().setBackground(Color.WHITE);
-        spTable.getViewport().setBackground(Color.WHITE);
-        JPanel p = new JPanel();
-        p.setBackground(Color.WHITE);
-        spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
-        
-        pieChart();
-       }
+            pieChart();
+      }
     
       public void pieChart () {
             pie_chart.setChartType(PieChart.PeiChartType.DONUT_CHART);

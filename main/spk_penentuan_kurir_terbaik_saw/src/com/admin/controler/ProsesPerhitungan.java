@@ -257,6 +257,7 @@ public class ProsesPerhitungan {
       }   
 
       public void HitungPembobotan (JTable tblHasilPembobotan, JTable tblHasilPerankingan) {
+            
             // Model untuk tabel pembobotan
             Object[] hasilPembobotan = {"Id Kurir", "Nama Kurir", "Kesalahan Pengiriman", "Lama Bekerja", "Kecepatan Pengiriman", "Paket Dikirim / Bulan", "Total"};
             modelTabelPembobotan = new DefaultTableModel(null, hasilPembobotan);
@@ -319,6 +320,7 @@ public class ProsesPerhitungan {
                         nilaiPreferensiTotal.add(weightedValuesRow); // Simpan nilai preferensi total untuk baris saat ini
 
                         modelTabelPembobotan.addRow(weightedValuesRow); // Tambahkan baris ke tabel pembobotan
+
                   }
 
                   // Mengurutkan nilai preferensi total dari yang terbesar ke terkecil
