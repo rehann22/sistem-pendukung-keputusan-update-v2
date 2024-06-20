@@ -8,17 +8,16 @@ import com.admin.view.PageDataSubKriteria;
 import com.admin.view.PagePenilaianKurir;
 import com.admin.view.PageProsesPerhitungan;
 import com.event.EventMenuSelected;
-import com.admin.view.dashboard;
+import com.admin.view.PageDashboard;
 import com.swing.ModernScrollBarUI;
 import java.awt.Color;
-import javaswingdev.chart.PieChart;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 public class MainDashboard extends javax.swing.JFrame {
 
-      private dashboard admin_dashboard;
+      private PageDashboard admin_dashboard;
       private PageDataKurir dataKurir;
       private PageDataKriteria datakriteria;
       private PageDataSubKriteria dataSubKriteria;
@@ -29,7 +28,7 @@ public class MainDashboard extends javax.swing.JFrame {
       public MainDashboard() {
             initComponents();
             setBackground(new Color(0, 0, 0, 0));
-            admin_dashboard = new dashboard();
+            admin_dashboard = new PageDashboard();
             dataKurir = new PageDataKurir();
             datakriteria = new PageDataKriteria();
             dataSubKriteria = new PageDataSubKriteria();
@@ -66,7 +65,7 @@ public class MainDashboard extends javax.swing.JFrame {
                 }
             });
 
-            setForm(new dashboard());
+            setForm(new PageDashboard());
         }
 
       private void setForm(JComponent com) {

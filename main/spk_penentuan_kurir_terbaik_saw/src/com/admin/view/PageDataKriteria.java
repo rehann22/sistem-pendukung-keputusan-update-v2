@@ -109,14 +109,14 @@ public class PageDataKriteria extends javax.swing.JPanel {
 
       private void btn_tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahActionPerformed
             DataKriteria data = new DataKriteria();
-            TambahDataKriteria form = new TambahDataKriteria();
+            FormDataKriteria form = new FormDataKriteria();
             //data.autoNumber(form.txtKodeKriteria);
             form.setVisible(true);
       }//GEN-LAST:event_btn_tambahActionPerformed
 
       private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
             DataKriteria data = new DataKriteria();
-            TambahDataKriteria form = new TambahDataKriteria();
+            FormDataKriteria form = new FormDataKriteria();
             form.setVisible(true);
             //data.TampilFormKriteria(tblKriteria, form.txtKodeKriteria, form.txtNamaKriteria, form.txtNilai, form.cbbJenis);
 

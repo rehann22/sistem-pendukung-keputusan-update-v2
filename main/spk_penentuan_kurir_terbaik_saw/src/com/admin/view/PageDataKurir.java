@@ -108,21 +108,21 @@ public class PageDataKurir extends javax.swing.JPanel {
       }// </editor-fold>//GEN-END:initComponents
 
       private void btn_tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahActionPerformed
-            TambahDataKurir data = new TambahDataKurir();
+            FormDataKurir data = new FormDataKurir();
             data.setVisible(true);
             
       }//GEN-LAST:event_btn_tambahActionPerformed
 
       private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
             DataKurir data = new DataKurir();
-            TambahDataKurir add = new TambahDataKurir();
+            FormDataKurir add = new FormDataKurir();
             add.setVisible(true);
             data.tampilFormEditKurir(tblKurir, add.txtIdKurir, add.txtNamaKurir, add.txtAlamat, add.txtEmail, add.txtNoTelp, add.tglBergabung);
       }//GEN-LAST:event_btn_ubahActionPerformed
 
       private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
             DataKurir data = new DataKurir();
-            TambahDataKurir add = new TambahDataKurir();    
+            FormDataKurir add = new FormDataKurir();    
             data.HapusDataKurir(tblKurir);
       }//GEN-LAST:event_btn_hapusActionPerformed
 

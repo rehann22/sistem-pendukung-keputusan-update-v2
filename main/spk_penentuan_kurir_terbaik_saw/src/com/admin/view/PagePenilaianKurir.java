@@ -105,7 +105,7 @@ public class PagePenilaianKurir extends javax.swing.JPanel {
       }// </editor-fold>//GEN-END:initComponents
 
       private void btn_TambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TambahActionPerformed
-            TambahPenilaian data = new TambahPenilaian();
+            FormPenilaian data = new FormPenilaian();
             data.setVisible(true);
       }//GEN-LAST:event_btn_TambahActionPerformed
 

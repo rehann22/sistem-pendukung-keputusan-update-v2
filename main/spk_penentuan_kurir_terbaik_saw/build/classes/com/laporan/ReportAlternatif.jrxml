@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="98f9c321-34d0-455a-976a-6c6812307657">
 	<property name="ireport.zoom" value="1.2100000000000066"/>
-	<property name="ireport.x" value="13"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT id_kurir, nama, alamat, email, no_telp, tgl_bergabung,
@@ -190,111 +190,121 @@ Email: customercare@sap-express.co.id]]></text>
 		<band height="41">
 			<textField>
 				<reportElement x="33" y="0" width="59" height="41" uuid="1f29790d-0f6e-4b00-ac8b-e7b70e907015"/>
-				<box topPadding="4" leftPadding="5" rightPadding="5">
+				<box topPadding="0" leftPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
+					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{id_kurir}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="92" y="0" width="88" height="41" uuid="d783c751-4ec3-49f5-a415-0f47748e6fbe"/>
-				<box topPadding="4" leftPadding="5" rightPadding="5">
+				<box topPadding="0" leftPadding="5" rightPadding="5">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
+					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="180" y="0" width="90" height="41" uuid="10f63501-3c48-4a5f-9331-f83e56890020"/>
-				<box topPadding="4" leftPadding="5" rightPadding="5">
+				<box topPadding="0" leftPadding="5" rightPadding="5">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
+					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{alamat}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="270" y="0" width="80" height="41" uuid="a392fed3-3964-4097-bb4e-2abad4bbcdfe"/>
-				<box topPadding="4" leftPadding="5" rightPadding="5">
+				<box topPadding="0" leftPadding="5" rightPadding="5">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
+					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="350" y="0" width="76" height="41" uuid="a65c3cbf-82bc-422d-8895-c010d0efb48e"/>
-				<box topPadding="4" leftPadding="5" rightPadding="5">
+				<box topPadding="0" leftPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
+					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{no_telp}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="0" width="33" height="41" uuid="4487d0d1-d62f-425b-8cb1-02b9e8df2228"/>
-				<box topPadding="4" leftPadding="5" rightPadding="5">
+				<box topPadding="0" leftPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
+					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="426" y="0" width="64" height="41" uuid="cbe1f647-3717-4367-8c44-e48991bfeb2c"/>
-				<box topPadding="4" leftPadding="5" rightPadding="5">
+				<box topPadding="0" leftPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
+					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tgl_bergabung}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="490" y="0" width="64" height="41" uuid="e805e492-e95e-47d3-969e-c1b267c0fcb4"/>
-				<box topPadding="4" leftPadding="5" rightPadding="5">
+				<box topPadding="0" leftPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{lama_bekerja}]]></textFieldExpression>
 			</textField>
 		</band>
