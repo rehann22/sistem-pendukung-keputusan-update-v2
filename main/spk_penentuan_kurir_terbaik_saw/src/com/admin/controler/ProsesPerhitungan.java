@@ -39,7 +39,7 @@ public class ProsesPerhitungan {
       }
 
       public void DataPenilaianAlternatif(JTable tabel) {
-            Object[] rows = {"Id Kurir", "Nama Kurir", "Kesalahan Pengiriman", "Lama Bekerja", "Kecepatan Pengiriman", "Paket Dikirim / Bulan"};
+            Object[] rows = {"Id Kurir", "Nama Kurir", "Lama Bekerja", "Kecepatan Pengiriman", "Pengiriman Berhasil Perbulan", "Pengiriman Gagal Perbulan"};
             modelTabelNilaiAlternatif = new DefaultTableModel(null, rows);
             tabel.setModel(modelTabelNilaiAlternatif);
 
@@ -63,22 +63,22 @@ public class ProsesPerhitungan {
                   while (rs.next()) {
                         String idKurir = rs.getString("id_kurir");
                         String namaKurir = rs.getString("nama_kurir");
-                        String kesalahanPengiriman = rs.getString("kesalahan_pengiriman");
                         String lamaBekerja = rs.getString("lama_bekerja");
                         String kecepatanPengiriman = rs.getString("kecepatan_pengiriman");
-                        String paketDikirimPerbulan = rs.getString("paket_dikirim_perbulan");
+                        String pengirimanBerhasil = rs.getString("pengiriman_berhasil");
+                        String pengirimanGagal = rs.getString("pengiriman_gagal");
 
                         // Mendapatkan bobot untuk setiap kriteria
-                        double bobotKesalahanPengiriman = getBobot(kesalahanPengiriman);
                         double bobotLamaBekerja = getBobot(lamaBekerja);
                         double bobotKecepatanPengiriman = getBobot(kecepatanPengiriman);
-                        double bobotPaketDikirimPerbulan = getBobot(paketDikirimPerbulan);
+                        double bobotPengirimanBerhasil = getBobot(pengirimanBerhasil);
+                        double bobotPengirimanGagal = getBobot(pengirimanGagal);
 
                         // Memperbarui nilai maksimum dan minimum untuk setiap kriteria
-                        updateMinMaxValues(maxValues, minValues, bobotKesalahanPengiriman, bobotLamaBekerja, bobotKecepatanPengiriman, bobotPaketDikirimPerbulan);
+                        updateMinMaxValues(maxValues, minValues, bobotLamaBekerja, bobotKecepatanPengiriman, bobotPengirimanBerhasil, bobotPengirimanGagal);
 
                         // Menambahkan data ke dalam tabel
-                        Object[] data = {idKurir, namaKurir, bobotKesalahanPengiriman, bobotLamaBekerja, bobotKecepatanPengiriman, bobotPaketDikirimPerbulan};
+                        Object[] data = {idKurir, namaKurir, bobotLamaBekerja, bobotKecepatanPengiriman, bobotPengirimanBerhasil, bobotPengirimanGagal};
                         modelTabelNilaiAlternatif.addRow(data);
 
                   }
@@ -146,7 +146,7 @@ public class ProsesPerhitungan {
       }
 
       public void HitungNormalisasi (JTable tabel) {
-            Object[] rows2 = {"Id Kurir", "Nama Kurir", "Kesalahan Pengiriman", "Lama Bekerja", "Kecepatan Pengiriman", "Paket Dikirim / Bulan"};
+            Object[] rows2 = {"Id Kurir", "Nama Kurir", "Lama Bekerja", "Kecepatan Pengiriman", "Pengiriman Berhasil Perbulan", "Pengiriman Gagal Perbulan"};
             modelTabelNormalisasi = new DefaultTableModel(null, rows2);
             tabel.setModel(modelTabelNormalisasi);
 
@@ -259,12 +259,12 @@ public class ProsesPerhitungan {
       public void HitungPembobotan (JTable tblHasilPembobotan, JTable tblHasilPerankingan) {
             
             // Model untuk tabel pembobotan
-            Object[] hasilPembobotan = {"Id Kurir", "Nama Kurir", "Kesalahan Pengiriman", "Lama Bekerja", "Kecepatan Pengiriman", "Paket Dikirim / Bulan", "Total"};
+            Object[] hasilPembobotan = {"Id Kurir", "Nama Kurir", "Lama Bekerja", "Kecepatan Pengiriman", "Pengiriman Berhasil Perbulan", "Pengiriman Gagal Perbulan", "Total"};
             modelTabelPembobotan = new DefaultTableModel(null, hasilPembobotan);
             tblHasilPembobotan.setModel(modelTabelPembobotan);
 
             // Model untuk tabel peringkat
-            Object[] rankingRows = {"Id Kurir", "Nama", "Hasil Perhitungan", "Peringkat"};
+            Object[] rankingRows = {"Id Kurir", "Nama", "Nilai", "Peringkat"};
             modelTabelPerankingan = new DefaultTableModel(null, rankingRows);
             tblHasilPerankingan.setModel(modelTabelPerankingan);
 

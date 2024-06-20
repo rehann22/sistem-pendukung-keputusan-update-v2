@@ -15,7 +15,7 @@ public class PenilaianKurir {
 
       
       public void TabelPenilaian(JTable tabel) {
-          Object[] rows = {"Id Kurir", "Nama Kurir", "Kesalahan Pengiriman", "Lama Bekerja", "Kecepatan Pengiriman", "Paket Dikirim / Bulan"};
+          Object[] rows = {"Id Kurir", "Nama Kurir", "Lama Bekerja", "Kecepatan Pengiriman", "Pengiriman Berhasil Perbulan", "Pengiriman Gagal Perbulan"};
           tabMode = new DefaultTableModel(null, rows);
           tabel.setModel(tabMode);
 
@@ -28,10 +28,10 @@ public class PenilaianKurir {
                   while (rs.next()) {
                       String a = rs.getString("id_kurir");
                       String b = rs.getString("nama_kurir");
-                      String c = rs.getString("kesalahan_pengiriman");
-                      String d = rs.getString("lama_bekerja");
-                      String e = rs.getString("kecepatan_pengiriman");
-                      String f = rs.getString("paket_dikirim_perbulan");
+                      String c = rs.getString("lama_bekerja");
+                      String d = rs.getString("kecepatan_pengiriman");
+                      String e = rs.getString("pengiriman_berhasil");
+                      String f = rs.getString("pengiriman_gagal");
                       String[] data = {a,b,c,d,e,f};
                       tabMode.addRow(data);
                   }

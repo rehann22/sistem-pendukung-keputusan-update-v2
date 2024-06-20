@@ -6,40 +6,42 @@ import com.swing.ScrollBar;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class PageProsesPerhitungan extends javax.swing.JPanel {
 
       public PageProsesPerhitungan() {
-              initComponents();
-              PenilaianKurir pnl = new PenilaianKurir();
-              pnl.TabelPenilaian(tblPenilaianAlternatif);
+            initComponents();
+            PenilaianKurir pnl = new PenilaianKurir();
+            pnl.TabelPenilaian(tblPenilaianAlternatif);
 
-              ProsesPerhitungan data = new ProsesPerhitungan();
-              data.DataPenilaianAlternatif(tblDataPenilaianAlternatif);
-              data.HitungNormalisasi(tblMatrixNormalisasi);
-              data.HitungPembobotan(tblHasilPembobotan, tblPerankingan);
-              
-              tblPenilaianAlternatif.getColumnModel().getColumn(0).setPreferredWidth(0); 
-              tblDataPenilaianAlternatif.getColumnModel().getColumn(0).setPreferredWidth(0); 
-              tblMatrixNormalisasi.getColumnModel().getColumn(0).setPreferredWidth(0); 
-              tblPerankingan.getColumnModel().getColumn(0).setPreferredWidth(0); 
-              tblHasilPembobotan.getColumnModel().getColumn(0).setPreferredWidth(0); 
-              
-              TScrolPane(spTable1);
-              TScrolPane(spTable2);
-              TScrolPane(spTable4);
-              TScrolPane(spTable5);
-              TScrolPane(spTable6);
+            ProsesPerhitungan data = new ProsesPerhitungan();
+            data.DataPenilaianAlternatif(tblDataPenilaianAlternatif);
+            data.HitungNormalisasi(tblMatrixNormalisasi);
+            data.HitungPembobotan(tblHasilPembobotan, tblPerankingan);
+
+            TScrolPane(spTable1);
+            TScrolPane(spTable2);
+            TScrolPane(spTable4);
+            TScrolPane(spTable5);
+            TScrolPane(spTable6);
+            
+            tblPenilaianAlternatif.getColumnModel().getColumn(0).setPreferredWidth(0); 
+            tblDataPenilaianAlternatif.getColumnModel().getColumn(0).setPreferredWidth(0); 
+            tblMatrixNormalisasi.getColumnModel().getColumn(0).setPreferredWidth(0); 
+            tblHasilPembobotan.getColumnModel().getColumn(0).setPreferredWidth(0); 
+            tblHasilPembobotan.getColumnModel().getColumn(6).setPreferredWidth(10); 
+            tblPerankingan.getColumnModel().getColumn(0).setPreferredWidth(0); 
       }
     
-    private void TScrolPane (JScrollPane scroll) {
+      private void TScrolPane (JScrollPane scroll) {
             scroll.setVerticalScrollBar(new ScrollBar());
             scroll.getVerticalScrollBar().setBackground(Color.WHITE);
             scroll.getViewport().setBackground(Color.WHITE);
             JPanel p = new JPanel();
             p.setBackground(Color.WHITE);
             scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
-    }
+      }
 
     @SuppressWarnings("unchecked")
       // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

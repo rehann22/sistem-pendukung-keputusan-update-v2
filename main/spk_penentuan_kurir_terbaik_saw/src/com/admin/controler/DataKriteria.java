@@ -50,7 +50,8 @@ public class DataKriteria {
                     conn.close();
 
               } catch (SQLException e) {
-                  System.out.println("Error dataTabel: " + e.getMessage());
+                  System.out.println("Error Method TabelKriteria");
+                  e.printStackTrace();
             }
       }            
 }
