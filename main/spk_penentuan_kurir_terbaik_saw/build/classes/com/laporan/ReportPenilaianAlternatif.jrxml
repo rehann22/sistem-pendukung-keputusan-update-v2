@@ -26,12 +26,8 @@
 	</field>
 	<title>
 		<band height="109" splitType="Stretch">
-			<image>
-				<reportElement x="1" y="10" width="100" height="65" uuid="00f6b1d4-88f1-4e8f-812a-d9942a60fb59"/>
-				<imageExpression><![CDATA["D:\\Netbeans\\spk kurir terbaik\\main\\spk_penentuan_kurir_terbaik_saw\\src\\com\\icon\\sapx-logo.jpg"]]></imageExpression>
-			</image>
 			<staticText>
-				<reportElement x="1" y="10" width="552" height="26" uuid="9f0e917e-e97e-44fa-9ad8-e576379decdd"/>
+				<reportElement x="2" y="10" width="551" height="26" uuid="9f0e917e-e97e-44fa-9ad8-e576379decdd"/>
 				<textElement textAlignment="Center">
 					<font size="18" isBold="true"/>
 				</textElement>
@@ -48,6 +44,10 @@
 				<text><![CDATA[Jl. Komodor Halim Perdana Kusuma No. 28, Halim Perdana Kusuma, Makasar, Jakarta Timur, DKI Jakarta. 13610
 Email: customercare@sap-express.co.id]]></text>
 			</staticText>
+			<image>
+				<reportElement x="2" y="10" width="100" height="65" uuid="7914efee-3ddf-4b6c-af85-cd27f0942d0d"/>
+				<imageExpression><![CDATA["D:\\Netbeans\\spk kurir terbaik\\main\\spk_penentuan_kurir_terbaik_saw\\src\\com\\icon\\sapx-logo.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

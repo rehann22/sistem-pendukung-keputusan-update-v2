@@ -1,5 +1,4 @@
 package com.admin.main;
-import com.admin.controler.SessionAdmin;
 import com.admin.view.FormDataAdmin;
 import com.admin.view.PageLaporan;
 import com.admin.view.PageDataKriteria;
@@ -64,9 +63,8 @@ public class MainDashboard extends javax.swing.JFrame {
                     }
                 }
             });
-
             setForm(new PageDashboard());
-        }
+      }
 
       private void setForm(JComponent com) {
               mainPanel.removeAll();

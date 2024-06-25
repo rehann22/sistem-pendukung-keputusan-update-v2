@@ -12,7 +12,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 
 public class Report {
-      
+
       public void ReportKurir() {
             InputStream reportStream = null;
             Connection conn = null;
@@ -57,7 +57,7 @@ public class Report {
       }
       
       
-      public void reportFromJTable(JTable table) {
+      public void ReportPeringkat(JTable table) {
             InputStream reportStream = null;
             try {
                   // Menggunakan path relatif untuk file .jrxml
@@ -68,7 +68,7 @@ public class Report {
 
                   // Compile file .jrxml menjadi .jasper
                   JasperPrint jp = JasperFillManager.fillReport(
-                  JasperCompileManager.compileReport(reportStream), new HashMap<>(), new JTableDataSource(table));
+                  JasperCompileManager.compileReport(reportStream), new HashMap<>(), new CetakTabelPeringkat(table));
 
                   // Menampilkan laporan
                   JasperViewer.viewReport(jp, false); // false untuk menutup aplikasi tanpa menutup laporan
@@ -128,5 +128,5 @@ public class Report {
                         }
                   }
              }
-       }
+      }
 }

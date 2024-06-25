@@ -51,6 +51,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
             spTable1 = new javax.swing.JScrollPane();
             tblPenilaianAlternatif = new com.swing.Table();
             jLabel2 = new javax.swing.JLabel();
+            btn_refresh = new swing.ButtonGradient();
             panelBorder3 = new com.swing.PanelBorder();
             spTable4 = new javax.swing.JScrollPane();
             tblPerankingan = new com.swing.Table();
@@ -102,6 +103,16 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
             jLabel2.setForeground(new java.awt.Color(97, 103, 122));
             jLabel2.setText("Penilaian Alternatif");
             panelBorder.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 220, -1));
+
+            btn_refresh.setText("Refresh");
+            btn_refresh.setColor1(new java.awt.Color(35, 20, 226));
+            btn_refresh.setColor2(new java.awt.Color(209, 18, 235));
+            btn_refresh.addActionListener(new java.awt.event.ActionListener() {
+                  public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        btn_refreshActionPerformed(evt);
+                  }
+            });
+            panelBorder.add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 90, 30));
 
             add(panelBorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 900, 460));
 
@@ -234,8 +245,19 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
             add(panelBorder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 970, 900, 460));
       }// </editor-fold>//GEN-END:initComponents
 
+      private void btn_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refreshActionPerformed
+            PenilaianKurir pnl = new PenilaianKurir();
+            pnl.TabelPenilaian(tblPenilaianAlternatif);
+
+            ProsesPerhitungan data = new ProsesPerhitungan();
+            data.DataPenilaianAlternatif(tblDataPenilaianAlternatif);
+            data.HitungNormalisasi(tblMatrixNormalisasi);
+            data.HitungPembobotan(tblHasilPembobotan, tblPerankingan);
+      }//GEN-LAST:event_btn_refreshActionPerformed
+
 
       // Variables declaration - do not modify//GEN-BEGIN:variables
+      private swing.ButtonGradient btn_refresh;
       private javax.swing.JLabel jLabel2;
       private javax.swing.JLabel jLabel3;
       private javax.swing.JLabel jLabel5;

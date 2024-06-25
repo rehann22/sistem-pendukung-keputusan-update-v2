@@ -1,5 +1,7 @@
 package com.admin.view;
 
+import com.admin.controler.Dashboard;
+import com.admin.controler.PenilaianKurir;
 import com.model.Model_Card;
 import com.swing.ScrollBar;
 import java.awt.Color;
@@ -11,12 +13,16 @@ public class PageDashboard extends javax.swing.JPanel {
 
       public PageDashboard() {
           
-            initComponents();        
-            card1.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/1.png")), "NULL",  0));
-            card2.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/1.png")), "NULL", 0));
-            card3.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/1.png")), "NULL", 0));
-            card4.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/1.png")), "NULL", 0));
+            initComponents();  
+            Dashboard data = new Dashboard();
+            card1.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/11.png")), "Total Alternatif",  data.totalAlternatif()));
+            card2.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/12.png")), "Total Kriteria", data.totalKriteria()));
+            card3.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/13.png")), "Total Sub Kriteria", data.totalCrips()));
+            card4.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/14.png")), "Total Penilaian", data.totalPenilainAlternatif()));
 
+            PenilaianKurir tab = new PenilaianKurir();
+            tab.TabelPenilaian(tabel_dashboard);
+            
             //  add row table
             spTable.setVerticalScrollBar(new ScrollBar());
             spTable.getVerticalScrollBar().setBackground(Color.WHITE);
@@ -41,8 +47,6 @@ public class PageDashboard extends javax.swing.JPanel {
             card2 = new com.component.Card();
             card3 = new com.component.Card();
             card4 = new com.component.Card();
-            panelBorder1 = new com.swing.PanelBorder();
-            jLabel3 = new javax.swing.JLabel();
             panelBorder2 = new com.swing.PanelBorder();
             jLabel2 = new javax.swing.JLabel();
             spTable = new javax.swing.JScrollPane();
@@ -71,22 +75,12 @@ public class PageDashboard extends javax.swing.JPanel {
 
             add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 915, -1));
 
-            panelBorder1.setBackground(new java.awt.Color(255, 255, 255));
-            panelBorder1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-            jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-            jLabel3.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel3.setText("Pengirman Paket Perbulan");
-            panelBorder1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-            add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 450, 350));
-
             panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
             panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
             jLabel2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel2.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel2.setText("Kurir Terbaik");
+            jLabel2.setText("Data Penilaian Alternatif");
             panelBorder2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
             spTable.setBorder(null);
@@ -109,9 +103,9 @@ public class PageDashboard extends javax.swing.JPanel {
             });
             spTable.setViewportView(tabel_dashboard);
 
-            panelBorder2.add(spTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 410, 280));
+            panelBorder2.add(spTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 880, 280));
 
-            add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 231, 450, 350));
+            add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 231, 920, 350));
       }// </editor-fold>//GEN-END:initComponents
 
 
@@ -121,9 +115,7 @@ public class PageDashboard extends javax.swing.JPanel {
       private com.component.Card card3;
       private com.component.Card card4;
       private javax.swing.JLabel jLabel2;
-      private javax.swing.JLabel jLabel3;
       private javax.swing.JLayeredPane panel;
-      private com.swing.PanelBorder panelBorder1;
       private com.swing.PanelBorder panelBorder2;
       private javax.swing.JScrollPane spTable;
       public com.swing.Table tabel_dashboard;

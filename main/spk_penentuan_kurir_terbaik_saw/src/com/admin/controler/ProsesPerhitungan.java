@@ -39,7 +39,7 @@ public class ProsesPerhitungan {
       }
 
       public void DataPenilaianAlternatif(JTable tabel) {
-            Object[] rows = {"Id Kurir", "Nama Kurir", "Lama Bekerja", "Kecepatan Pengiriman", "Pengiriman Berhasil Perbulan", "Pengiriman Gagal Perbulan"};
+            Object[] rows = {"Id Kurir", "Nama Kurir", "Lama Bekerja", "Kecepatan Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal"};
             modelTabelNilaiAlternatif = new DefaultTableModel(null, rows);
             tabel.setModel(modelTabelNilaiAlternatif);
 
@@ -146,7 +146,7 @@ public class ProsesPerhitungan {
       }
 
       public void HitungNormalisasi (JTable tabel) {
-            Object[] rows2 = {"Id Kurir", "Nama Kurir", "Lama Bekerja", "Kecepatan Pengiriman", "Pengiriman Berhasil Perbulan", "Pengiriman Gagal Perbulan"};
+            Object[] rows2 = {"Id Kurir", "Nama Kurir", "Lama Bekerja", "Kecepatan Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal"};
             modelTabelNormalisasi = new DefaultTableModel(null, rows2);
             tabel.setModel(modelTabelNormalisasi);
 
@@ -259,7 +259,7 @@ public class ProsesPerhitungan {
       public void HitungPembobotan (JTable tblHasilPembobotan, JTable tblHasilPerankingan) {
             
             // Model untuk tabel pembobotan
-            Object[] hasilPembobotan = {"Id Kurir", "Nama Kurir", "Lama Bekerja", "Kecepatan Pengiriman", "Pengiriman Berhasil Perbulan", "Pengiriman Gagal Perbulan", "Total"};
+            Object[] hasilPembobotan = {"Id Kurir", "Nama Kurir", "Lama Bekerja", "Kecepatan Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal", "Total"};
             modelTabelPembobotan = new DefaultTableModel(null, hasilPembobotan);
             tblHasilPembobotan.setModel(modelTabelPembobotan);
 

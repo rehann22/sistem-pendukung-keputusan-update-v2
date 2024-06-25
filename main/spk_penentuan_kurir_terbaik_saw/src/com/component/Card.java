@@ -49,11 +49,11 @@ public class Card extends javax.swing.JPanel {
             lbKeterangan = new javax.swing.JLabel();
             lbTotal = new javax.swing.JLabel();
 
-            lbKeterangan.setFont(new java.awt.Font("sansserif", 1, 20)); // NOI18N
+            lbKeterangan.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             lbKeterangan.setForeground(new java.awt.Color(255, 255, 255));
             lbKeterangan.setText("Keterangan");
 
-            lbTotal.setFont(new java.awt.Font("sansserif", 1, 20)); // NOI18N
+            lbTotal.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
             lbTotal.setForeground(new java.awt.Color(255, 255, 255));
             lbTotal.setText("Total");
 
@@ -65,9 +65,9 @@ public class Card extends javax.swing.JPanel {
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                               .addComponent(lbTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                              .addComponent(lbKeterangan, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                              .addComponent(lbIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(217, Short.MAX_VALUE))
+                              .addComponent(lbIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                              .addComponent(lbKeterangan, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(77, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
                   layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

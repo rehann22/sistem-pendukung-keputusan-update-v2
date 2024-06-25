@@ -8,7 +8,11 @@ public class FormPenilaian extends javax.swing.JFrame {
       public FormPenilaian() {
             initComponents();
             PenilaianKurir data = new PenilaianKurir();
-            data.TampilIdKurir(cbb_IdKurir);
+            data.IdKurir(cbb_IdKurir);
+            data.PenilaianKurir(lamaKerja, "c01");
+            data.PenilaianKurir(kecepatanPengiriman, "c02");
+            data.PenilaianKurir(pengirimanSukses, "c03");
+            data.PenilaianKurir(pengirimanGagal, "c04");
       }
 
       @SuppressWarnings("unchecked")
@@ -19,6 +23,10 @@ public class FormPenilaian extends javax.swing.JFrame {
             btn_ubah = new swing.ButtonGradient();
             btn_simpan = new swing.ButtonGradient();
             cbb_IdKurir = new combobox.Combobox();
+            lamaKerja = new combobox.Combobox();
+            kecepatanPengiriman = new combobox.Combobox();
+            pengirimanSukses = new combobox.Combobox();
+            pengirimanGagal = new combobox.Combobox();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
             getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,6 +59,22 @@ public class FormPenilaian extends javax.swing.JFrame {
             cbb_IdKurir.setLabeText("Id Kurir");
             jPanel1.add(cbb_IdKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 270, 50));
 
+            lamaKerja.setForeground(new java.awt.Color(97, 103, 122));
+            lamaKerja.setLabeText("Lama Bekerja");
+            jPanel1.add(lamaKerja, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 270, -1));
+
+            kecepatanPengiriman.setForeground(new java.awt.Color(97, 103, 122));
+            kecepatanPengiriman.setLabeText("Kecepatan Pengiriman");
+            jPanel1.add(kecepatanPengiriman, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 270, -1));
+
+            pengirimanSukses.setForeground(new java.awt.Color(97, 103, 122));
+            pengirimanSukses.setLabeText("Pengiriman Berhasil Perbulan");
+            jPanel1.add(pengirimanSukses, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 270, -1));
+
+            pengirimanGagal.setForeground(new java.awt.Color(97, 103, 122));
+            pengirimanGagal.setLabeText("Pengiriman Gagal Perbulan");
+            jPanel1.add(pengirimanGagal, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 270, -1));
+
             getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 500));
 
             pack();
@@ -58,11 +82,13 @@ public class FormPenilaian extends javax.swing.JFrame {
       }// </editor-fold>//GEN-END:initComponents
 
       private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
-
+            PenilaianKurir data = new PenilaianKurir();
+            data.btnSimpan(cbb_IdKurir, lamaKerja, kecepatanPengiriman, pengirimanSukses, pengirimanGagal);
       }//GEN-LAST:event_btn_simpanActionPerformed
 
       private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
-           
+            PenilaianKurir data = new PenilaianKurir();
+            data.btnUbah(cbb_IdKurir, lamaKerja, kecepatanPengiriman, pengirimanSukses, pengirimanGagal);
       }//GEN-LAST:event_btn_ubahActionPerformed
 
       public static void main(String args[]) {
@@ -78,7 +104,11 @@ public class FormPenilaian extends javax.swing.JFrame {
       // Variables declaration - do not modify//GEN-BEGIN:variables
       private swing.ButtonGradient btn_simpan;
       private swing.ButtonGradient btn_ubah;
-      private combobox.Combobox cbb_IdKurir;
+      public combobox.Combobox cbb_IdKurir;
       private javax.swing.JPanel jPanel1;
+      public combobox.Combobox kecepatanPengiriman;
+      public combobox.Combobox lamaKerja;
+      public combobox.Combobox pengirimanGagal;
+      public combobox.Combobox pengirimanSukses;
       // End of variables declaration//GEN-END:variables
 }

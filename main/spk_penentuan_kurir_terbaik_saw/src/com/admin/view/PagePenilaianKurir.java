@@ -42,6 +42,7 @@ public class PagePenilaianKurir extends javax.swing.JPanel {
             jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel1.setForeground(new java.awt.Color(97, 103, 122));
             jLabel1.setText("Penilaian Alternatif");
+            jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
                   public void mouseClicked(java.awt.event.MouseEvent evt) {
                         jLabel1MouseClicked(evt);
@@ -110,11 +111,15 @@ public class PagePenilaianKurir extends javax.swing.JPanel {
       }//GEN-LAST:event_btn_TambahActionPerformed
 
       private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
-
+            PenilaianKurir data = new PenilaianKurir();
+            data.btnHapus(tblPenilaianKurir); 
       }//GEN-LAST:event_btn_hapusActionPerformed
 
       private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
-            // TODO add your handling code here:
+            FormPenilaian formP = new FormPenilaian();
+            PenilaianKurir data = new PenilaianKurir();
+            data.TampilFormEditPenilaian(tblPenilaianKurir, formP.cbb_IdKurir, formP.lamaKerja, formP.kecepatanPengiriman, formP.pengirimanSukses, formP.pengirimanGagal);
+            formP.setVisible(true);
       }//GEN-LAST:event_btn_ubahActionPerformed
 
       private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked

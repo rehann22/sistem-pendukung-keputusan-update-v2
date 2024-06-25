@@ -88,9 +88,8 @@ public class PageLaporan extends javax.swing.JPanel {
       private void dataPeringkatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataPeringkatMouseClicked
             PageProsesPerhitungan tab = new PageProsesPerhitungan(); // Inisialisasi atau ambil JTable Anda
             // Inisialisasi JTable dengan data atau model yang sesuai
-
             Report reportGenerator = new Report();
-            reportGenerator.reportFromJTable(tab.tblPerankingan);
+            reportGenerator.ReportPeringkat(tab.tblPerankingan);
 
       }//GEN-LAST:event_dataPeringkatMouseClicked
 

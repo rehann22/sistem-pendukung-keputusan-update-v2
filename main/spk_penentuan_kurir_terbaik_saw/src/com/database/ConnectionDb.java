@@ -16,7 +16,7 @@ public class ConnectionDb {
             String url = "jdbc:mysql://localhost:3306/spk_saw";
             
             try {
-                  connectionDb = DriverManager.getConnection(url, "root" , "");
+                  connectionDb = DriverManager.getConnection(url, "root" , "pass");
 //                  System.out.println("Berhasil Koneksi Database");
             } catch (SQLException ex) {
                   System.out.println("Gagal koneksi database!!!" + ex);

@@ -50,7 +50,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="7a" green="67" red="61" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Sub Kriteria C1"/>
+            <Property name="text" type="java.lang.String" value="Sub Kriteria C01"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -217,7 +217,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="7a" green="67" red="61" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Sub Kriteria C4"/>
+            <Property name="text" type="java.lang.String" value="Sub Kriteria C04"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -381,7 +381,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="7a" green="67" red="61" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Sub Kriteria C2"/>
+            <Property name="text" type="java.lang.String" value="Sub Kriteria C02"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -545,7 +545,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="7a" green="67" red="61" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Sub Kriteria C3"/>
+            <Property name="text" type="java.lang.String" value="Sub Kriteria C03"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>

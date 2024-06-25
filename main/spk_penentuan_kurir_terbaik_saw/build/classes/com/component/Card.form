@@ -20,10 +20,10 @@
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lbTotal" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
-                  <Component id="lbKeterangan" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
                   <Component id="lbIcon" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
+                  <Component id="lbKeterangan" alignment="0" min="-2" pref="277" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="217" max="32767" attributes="0"/>
+              <EmptySpace pref="77" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,7 +47,7 @@
     <Component class="javax.swing.JLabel" name="lbKeterangan">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="sansserif" size="20" style="1"/>
+          <Font name="sansserif" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -58,7 +58,7 @@
     <Component class="javax.swing.JLabel" name="lbTotal">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="sansserif" size="20" style="1"/>
+          <Font name="sansserif" size="24" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>

@@ -75,7 +75,7 @@ public class PageDataSubKriteria extends javax.swing.JPanel {
 
             jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel1.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel1.setText("Sub Kriteria C1");
+            jLabel1.setText("Sub Kriteria C01");
             jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
                   public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -144,7 +144,7 @@ public class PageDataSubKriteria extends javax.swing.JPanel {
 
             jLabel2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel2.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel2.setText("Sub Kriteria C4");
+            jLabel2.setText("Sub Kriteria C04");
             jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
                   public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -212,7 +212,7 @@ public class PageDataSubKriteria extends javax.swing.JPanel {
 
             jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel3.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel3.setText("Sub Kriteria C2");
+            jLabel3.setText("Sub Kriteria C02");
             jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
                   public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -280,7 +280,7 @@ public class PageDataSubKriteria extends javax.swing.JPanel {
 
             jLabel4.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel4.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel4.setText("Sub Kriteria C3");
+            jLabel4.setText("Sub Kriteria C03");
             jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
                   public void mouseClicked(java.awt.event.MouseEvent evt) {

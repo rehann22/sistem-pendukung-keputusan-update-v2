@@ -7,12 +7,12 @@ import net.sf.jasperreports.engine.JRField;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
-public class JTableDataSource implements JRDataSource {
+public class CetakTabelPeringkat implements JRDataSource {
 
       private final TableModel tableModel;
       private int rowIndex = -1;
 
-      public JTableDataSource(JTable table) {
+      public CetakTabelPeringkat(JTable table) {
           this.tableModel = table.getModel();
       }
 

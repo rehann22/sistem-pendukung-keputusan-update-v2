@@ -37,7 +37,7 @@ FROM tbl_data_kurir;]]>
 		<band height="112">
 			<image>
 				<reportElement x="1" y="14" width="113" height="65" uuid="e58d536b-f775-43b5-b5b8-283a49705f1b"/>
-				<imageExpression><![CDATA["C:\\Users\\hafid\\Downloads\\sapx-logo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["D:\\Netbeans\\spk kurir terbaik\\main\\spk_penentuan_kurir_terbaik_saw\\src\\com\\icon\\sapx-logo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="0" y="14" width="555" height="26" uuid="2ac6a693-ba82-4400-b4a1-9b7a05570c86"/>
