@@ -26,12 +26,13 @@ public class PagePenilaianKurir extends javax.swing.JPanel {
       private void initComponents() {
 
             panelBorder = new com.swing.PanelBorder();
-            jLabel1 = new javax.swing.JLabel();
+            refresh = new javax.swing.JLabel();
             spTable = new javax.swing.JScrollPane();
             tblPenilaianKurir = new com.swing.Table();
             btn_hapus = new swing.ButtonGradient();
             btn_Tambah = new swing.ButtonGradient();
             btn_ubah = new swing.ButtonGradient();
+            txt_cari = new textfield.TextField();
 
             setBackground(new java.awt.Color(242, 242, 242));
             setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -39,16 +40,16 @@ public class PagePenilaianKurir extends javax.swing.JPanel {
             panelBorder.setBackground(new java.awt.Color(255, 255, 255));
             panelBorder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-            jLabel1.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel1.setText("Penilaian Alternatif");
-            jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            refresh.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+            refresh.setForeground(new java.awt.Color(97, 103, 122));
+            refresh.setText("Penilaian Alternatif");
+            refresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            refresh.addMouseListener(new java.awt.event.MouseAdapter() {
                   public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        jLabel1MouseClicked(evt);
+                        refreshMouseClicked(evt);
                   }
             });
-            panelBorder.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 190, -1));
+            panelBorder.add(refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 190, -1));
 
             spTable.setBorder(null);
 
@@ -102,6 +103,16 @@ public class PagePenilaianKurir extends javax.swing.JPanel {
             });
             panelBorder.add(btn_ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, 90, 30));
 
+            txt_cari.setBackground(new java.awt.Color(255, 255, 255));
+            txt_cari.setForeground(new java.awt.Color(97, 103, 122));
+            txt_cari.setLabelText("Cari");
+            txt_cari.addKeyListener(new java.awt.event.KeyAdapter() {
+                  public void keyPressed(java.awt.event.KeyEvent evt) {
+                        txt_cariKeyPressed(evt);
+                  }
+            });
+            panelBorder.add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 10, 120, -1));
+
             add(panelBorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 915, 570));
       }// </editor-fold>//GEN-END:initComponents
 
@@ -113,6 +124,7 @@ public class PagePenilaianKurir extends javax.swing.JPanel {
       private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
             PenilaianKurir data = new PenilaianKurir();
             data.btnHapus(tblPenilaianKurir); 
+            data.TabelPenilaian(tblPenilaianKurir);
       }//GEN-LAST:event_btn_hapusActionPerformed
 
       private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
@@ -122,19 +134,26 @@ public class PagePenilaianKurir extends javax.swing.JPanel {
             formP.setVisible(true);
       }//GEN-LAST:event_btn_ubahActionPerformed
 
-      private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+      private void refreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshMouseClicked
             PenilaianKurir pnl = new PenilaianKurir();
             pnl.TabelPenilaian(tblPenilaianKurir);
-      }//GEN-LAST:event_jLabel1MouseClicked
+            txt_cari.setText("");
+      }//GEN-LAST:event_refreshMouseClicked
+
+      private void txt_cariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyPressed
+            PenilaianKurir pnl = new PenilaianKurir();
+            pnl.CariData(txt_cari, tblPenilaianKurir);
+      }//GEN-LAST:event_txt_cariKeyPressed
 
 
       // Variables declaration - do not modify//GEN-BEGIN:variables
       private swing.ButtonGradient btn_Tambah;
       private swing.ButtonGradient btn_hapus;
       private swing.ButtonGradient btn_ubah;
-      private javax.swing.JLabel jLabel1;
       private com.swing.PanelBorder panelBorder;
+      private javax.swing.JLabel refresh;
       private javax.swing.JScrollPane spTable;
       public com.swing.Table tblPenilaianKurir;
+      private textfield.TextField txt_cari;
       // End of variables declaration//GEN-END:variables
 }

@@ -26,12 +26,25 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
             TScrolPane(spTable5);
             TScrolPane(spTable6);
             
-            tblPenilaianAlternatif.getColumnModel().getColumn(0).setPreferredWidth(0); 
-            tblDataPenilaianAlternatif.getColumnModel().getColumn(0).setPreferredWidth(0); 
-            tblMatrixNormalisasi.getColumnModel().getColumn(0).setPreferredWidth(0); 
-            tblHasilPembobotan.getColumnModel().getColumn(0).setPreferredWidth(0); 
-            tblHasilPembobotan.getColumnModel().getColumn(6).setPreferredWidth(10); 
-            tblPerankingan.getColumnModel().getColumn(0).setPreferredWidth(0); 
+            TabelWidth(tblPenilaianAlternatif, 0, 0);
+            TabelWidth(tblPenilaianAlternatif, 2, 10);
+            
+            TabelWidth(tblDataPenilaianAlternatif, 0, 0);
+            TabelWidth(tblDataPenilaianAlternatif, 2, 10);
+            
+            TabelWidth(tblMatrixNormalisasi, 0, 0);
+            TabelWidth(tblMatrixNormalisasi, 2, 10);
+            
+            TabelWidth(tblHasilPembobotan, 0, 0);
+            TabelWidth(tblHasilPembobotan, 2, 30);
+            TabelWidth(tblHasilPembobotan, 6, 10);
+            
+            TabelWidth(tblPerankingan, 0, 0);
+            TabelWidth(tblPerankingan, 2, 10);
+      }
+      
+      private void TabelWidth (JTable tabel, int index, int width) {
+            tabel.getColumnModel().getColumn(index).setPreferredWidth(width);
       }
     
       private void TScrolPane (JScrollPane scroll) {
@@ -253,6 +266,22 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
             data.DataPenilaianAlternatif(tblDataPenilaianAlternatif);
             data.HitungNormalisasi(tblMatrixNormalisasi);
             data.HitungPembobotan(tblHasilPembobotan, tblPerankingan);
+            
+            TabelWidth(tblPenilaianAlternatif, 0, 0);
+            TabelWidth(tblPenilaianAlternatif, 2, 10);
+            
+            TabelWidth(tblDataPenilaianAlternatif, 0, 0);
+            TabelWidth(tblDataPenilaianAlternatif, 2, 10);
+            
+            TabelWidth(tblMatrixNormalisasi, 0, 0);
+            TabelWidth(tblMatrixNormalisasi, 2, 10);
+            
+            TabelWidth(tblHasilPembobotan, 0, 0);
+            TabelWidth(tblHasilPembobotan, 2, 30);
+            TabelWidth(tblHasilPembobotan, 6, 10);
+            
+            TabelWidth(tblPerankingan, 0, 0);
+            TabelWidth(tblPerankingan, 2, 10);
       }//GEN-LAST:event_btn_refreshActionPerformed
 
 

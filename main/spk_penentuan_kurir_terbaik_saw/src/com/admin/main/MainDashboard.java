@@ -39,7 +39,7 @@ public class MainDashboard extends javax.swing.JFrame {
                 @Override
                 public void selected(int index) {
                         if (index == 0) {
-                            setForm(admin_dashboard);
+                            setForm(admin_dashboard); 
                         } else if (index == 1) {
                             setForm(dataKurir);
                         } else if (index == 2) {
@@ -67,22 +67,22 @@ public class MainDashboard extends javax.swing.JFrame {
       }
 
       private void setForm(JComponent com) {
-              mainPanel.removeAll();
+            mainPanel.removeAll();
 
-              // Create a JScrollPane and add the component
-              JScrollPane scrollPane = new JScrollPane(com); // <-- Corrected variable name here
-              scrollPane.setBorder(null); // Remove the border
-              scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-              scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+            // Create a JScrollPane and add the component
+            JScrollPane scrollPane = new JScrollPane(com); // <-- Corrected variable name here
+            scrollPane.setBorder(null); // Remove the border
+            scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-              // Set the custom UI for the scrollbars
-              scrollPane.getHorizontalScrollBar().setUI(new ModernScrollBarUI());
-              scrollPane.getVerticalScrollBar().setUI(new ModernScrollBarUI());
+            // Set the custom UI for the scrollbars
+            scrollPane.getHorizontalScrollBar().setUI(new ModernScrollBarUI());
+            scrollPane.getVerticalScrollBar().setUI(new ModernScrollBarUI());
 
-              mainPanel.add(scrollPane);
-              mainPanel.repaint();
-              mainPanel.revalidate();
-      }
+            mainPanel.add(scrollPane);
+            mainPanel.repaint();
+            mainPanel.revalidate();
+    }
 
 
 

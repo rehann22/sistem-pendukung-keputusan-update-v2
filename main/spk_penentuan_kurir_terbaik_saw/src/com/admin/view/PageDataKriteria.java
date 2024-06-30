@@ -8,18 +8,18 @@ import javax.swing.JScrollPane;
 
 public class PageDataKriteria extends javax.swing.JPanel {
 
-    public PageDataKriteria() {
-          initComponents();
-          DataKriteria data = new DataKriteria();
-          data.TabelKriteria(tblKriteria);
-          
-          spTable.setVerticalScrollBar(new ScrollBar());
-          spTable.getVerticalScrollBar().setBackground(Color.WHITE);
-          spTable.getViewport().setBackground(Color.WHITE);
-          JPanel p = new JPanel();
-          p.setBackground(Color.WHITE);
-          spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
-    }
+      public PageDataKriteria() {
+            initComponents();
+            DataKriteria data = new DataKriteria();
+            data.TabelKriteria(tblKriteria);
+
+            spTable.setVerticalScrollBar(new ScrollBar());
+            spTable.getVerticalScrollBar().setBackground(Color.WHITE);
+            spTable.getViewport().setBackground(Color.WHITE);
+            JPanel p = new JPanel();
+            p.setBackground(Color.WHITE);
+            spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
+      }
     
     
     @SuppressWarnings("unchecked")
@@ -110,21 +110,19 @@ public class PageDataKriteria extends javax.swing.JPanel {
       private void btn_tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahActionPerformed
             DataKriteria data = new DataKriteria();
             FormDataKriteria form = new FormDataKriteria();
-            //data.autoNumber(form.txtKodeKriteria);
             form.setVisible(true);
       }//GEN-LAST:event_btn_tambahActionPerformed
 
       private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
             DataKriteria data = new DataKriteria();
             FormDataKriteria form = new FormDataKriteria();
+            data.FormEditKriteria(tblKriteria, form.txtKodeKriteria, form.txtNamaKriteria, form.txtNilai, form.cbbJenis);
             form.setVisible(true);
-            //data.TampilFormKriteria(tblKriteria, form.txtKodeKriteria, form.txtNamaKriteria, form.txtNilai, form.cbbJenis);
-
       }//GEN-LAST:event_btn_ubahActionPerformed
 
       private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
-             DataKriteria data = new DataKriteria();
-             //data.HapusKriteria(tblKriteria);
+            DataKriteria data = new DataKriteria();
+            data.HapusDataKriteria(tblKriteria);
       }//GEN-LAST:event_btn_hapusActionPerformed
 
       private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked

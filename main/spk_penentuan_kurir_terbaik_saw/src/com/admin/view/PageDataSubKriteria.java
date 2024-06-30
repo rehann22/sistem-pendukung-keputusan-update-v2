@@ -9,28 +9,28 @@ import javax.swing.JScrollPane;
 
 public class PageDataSubKriteria extends javax.swing.JPanel {
 
-    public PageDataSubKriteria() {
-          initComponents();
-          DataSubKriteria data = new DataSubKriteria();
-          data.Criteria1(tbl_sub_c1);
-          data.Criteria2(tbl_sub_c2);
-          data.Criteria3(tbl_sub_c3);
-          data.Criteria4(tbl_sub_c4);
-          
-          TScrolPane(spTable);
-          TScrolPane(spTable1);
-          TScrolPane(spTable2);
-          TScrolPane(spTable3);
-    }
+      public PageDataSubKriteria() {
+            initComponents();
+            DataSubKriteria data = new DataSubKriteria();
+            data.TblSubKriteria(tbl_sub_c1, "c01");
+            data.TblSubKriteria(tbl_sub_c2, "c02");
+            data.TblSubKriteria(tbl_sub_c3, "c03");
+            data.TblSubKriteria(tbl_sub_c4, "c04");
+
+            TScrolPane(spTable);
+            TScrolPane(spTable1);
+            TScrolPane(spTable2);
+            TScrolPane(spTable3);
+      }
     
-        private void TScrolPane (JScrollPane scroll) {
+      private void TScrolPane (JScrollPane scroll) {
             scroll.setVerticalScrollBar(new ScrollBar());
             scroll.getVerticalScrollBar().setBackground(Color.WHITE);
             scroll.getViewport().setBackground(Color.WHITE);
             JPanel p = new JPanel();
             p.setBackground(Color.WHITE);
             scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
-    }
+      }
     
     
     @SuppressWarnings("unchecked")
@@ -38,33 +38,29 @@ public class PageDataSubKriteria extends javax.swing.JPanel {
       private void initComponents() {
 
             panelBorder = new com.swing.PanelBorder();
-            jLabel1 = new javax.swing.JLabel();
+            refresh_c01 = new javax.swing.JLabel();
             spTable = new javax.swing.JScrollPane();
             tbl_sub_c1 = new com.swing.Table();
-            btn_tambah = new swing.ButtonGradient();
-            btn_hapus = new swing.ButtonGradient();
-            btn_ubah = new swing.ButtonGradient();
+            tambah_c01 = new swing.ButtonGradient();
+            hapus_c01 = new swing.ButtonGradient();
             panelBorder1 = new com.swing.PanelBorder();
-            jLabel2 = new javax.swing.JLabel();
+            refresh_c04 = new javax.swing.JLabel();
             spTable1 = new javax.swing.JScrollPane();
             tbl_sub_c4 = new com.swing.Table();
-            btn_tambah1 = new swing.ButtonGradient();
-            btn_hapus1 = new swing.ButtonGradient();
-            btn_ubah1 = new swing.ButtonGradient();
+            tambah_c04 = new swing.ButtonGradient();
+            hapus_c04 = new swing.ButtonGradient();
             panelBorder2 = new com.swing.PanelBorder();
-            jLabel3 = new javax.swing.JLabel();
+            refresh_c02 = new javax.swing.JLabel();
             spTable2 = new javax.swing.JScrollPane();
             tbl_sub_c2 = new com.swing.Table();
-            btn_tambah2 = new swing.ButtonGradient();
-            btn_hapus2 = new swing.ButtonGradient();
-            btn_ubah2 = new swing.ButtonGradient();
+            tambah_c02 = new swing.ButtonGradient();
+            hapus_c02 = new swing.ButtonGradient();
             panelBorder3 = new com.swing.PanelBorder();
-            jLabel4 = new javax.swing.JLabel();
+            refresh_c03 = new javax.swing.JLabel();
             spTable3 = new javax.swing.JScrollPane();
             tbl_sub_c3 = new com.swing.Table();
-            btn_tambah3 = new swing.ButtonGradient();
-            btn_hapus3 = new swing.ButtonGradient();
-            btn_ubah3 = new swing.ButtonGradient();
+            tambah_c03 = new swing.ButtonGradient();
+            hapus_c03 = new swing.ButtonGradient();
 
             setBackground(new java.awt.Color(242, 242, 242));
             setPreferredSize(new java.awt.Dimension(920, 1340));
@@ -73,16 +69,16 @@ public class PageDataSubKriteria extends javax.swing.JPanel {
             panelBorder.setBackground(new java.awt.Color(255, 255, 255));
             panelBorder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-            jLabel1.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel1.setText("Sub Kriteria C01");
-            jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            refresh_c01.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+            refresh_c01.setForeground(new java.awt.Color(97, 103, 122));
+            refresh_c01.setText("Sub Kriteria C01");
+            refresh_c01.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            refresh_c01.addMouseListener(new java.awt.event.MouseAdapter() {
                   public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        jLabel1MouseClicked(evt);
+                        refresh_c01MouseClicked(evt);
                   }
             });
-            panelBorder.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 24, -1, 40));
+            panelBorder.add(refresh_c01, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 24, -1, 40));
 
             spTable.setBorder(null);
 
@@ -106,35 +102,25 @@ public class PageDataSubKriteria extends javax.swing.JPanel {
 
             panelBorder.add(spTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 220));
 
-            btn_tambah.setText("Tambah");
-            btn_tambah.setColor1(new java.awt.Color(35, 20, 226));
-            btn_tambah.setColor2(new java.awt.Color(209, 18, 235));
-            btn_tambah.addActionListener(new java.awt.event.ActionListener() {
+            tambah_c01.setText("Tambah");
+            tambah_c01.setColor1(new java.awt.Color(35, 20, 226));
+            tambah_c01.setColor2(new java.awt.Color(209, 18, 235));
+            tambah_c01.addActionListener(new java.awt.event.ActionListener() {
                   public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_tambahActionPerformed(evt);
+                        tambah_c01ActionPerformed(evt);
                   }
             });
-            panelBorder.add(btn_tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 90, 30));
+            panelBorder.add(tambah_c01, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 90, 30));
 
-            btn_hapus.setText("Hapus");
-            btn_hapus.setColor1(new java.awt.Color(35, 20, 226));
-            btn_hapus.setColor2(new java.awt.Color(209, 18, 235));
-            btn_hapus.addActionListener(new java.awt.event.ActionListener() {
+            hapus_c01.setText("Hapus");
+            hapus_c01.setColor1(new java.awt.Color(35, 20, 226));
+            hapus_c01.setColor2(new java.awt.Color(209, 18, 235));
+            hapus_c01.addActionListener(new java.awt.event.ActionListener() {
                   public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_hapusActionPerformed(evt);
+                        hapus_c01ActionPerformed(evt);
                   }
             });
-            panelBorder.add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, 90, 30));
-
-            btn_ubah.setText("Ubah");
-            btn_ubah.setColor1(new java.awt.Color(35, 20, 226));
-            btn_ubah.setColor2(new java.awt.Color(209, 18, 235));
-            btn_ubah.addActionListener(new java.awt.event.ActionListener() {
-                  public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_ubahActionPerformed(evt);
-                  }
-            });
-            panelBorder.add(btn_ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 90, 30));
+            panelBorder.add(hapus_c01, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, 90, 30));
 
             add(panelBorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 900, 310));
 
@@ -142,16 +128,16 @@ public class PageDataSubKriteria extends javax.swing.JPanel {
             panelBorder1.setPreferredSize(new java.awt.Dimension(880, 290));
             panelBorder1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            jLabel2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-            jLabel2.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel2.setText("Sub Kriteria C04");
-            jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            refresh_c04.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+            refresh_c04.setForeground(new java.awt.Color(97, 103, 122));
+            refresh_c04.setText("Sub Kriteria C04");
+            refresh_c04.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            refresh_c04.addMouseListener(new java.awt.event.MouseAdapter() {
                   public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        jLabel2MouseClicked(evt);
+                        refresh_c04MouseClicked(evt);
                   }
             });
-            panelBorder1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 24, -1, 40));
+            panelBorder1.add(refresh_c04, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 24, -1, 40));
 
             spTable1.setBorder(null);
 
@@ -175,51 +161,41 @@ public class PageDataSubKriteria extends javax.swing.JPanel {
 
             panelBorder1.add(spTable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 220));
 
-            btn_tambah1.setText("Tambah");
-            btn_tambah1.setColor1(new java.awt.Color(35, 20, 226));
-            btn_tambah1.setColor2(new java.awt.Color(209, 18, 235));
-            btn_tambah1.addActionListener(new java.awt.event.ActionListener() {
+            tambah_c04.setText("Tambah");
+            tambah_c04.setColor1(new java.awt.Color(35, 20, 226));
+            tambah_c04.setColor2(new java.awt.Color(209, 18, 235));
+            tambah_c04.addActionListener(new java.awt.event.ActionListener() {
                   public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_tambah1ActionPerformed(evt);
+                        tambah_c04ActionPerformed(evt);
                   }
             });
-            panelBorder1.add(btn_tambah1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 90, 30));
+            panelBorder1.add(tambah_c04, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 90, 30));
 
-            btn_hapus1.setText("Hapus");
-            btn_hapus1.setColor1(new java.awt.Color(35, 20, 226));
-            btn_hapus1.setColor2(new java.awt.Color(209, 18, 235));
-            btn_hapus1.addActionListener(new java.awt.event.ActionListener() {
+            hapus_c04.setText("Hapus");
+            hapus_c04.setColor1(new java.awt.Color(35, 20, 226));
+            hapus_c04.setColor2(new java.awt.Color(209, 18, 235));
+            hapus_c04.addActionListener(new java.awt.event.ActionListener() {
                   public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_hapus1ActionPerformed(evt);
+                        hapus_c04ActionPerformed(evt);
                   }
             });
-            panelBorder1.add(btn_hapus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, 90, 30));
-
-            btn_ubah1.setText("Ubah");
-            btn_ubah1.setColor1(new java.awt.Color(35, 20, 226));
-            btn_ubah1.setColor2(new java.awt.Color(209, 18, 235));
-            btn_ubah1.addActionListener(new java.awt.event.ActionListener() {
-                  public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_ubah1ActionPerformed(evt);
-                  }
-            });
-            panelBorder1.add(btn_ubah1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 90, 30));
+            panelBorder1.add(hapus_c04, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, 90, 30));
 
             add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1000, 900, 310));
 
             panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
             panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-            jLabel3.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel3.setText("Sub Kriteria C02");
-            jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            refresh_c02.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+            refresh_c02.setForeground(new java.awt.Color(97, 103, 122));
+            refresh_c02.setText("Sub Kriteria C02");
+            refresh_c02.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            refresh_c02.addMouseListener(new java.awt.event.MouseAdapter() {
                   public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        jLabel3MouseClicked(evt);
+                        refresh_c02MouseClicked(evt);
                   }
             });
-            panelBorder2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 24, -1, 40));
+            panelBorder2.add(refresh_c02, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 24, -1, 40));
 
             spTable2.setBorder(null);
 
@@ -243,51 +219,41 @@ public class PageDataSubKriteria extends javax.swing.JPanel {
 
             panelBorder2.add(spTable2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 220));
 
-            btn_tambah2.setText("Tambah");
-            btn_tambah2.setColor1(new java.awt.Color(35, 20, 226));
-            btn_tambah2.setColor2(new java.awt.Color(209, 18, 235));
-            btn_tambah2.addActionListener(new java.awt.event.ActionListener() {
+            tambah_c02.setText("Tambah");
+            tambah_c02.setColor1(new java.awt.Color(35, 20, 226));
+            tambah_c02.setColor2(new java.awt.Color(209, 18, 235));
+            tambah_c02.addActionListener(new java.awt.event.ActionListener() {
                   public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_tambah2ActionPerformed(evt);
+                        tambah_c02ActionPerformed(evt);
                   }
             });
-            panelBorder2.add(btn_tambah2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 90, 30));
+            panelBorder2.add(tambah_c02, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 90, 30));
 
-            btn_hapus2.setText("Hapus");
-            btn_hapus2.setColor1(new java.awt.Color(35, 20, 226));
-            btn_hapus2.setColor2(new java.awt.Color(209, 18, 235));
-            btn_hapus2.addActionListener(new java.awt.event.ActionListener() {
+            hapus_c02.setText("Hapus");
+            hapus_c02.setColor1(new java.awt.Color(35, 20, 226));
+            hapus_c02.setColor2(new java.awt.Color(209, 18, 235));
+            hapus_c02.addActionListener(new java.awt.event.ActionListener() {
                   public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_hapus2ActionPerformed(evt);
+                        hapus_c02ActionPerformed(evt);
                   }
             });
-            panelBorder2.add(btn_hapus2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, 90, 30));
-
-            btn_ubah2.setText("Ubah");
-            btn_ubah2.setColor1(new java.awt.Color(35, 20, 226));
-            btn_ubah2.setColor2(new java.awt.Color(209, 18, 235));
-            btn_ubah2.addActionListener(new java.awt.event.ActionListener() {
-                  public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_ubah2ActionPerformed(evt);
-                  }
-            });
-            panelBorder2.add(btn_ubah2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 90, 30));
+            panelBorder2.add(hapus_c02, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, 90, 30));
 
             add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 900, 310));
 
             panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
             panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            jLabel4.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-            jLabel4.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel4.setText("Sub Kriteria C03");
-            jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            refresh_c03.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+            refresh_c03.setForeground(new java.awt.Color(97, 103, 122));
+            refresh_c03.setText("Sub Kriteria C03");
+            refresh_c03.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            refresh_c03.addMouseListener(new java.awt.event.MouseAdapter() {
                   public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        jLabel4MouseClicked(evt);
+                        refresh_c03MouseClicked(evt);
                   }
             });
-            panelBorder3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 24, -1, 40));
+            panelBorder3.add(refresh_c03, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 24, -1, 40));
 
             spTable3.setBorder(null);
 
@@ -311,130 +277,116 @@ public class PageDataSubKriteria extends javax.swing.JPanel {
 
             panelBorder3.add(spTable3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 220));
 
-            btn_tambah3.setText("Tambah");
-            btn_tambah3.setColor1(new java.awt.Color(35, 20, 226));
-            btn_tambah3.setColor2(new java.awt.Color(209, 18, 235));
-            btn_tambah3.addActionListener(new java.awt.event.ActionListener() {
+            tambah_c03.setText("Tambah");
+            tambah_c03.setColor1(new java.awt.Color(35, 20, 226));
+            tambah_c03.setColor2(new java.awt.Color(209, 18, 235));
+            tambah_c03.addActionListener(new java.awt.event.ActionListener() {
                   public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_tambah3ActionPerformed(evt);
+                        tambah_c03ActionPerformed(evt);
                   }
             });
-            panelBorder3.add(btn_tambah3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 90, 30));
+            panelBorder3.add(tambah_c03, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 90, 30));
 
-            btn_hapus3.setText("Hapus");
-            btn_hapus3.setColor1(new java.awt.Color(35, 20, 226));
-            btn_hapus3.setColor2(new java.awt.Color(209, 18, 235));
-            btn_hapus3.addActionListener(new java.awt.event.ActionListener() {
+            hapus_c03.setText("Hapus");
+            hapus_c03.setColor1(new java.awt.Color(35, 20, 226));
+            hapus_c03.setColor2(new java.awt.Color(209, 18, 235));
+            hapus_c03.addActionListener(new java.awt.event.ActionListener() {
                   public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_hapus3ActionPerformed(evt);
+                        hapus_c03ActionPerformed(evt);
                   }
             });
-            panelBorder3.add(btn_hapus3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, 90, 30));
-
-            btn_ubah3.setText("Ubah");
-            btn_ubah3.setColor1(new java.awt.Color(35, 20, 226));
-            btn_ubah3.setColor2(new java.awt.Color(209, 18, 235));
-            btn_ubah3.addActionListener(new java.awt.event.ActionListener() {
-                  public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_ubah3ActionPerformed(evt);
-                  }
-            });
-            panelBorder3.add(btn_ubah3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 90, 30));
+            panelBorder3.add(hapus_c03, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, 90, 30));
 
             add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 670, 900, 310));
       }// </editor-fold>//GEN-END:initComponents
 
-      private void btn_tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahActionPerformed
-
-      }//GEN-LAST:event_btn_tambahActionPerformed
-
-      private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
-         
-
-      }//GEN-LAST:event_btn_ubahActionPerformed
-
-      private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
-
-      }//GEN-LAST:event_btn_hapusActionPerformed
-
-      private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-  
-      }//GEN-LAST:event_jLabel1MouseClicked
-
-      private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-
-      }//GEN-LAST:event_jLabel2MouseClicked
-
-      private void btn_tambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambah1ActionPerformed
-
-      }//GEN-LAST:event_btn_tambah1ActionPerformed
-
-      private void btn_hapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapus1ActionPerformed
-
-      }//GEN-LAST:event_btn_hapus1ActionPerformed
-
-      private void btn_ubah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubah1ActionPerformed
-
-      }//GEN-LAST:event_btn_ubah1ActionPerformed
-
-      private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-
-      }//GEN-LAST:event_jLabel3MouseClicked
-
-      private void btn_tambah2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambah2ActionPerformed
-
-      }//GEN-LAST:event_btn_tambah2ActionPerformed
-
-      private void btn_hapus2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapus2ActionPerformed
-
-      }//GEN-LAST:event_btn_hapus2ActionPerformed
-
-      private void btn_ubah2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubah2ActionPerformed
-    
-      }//GEN-LAST:event_btn_ubah2ActionPerformed
-
-      private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-     
-      }//GEN-LAST:event_jLabel4MouseClicked
-
-      private void btn_tambah3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambah3ActionPerformed
- 
-      }//GEN-LAST:event_btn_tambah3ActionPerformed
-
-      private void btn_hapus3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapus3ActionPerformed
+      private void tambah_c01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_c01ActionPerformed
+            FormSubKriteria form = new FormSubKriteria();
+            form.setVisible(true);
             
-      }//GEN-LAST:event_btn_hapus3ActionPerformed
+      }//GEN-LAST:event_tambah_c01ActionPerformed
 
-      private void btn_ubah3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubah3ActionPerformed
-            
-      }//GEN-LAST:event_btn_ubah3ActionPerformed
+      private void hapus_c01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapus_c01ActionPerformed
+            DataSubKriteria method = new DataSubKriteria();
+            method.HapusData(tbl_sub_c1);
+            method.TblSubKriteria(tbl_sub_c1, "c01");
+      }//GEN-LAST:event_hapus_c01ActionPerformed
+
+      private void refresh_c01MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refresh_c01MouseClicked
+            DataSubKriteria method = new DataSubKriteria();
+            method.TblSubKriteria(tbl_sub_c1, "c01");
+      }//GEN-LAST:event_refresh_c01MouseClicked
+
+      private void refresh_c04MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refresh_c04MouseClicked
+            DataSubKriteria method = new DataSubKriteria();
+            method.TblSubKriteria(tbl_sub_c4, "c04");
+      }//GEN-LAST:event_refresh_c04MouseClicked
+
+      private void tambah_c04ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_c04ActionPerformed
+            FormSubKriteria form = new FormSubKriteria();
+            form.setVisible(true);
+      }//GEN-LAST:event_tambah_c04ActionPerformed
+
+      private void hapus_c04ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapus_c04ActionPerformed
+            DataSubKriteria method = new DataSubKriteria();
+            method.HapusData(tbl_sub_c4);
+            method.TblSubKriteria(tbl_sub_c4, "c04");
+      }//GEN-LAST:event_hapus_c04ActionPerformed
+
+      private void refresh_c02MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refresh_c02MouseClicked
+            DataSubKriteria method = new DataSubKriteria();
+            method.TblSubKriteria(tbl_sub_c2, "c02");
+      }//GEN-LAST:event_refresh_c02MouseClicked
+
+      private void tambah_c02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_c02ActionPerformed
+            FormSubKriteria form = new FormSubKriteria();
+            form.setVisible(true);
+      }//GEN-LAST:event_tambah_c02ActionPerformed
+
+      private void hapus_c02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapus_c02ActionPerformed
+            DataSubKriteria method = new DataSubKriteria();
+            method.HapusData(tbl_sub_c2);
+            method.TblSubKriteria(tbl_sub_c2, "c02");
+      }//GEN-LAST:event_hapus_c02ActionPerformed
+
+      private void refresh_c03MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refresh_c03MouseClicked
+            DataSubKriteria method = new DataSubKriteria();
+            method.TblSubKriteria(tbl_sub_c3, "c03");
+      }//GEN-LAST:event_refresh_c03MouseClicked
+
+      private void tambah_c03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_c03ActionPerformed
+            FormSubKriteria form = new FormSubKriteria();
+            form.setVisible(true);
+      }//GEN-LAST:event_tambah_c03ActionPerformed
+
+      private void hapus_c03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapus_c03ActionPerformed
+            DataSubKriteria method = new DataSubKriteria();
+            method.HapusData(tbl_sub_c3); 
+            method.TblSubKriteria(tbl_sub_c3, "c03");
+      }//GEN-LAST:event_hapus_c03ActionPerformed
 
 
       // Variables declaration - do not modify//GEN-BEGIN:variables
-      private swing.ButtonGradient btn_hapus;
-      private swing.ButtonGradient btn_hapus1;
-      private swing.ButtonGradient btn_hapus2;
-      private swing.ButtonGradient btn_hapus3;
-      private swing.ButtonGradient btn_tambah;
-      private swing.ButtonGradient btn_tambah1;
-      private swing.ButtonGradient btn_tambah2;
-      private swing.ButtonGradient btn_tambah3;
-      private swing.ButtonGradient btn_ubah;
-      private swing.ButtonGradient btn_ubah1;
-      private swing.ButtonGradient btn_ubah2;
-      private swing.ButtonGradient btn_ubah3;
-      private javax.swing.JLabel jLabel1;
-      private javax.swing.JLabel jLabel2;
-      private javax.swing.JLabel jLabel3;
-      private javax.swing.JLabel jLabel4;
+      private swing.ButtonGradient hapus_c01;
+      private swing.ButtonGradient hapus_c02;
+      private swing.ButtonGradient hapus_c03;
+      private swing.ButtonGradient hapus_c04;
       private com.swing.PanelBorder panelBorder;
       private com.swing.PanelBorder panelBorder1;
       private com.swing.PanelBorder panelBorder2;
       private com.swing.PanelBorder panelBorder3;
+      private javax.swing.JLabel refresh_c01;
+      private javax.swing.JLabel refresh_c02;
+      private javax.swing.JLabel refresh_c03;
+      private javax.swing.JLabel refresh_c04;
       private javax.swing.JScrollPane spTable;
       private javax.swing.JScrollPane spTable1;
       private javax.swing.JScrollPane spTable2;
       private javax.swing.JScrollPane spTable3;
+      private swing.ButtonGradient tambah_c01;
+      private swing.ButtonGradient tambah_c02;
+      private swing.ButtonGradient tambah_c03;
+      private swing.ButtonGradient tambah_c04;
       public com.swing.Table tbl_sub_c1;
       public com.swing.Table tbl_sub_c2;
       public com.swing.Table tbl_sub_c3;

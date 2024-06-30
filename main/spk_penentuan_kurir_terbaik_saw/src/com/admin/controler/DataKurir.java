@@ -61,7 +61,7 @@ public class DataKurir {
             } catch (SQLException e) {
                 System.out.println("Error dataTabel: " + e.getMessage());
             }
-       }
+      }
 
       public void simpanDataKurir(JTable tabel, JTextField idKurir, JTextField namaKurir, JTextArea alamat, JTextField email, JTextField noTelp, JDateChooser tglBergabung) {
 
@@ -158,7 +158,7 @@ public class DataKurir {
       }
 
 
-      public void tampilFormEditKurir(JTable clickTable, JTextField idKurir, JTextField namaKurir, JTextArea alamat, JTextField email, JTextField noTelp, JDateChooser tglBergabung) {
+      public void TampilFormEditKurir(JTable clickTable, JTextField idKurir, JTextField namaKurir, JTextArea alamat, JTextField email, JTextField noTelp, JDateChooser tglBergabung) {
             try {
                   int selectedRow = clickTable.getSelectedRow();
                   String index = clickTable.getValueAt(selectedRow, 0).toString();
@@ -197,5 +197,51 @@ public class DataKurir {
                 System.out.println("Error di displayDataOnLabel");
             }
       }
+      
+      public void CariDataAlt(JTextField namaKurir, JTable tabel) {
+                  Object[] rows = {"Id Kurir", "Nama Kurir", "Alamat", "Email", "No Telp", "Tgl Bergabung", "Lama Berkerja"};
+                  DefaultTableModel tabMode = new DefaultTableModel(null, rows);
+                  tabel.setModel(tabMode);
+
+            try {
+                  Connection conn = new ConnectionDb().connect();
+                  String query = "SELECT id_kurir, " +
+                                 "       nama, " +
+                                 "       alamat, " +
+                                 "       email, " +
+                                 "       no_telp, " +
+                                 "       tgl_bergabung, " +
+                                 "       CONCAT(" +
+                                 "           TIMESTAMPDIFF(YEAR, tgl_bergabung, CURDATE()), ' Tahun, '," +
+                                 "           TIMESTAMPDIFF(MONTH, tgl_bergabung, CURDATE()) % 12, ' Bulan'" +
+                                 "       ) AS lama_bekerja " +
+                                 "FROM tbl_data_kurir " +
+                                 "WHERE nama LIKE ?";
+                  PreparedStatement ps = conn.prepareStatement(query);
+                  ps.setString(1, "%" + namaKurir.getText() + "%");
+                  ResultSet rs = ps.executeQuery();
+
+                  while (rs.next()) {
+                      String idKurir = rs.getString("id_kurir");
+                      String nama = rs.getString("nama");
+                      String alamat = rs.getString("alamat");
+                      String email = rs.getString("email");
+                      String noTelp = rs.getString("no_telp");
+                      String tglBergabung = rs.getString("tgl_bergabung");
+                      String lamaBekerja = rs.getString("lama_bekerja");
+
+                      String[] data = {idKurir, nama, alamat, email, noTelp, tglBergabung, lamaBekerja};
+                      tabMode.addRow(data);
+                  }
+
+                  rs.close();
+                  ps.close();
+                  conn.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error CariDataAlt: " + e.getMessage());
+            }
+      }
+
       
 }

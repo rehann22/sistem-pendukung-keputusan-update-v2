@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class PenilaianKurir {
@@ -37,6 +38,7 @@ public class PenilaianKurir {
                       tabMode.addRow(data);
                   }
                   tabel.getColumnModel().getColumn(0).setPreferredWidth(0); 
+                  tabel.getColumnModel().getColumn(2).setPreferredWidth(10); 
                   conn.close();
 
             } catch (SQLException e) {
@@ -290,6 +292,41 @@ public class PenilaianKurir {
                   ex.printStackTrace();
             }
       }
+      
+      public void CariData(JTextField namaKurir, JTable tabel) {
+            Object[] rows = {"Id Kurir", "Nama Kurir", "Lama Bekerja", "Kecepatan Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal"};
+            DefaultTableModel tabMode = new DefaultTableModel(null, rows);
+            tabel.setModel(tabMode);
+
+            try {
+                  Connection conn = new ConnectionDb().connect();
+                  String query = "SELECT id_kurir, nama_kurir, lama_bekerja, kecepatan_pengiriman, pengiriman_berhasil, pengiriman_gagal " +
+                                 "FROM tbl_penilaian " +
+                                 "WHERE nama_kurir LIKE ?";
+                  PreparedStatement ps = conn.prepareStatement(query);
+                  ps.setString(1, "%" + namaKurir.getText() + "%");
+                  ResultSet rs = ps.executeQuery();
+
+                  while (rs.next()) {
+                      String idKurir = rs.getString("id_kurir");
+                      String nama = rs.getString("nama_kurir");
+                      String lamaBekerja = rs.getString("lama_bekerja");
+                      String kecepatanPengiriman = rs.getString("kecepatan_pengiriman");
+                      String pengirimanBerhasil = rs.getString("pengiriman_berhasil");
+                      String pengirimanGagal = rs.getString("pengiriman_gagal");
+                      String[] data = {idKurir, nama, lamaBekerja, kecepatanPengiriman, pengirimanBerhasil, pengirimanGagal};
+                      tabMode.addRow(data);
+                  }
+
+                  rs.close();
+                  ps.close();
+                  conn.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+      }
+
 }
 
 

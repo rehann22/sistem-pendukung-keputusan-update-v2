@@ -76,11 +76,13 @@ public class FormDataKriteria extends javax.swing.JFrame {
       }// </editor-fold>//GEN-END:initComponents
 
       private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
-           
+            DataKriteria method = new DataKriteria();
+            method.TambahDataKriteria(txtKodeKriteria, txtNamaKriteria, txtNilai, cbbJenis);
       }//GEN-LAST:event_btn_simpanActionPerformed
 
       private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
-
+            DataKriteria method = new DataKriteria();
+            method.UbahDataKriteria(txtKodeKriteria, txtNamaKriteria, txtNilai, cbbJenis);
       }//GEN-LAST:event_btn_ubahActionPerformed
 
       public static void main(String args[]) {
