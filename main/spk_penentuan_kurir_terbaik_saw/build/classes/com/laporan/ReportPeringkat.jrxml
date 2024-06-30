@@ -37,13 +37,27 @@ Email: customercare@sap-express.co.id]]></text>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="40">
+		<band height="63">
 			<staticText>
 				<reportElement x="2" y="14" width="553" height="26" uuid="f70ad22d-6787-4ae7-a803-966c0f0b3c13"/>
 				<textElement textAlignment="Center">
 					<font size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Laporan Data Kurir Terbaik]]></text>
+			</staticText>
+			<textField pattern="MMMMM - yyyy">
+				<reportElement x="264" y="40" width="109" height="20" uuid="6864a19d-970d-4a5f-9ba7-be0889ef09ac"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="219" y="40" width="50" height="20" uuid="4c61c7eb-298b-433b-83de-c06d8d040e5f"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Periode]]></text>
 			</staticText>
 		</band>
 	</pageHeader>

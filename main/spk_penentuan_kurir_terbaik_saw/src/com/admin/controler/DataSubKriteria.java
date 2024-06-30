@@ -55,7 +55,7 @@ public class DataSubKriteria {
             try {
                 kode_sub_k.removeAllItems(); // Hapus semua item sebelum menambahkan yang baru
                 Connection conn = new ConnectionDb().connect();
-                String query = "SELECT DISTINCT kode_kriteria FROM tbl_sub_kriteria ORDER BY kode_kriteria ASC;";
+                String query = "SELECT * FROM tbl_kriteria";
                 PreparedStatement st = conn.prepareStatement(query);
                 ResultSet rs = st.executeQuery();
 

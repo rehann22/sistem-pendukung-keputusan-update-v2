@@ -17,7 +17,7 @@ public class PenilaianKurir {
 
       
       public void TabelPenilaian(JTable tabel) {
-          Object[] rows = {"Id Kurir", "Nama Kurir", "Lama Bekerja", "Kecepatan Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal"};
+          Object[] rows = {"Id Kurir", "Nama Kurir", "Presensi", "Kecepatan Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal"};
           tabMode = new DefaultTableModel(null, rows);
           tabel.setModel(tabMode);
 
@@ -30,7 +30,7 @@ public class PenilaianKurir {
                   while (rs.next()) {
                       String a = rs.getString("id_kurir");
                       String b = rs.getString("nama_kurir");
-                      String c = rs.getString("lama_bekerja");
+                      String c = rs.getString("presensi");
                       String d = rs.getString("kecepatan_pengiriman");
                       String e = rs.getString("pengiriman_berhasil");
                       String f = rs.getString("pengiriman_gagal");
@@ -104,7 +104,7 @@ public class PenilaianKurir {
             }
       }
       
-      public void TampilFormEditPenilaian(JTable clickTable, JComboBox<String> idKurirComboBox, JComboBox<String> lamaKerja, JComboBox<String> kecepatanK, JComboBox<String> paketSukses, JComboBox<String> paketGagal) {
+      public void TampilFormEditPenilaian(JTable clickTable, JComboBox<String> idKurirComboBox, JComboBox<String> presensi, JComboBox<String> kecepatanK, JComboBox<String> paketSukses, JComboBox<String> paketGagal) {
             try {
                   int selectedRow = clickTable.getSelectedRow();
                   if (selectedRow == -1) {
@@ -121,7 +121,7 @@ public class PenilaianKurir {
                   ResultSet rs = ps.executeQuery();
 
                   if (rs.next()) {
-                        String lamaBekerja = rs.getString("lama_bekerja");
+                        String presensiStr = rs.getString("presensi");
                         String kecepatanPengiriman = rs.getString("kecepatan_pengiriman");
                         String pengirimanBerhasil = rs.getString("pengiriman_berhasil");
                         String pengirimanGagal = rs.getString("pengiriman_gagal");
@@ -139,7 +139,7 @@ public class PenilaianKurir {
                   idKurirComboBox.removeAllItems();
                   idKurirComboBox.addItem(idKurir + " - " + namaKurir);
 
-                  lamaKerja.setSelectedItem(lamaBekerja);
+                  presensi.setSelectedItem(presensiStr);
                   kecepatanK.setSelectedItem(kecepatanPengiriman);
                   paketSukses.setSelectedItem(pengirimanBerhasil);
                   paketGagal.setSelectedItem(pengirimanGagal);
@@ -159,7 +159,7 @@ public class PenilaianKurir {
 
 
       
-      public void btnSimpan(JComboBox<String> idKurirComboBox, JComboBox<String> lamaKerja, JComboBox<String> kecepatanK, JComboBox<String> paketSukses, JComboBox<String> paketGagal) {
+      public void btnSimpan(JComboBox<String> idKurirComboBox, JComboBox<String> presensi, JComboBox<String> kecepatanK, JComboBox<String> paketSukses, JComboBox<String> paketGagal) {
             try {
                   Connection conn = new ConnectionDb().connect();
 
@@ -179,13 +179,13 @@ public class PenilaianKurir {
                   String idKurir = parts[0];
                   String namaKurir = parts[1];
 
-                  String query = "INSERT INTO tbl_penilaian (id_kurir, nama_kurir, lama_bekerja, kecepatan_pengiriman, pengiriman_berhasil, pengiriman_gagal) VALUES (?, ?, ?, ?, ?, ?)";
+                  String query = "INSERT INTO tbl_penilaian (id_kurir, nama_kurir, presensi, kecepatan_pengiriman, pengiriman_berhasil, pengiriman_gagal) VALUES (?, ?, ?, ?, ?, ?)";
                   PreparedStatement ps = conn.prepareStatement(query);
 
                   // Set nilai ke PreparedStatement
                   ps.setString(1, idKurir);
                   ps.setString(2, namaKurir);
-                  ps.setString(3, (String) lamaKerja.getSelectedItem());
+                  ps.setString(3, (String) presensi.getSelectedItem());
                   ps.setString(4, (String) kecepatanK.getSelectedItem());
                   ps.setString(5, (String) paketSukses.getSelectedItem());
                   ps.setString(6, (String) paketGagal.getSelectedItem());
@@ -206,7 +206,7 @@ public class PenilaianKurir {
             }
       }
       
-      public void btnUbah(JComboBox<String> idKurirComboBox, JComboBox<String> lamaKerja, JComboBox<String> kecepatanK, JComboBox<String> paketSukses, JComboBox<String> paketGagal) {
+      public void btnUbah(JComboBox<String> idKurirComboBox, JComboBox<String> presensi, JComboBox<String> kecepatanK, JComboBox<String> paketSukses, JComboBox<String> paketGagal) {
             try {
                   Connection conn = new ConnectionDb().connect();
 
@@ -225,11 +225,11 @@ public class PenilaianKurir {
                   }
                   String idKurir = parts[0];
 
-                  String query = "UPDATE tbl_penilaian SET lama_bekerja = ?, kecepatan_pengiriman = ?, pengiriman_berhasil = ?, pengiriman_gagal = ? WHERE id_kurir = ?";
+                  String query = "UPDATE tbl_penilaian SET presensi = ?, kecepatan_pengiriman = ?, pengiriman_berhasil = ?, pengiriman_gagal = ? WHERE id_kurir = ?";
                   PreparedStatement ps = conn.prepareStatement(query);
 
                   // Set nilai ke PreparedStatement
-                  ps.setString(1, (String) lamaKerja.getSelectedItem());
+                  ps.setString(1, (String) presensi.getSelectedItem());
                   ps.setString(2, (String) kecepatanK.getSelectedItem());
                   ps.setString(3, (String) paketSukses.getSelectedItem());
                   ps.setString(4, (String) paketGagal.getSelectedItem());
@@ -294,13 +294,13 @@ public class PenilaianKurir {
       }
       
       public void CariData(JTextField namaKurir, JTable tabel) {
-            Object[] rows = {"Id Kurir", "Nama Kurir", "Lama Bekerja", "Kecepatan Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal"};
+            Object[] rows = {"Id Kurir", "Nama Kurir", "Presensi", "Kecepatan Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal"};
             DefaultTableModel tabMode = new DefaultTableModel(null, rows);
             tabel.setModel(tabMode);
 
             try {
                   Connection conn = new ConnectionDb().connect();
-                  String query = "SELECT id_kurir, nama_kurir, lama_bekerja, kecepatan_pengiriman, pengiriman_berhasil, pengiriman_gagal " +
+                  String query = "SELECT id_kurir, nama_kurir, presensi, kecepatan_pengiriman, pengiriman_berhasil, pengiriman_gagal " +
                                  "FROM tbl_penilaian " +
                                  "WHERE nama_kurir LIKE ?";
                   PreparedStatement ps = conn.prepareStatement(query);
@@ -310,11 +310,11 @@ public class PenilaianKurir {
                   while (rs.next()) {
                       String idKurir = rs.getString("id_kurir");
                       String nama = rs.getString("nama_kurir");
-                      String lamaBekerja = rs.getString("lama_bekerja");
+                      String presensi = rs.getString("presensi");
                       String kecepatanPengiriman = rs.getString("kecepatan_pengiriman");
                       String pengirimanBerhasil = rs.getString("pengiriman_berhasil");
                       String pengirimanGagal = rs.getString("pengiriman_gagal");
-                      String[] data = {idKurir, nama, lamaBekerja, kecepatanPengiriman, pengirimanBerhasil, pengirimanGagal};
+                      String[] data = {idKurir, nama, presensi, kecepatanPengiriman, pengirimanBerhasil, pengirimanGagal};
                       tabMode.addRow(data);
                   }
 

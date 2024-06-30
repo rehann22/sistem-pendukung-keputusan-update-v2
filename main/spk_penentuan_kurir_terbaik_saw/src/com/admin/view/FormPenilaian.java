@@ -60,7 +60,7 @@ public class FormPenilaian extends javax.swing.JFrame {
             jPanel1.add(cbb_IdKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 270, 50));
 
             lamaKerja.setForeground(new java.awt.Color(97, 103, 122));
-            lamaKerja.setLabeText("Lama Bekerja");
+            lamaKerja.setLabeText("Presensi");
             jPanel1.add(lamaKerja, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 270, -1));
 
             kecepatanPengiriman.setForeground(new java.awt.Color(97, 103, 122));

@@ -114,7 +114,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             jLabel2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel2.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel2.setText("Penilaian Alternatif");
+            jLabel2.setText("Data Penilaian Alternatif");
             panelBorder.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 220, -1));
 
             btn_refresh.setText("Refresh");
@@ -156,8 +156,8 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             jLabel5.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel5.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel5.setText("Perankingan");
-            panelBorder3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 180, -1));
+            jLabel5.setText("Data Alternatif Terbaik");
+            panelBorder3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 220, -1));
 
             add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1930, 900, 370));
 
@@ -220,7 +220,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             jLabel7.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel7.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel7.setText("Matrix Hasil Pembobotan");
+            jLabel7.setText("Data Preferensi");
             panelBorder5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 370, -1));
 
             add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1450, 900, 460));
@@ -252,7 +252,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             jLabel6.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel6.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel6.setText("Matrix Normalisasi");
+            jLabel6.setText("Data Ternormalisasi");
             panelBorder4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 270, -1));
 
             add(panelBorder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 970, 900, 460));

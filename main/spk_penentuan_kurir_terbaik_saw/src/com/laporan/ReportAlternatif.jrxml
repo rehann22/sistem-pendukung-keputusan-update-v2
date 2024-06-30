@@ -60,13 +60,27 @@ Email: customercare@sap-express.co.id]]></text>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="37" splitType="Stretch">
+		<band height="53" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="555" height="26" uuid="f05ec48a-e161-46e6-aace-bba3adc2fd2d"/>
 				<textElement textAlignment="Center">
 					<font size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Laporan Data Alternatif]]></text>
+			</staticText>
+			<textField pattern="MMMMM - yyyy">
+				<reportElement x="270" y="26" width="109" height="20" uuid="885d2e4b-027f-4c2f-9f43-7a32318262bc"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="225" y="26" width="50" height="20" uuid="e6fa600c-6000-427d-bbf0-484858c0d286"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Periode]]></text>
 			</staticText>
 		</band>
 	</pageHeader>

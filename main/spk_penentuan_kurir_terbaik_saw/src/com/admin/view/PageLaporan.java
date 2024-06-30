@@ -6,11 +6,10 @@ import com.formdev.flatlaf.extras.FlatSVGIcon;
 public class PageLaporan extends javax.swing.JPanel {
 
       public PageLaporan() {
-              initComponents();  
-              dataAlternatif.setIcon(new FlatSVGIcon("com/icon/Report Analysis 1.svg", dataAlternatif.getWidth(), dataAlternatif.getHeight()));
-              penilaianAlter.setIcon(new FlatSVGIcon("com/icon/Report Analysis 2.svg", penilaianAlter.getWidth(), penilaianAlter.getHeight()));
-              dataPeringkat.setIcon(new FlatSVGIcon("com/icon/Report1.svg", dataPeringkat.getWidth(), dataPeringkat.getHeight()));
-
+            initComponents();  
+            dataAlternatif.setIcon(new FlatSVGIcon("com/icon/Report Analysis 1.svg", dataAlternatif.getWidth(), dataAlternatif.getHeight()));
+            penilaianAlter.setIcon(new FlatSVGIcon("com/icon/Report Analysis 2.svg", penilaianAlter.getWidth(), penilaianAlter.getHeight()));
+            dataPeringkat.setIcon(new FlatSVGIcon("com/icon/Report1.svg", dataPeringkat.getWidth(), dataPeringkat.getHeight()));
       }
 
     @SuppressWarnings("unchecked")

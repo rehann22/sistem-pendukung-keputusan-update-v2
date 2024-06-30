@@ -12,7 +12,7 @@
 	<field name="nama_kurir" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="lama_bekerja" class="java.lang.String">
+	<field name="presensi" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kecepatan_pengiriman" class="java.lang.String">
@@ -51,7 +51,7 @@ Email: customercare@sap-express.co.id]]></text>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="57" splitType="Stretch">
+		<band height="76" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="19" width="555" height="26" uuid="818105bf-acb3-46c6-a338-6f7e3d8d6df2"/>
 				<textElement textAlignment="Center">
@@ -59,6 +59,20 @@ Email: customercare@sap-express.co.id]]></text>
 				</textElement>
 				<text><![CDATA[Laporan Data Penilaian Alternatif]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="215" y="45" width="50" height="20" uuid="07c25a75-c5b7-4309-9480-e6a7e4300afe"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Periode]]></text>
+			</staticText>
+			<textField pattern="MMMMM - yyyy">
+				<reportElement x="260" y="45" width="109" height="20" uuid="f9d6c128-667f-4c3d-aa8e-c12881632744"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -93,17 +107,17 @@ Email: customercare@sap-express.co.id]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="459" y="0" width="96" height="44" uuid="768a9006-b45a-497a-8e43-7813fed3e024"/>
-				<box topPadding="10" leftPadding="3" rightPadding="3">
+				<box topPadding="0" leftPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Pengiriman Gagal Perbulan]]></text>
+				<text><![CDATA[Pengiriman Gagal]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="282" y="0" width="76" height="44" uuid="b91ee784-f439-4a47-b506-8c1d0cac20e0"/>
@@ -145,7 +159,7 @@ Email: customercare@sap-express.co.id]]></text>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Lama Bekerja]]></text>
+				<text><![CDATA[Presensi]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="358" y="0" width="101" height="44" uuid="bbe3d03b-322e-4dd2-8ea6-504474f0ae58"/>
@@ -159,7 +173,7 @@ Email: customercare@sap-express.co.id]]></text>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Pengiriman Berhasil Perbulan]]></text>
+				<text><![CDATA[Pengiriman Berhasil]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -208,20 +222,6 @@ Email: customercare@sap-express.co.id]]></text>
 				<textFieldExpression><![CDATA[$F{nama_kurir}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="208" y="0" width="74" height="40" uuid="df213322-324d-4b18-95a5-227bd56018af"/>
-				<box topPadding="0" leftPadding="0">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<paragraph lineSpacing="1_1_2"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lama_bekerja}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="282" y="0" width="76" height="40" uuid="8761ce86-ab63-4c89-994a-30035e912188"/>
 				<box topPadding="0" leftPadding="0">
 					<pen lineWidth="1.0"/>
@@ -262,6 +262,18 @@ Email: customercare@sap-express.co.id]]></text>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pengiriman_berhasil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="208" y="0" width="74" height="40" uuid="812c98c0-17d3-403f-b856-fdfa7d43dc74"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{presensi}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
