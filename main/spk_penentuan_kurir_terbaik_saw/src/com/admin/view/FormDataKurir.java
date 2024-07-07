@@ -63,17 +63,17 @@ public class FormDataKurir extends javax.swing.JFrame {
             txtAlamat.setRows(5);
             textAreaScroll1.setViewportView(txtAlamat);
 
-            jPanel1.add(textAreaScroll1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 290, 110));
+            jPanel1.add(textAreaScroll1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 290, 100));
 
             txtNamaKurir.setBackground(new java.awt.Color(255, 255, 255));
             txtNamaKurir.setForeground(new java.awt.Color(97, 103, 122));
             txtNamaKurir.setLabelText("Nama Kurir");
-            jPanel1.add(txtNamaKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 290, -1));
+            jPanel1.add(txtNamaKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 66, 290, 50));
 
             txtIdKurir.setBackground(new java.awt.Color(255, 255, 255));
             txtIdKurir.setForeground(new java.awt.Color(97, 103, 122));
             txtIdKurir.setLabelText("Id Kurir");
-            jPanel1.add(txtIdKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 290, -1));
+            jPanel1.add(txtIdKurir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 290, -1));
 
             btn_ubah.setText("Ubah");
             btn_ubah.setColor1(new java.awt.Color(35, 20, 226));
@@ -98,12 +98,12 @@ public class FormDataKurir extends javax.swing.JFrame {
             txtNoTelp.setBackground(new java.awt.Color(255, 255, 255));
             txtNoTelp.setForeground(new java.awt.Color(97, 103, 122));
             txtNoTelp.setLabelText("No Telp");
-            jPanel1.add(txtNoTelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 290, 40));
+            jPanel1.add(txtNoTelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 290, 50));
 
             txtEmail.setBackground(new java.awt.Color(255, 255, 255));
             txtEmail.setForeground(new java.awt.Color(97, 103, 122));
             txtEmail.setLabelText("Email");
-            jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 290, 40));
+            jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 290, 60));
 
             tglBergabung.setBackground(new java.awt.Color(255, 255, 255));
             tglBergabung.setForeground(new java.awt.Color(97, 103, 122));
