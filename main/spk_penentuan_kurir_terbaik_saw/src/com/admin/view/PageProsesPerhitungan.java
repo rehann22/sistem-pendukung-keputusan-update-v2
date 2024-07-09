@@ -6,45 +6,40 @@ import com.swing.ScrollBar;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class PageProsesPerhitungan extends javax.swing.JPanel {
-
+      public DefaultTableModel tableModel;
       public PageProsesPerhitungan() {
             initComponents();
+            
             PenilaianKurir pnl = new PenilaianKurir();
             pnl.TabelPenilaian(tblPenilaianAlternatif);
-
             ProsesPerhitungan data = new ProsesPerhitungan();
             data.DataPenilaianAlternatif(tblDataPenilaianAlternatif);
             data.HitungNormalisasi(tblMatrixNormalisasi);
             data.HitungPembobotan(tblHasilPembobotan, tblPerankingan);
-
             TScrolPane(spTable1);
             TScrolPane(spTable2);
             TScrolPane(spTable4);
             TScrolPane(spTable5);
             TScrolPane(spTable6);
-            
-            TabelWidth(tblPenilaianAlternatif, 0, 0);
-            TabelWidth(tblPenilaianAlternatif, 2, 10);
-            
-            TabelWidth(tblDataPenilaianAlternatif, 0, 0);
-            TabelWidth(tblDataPenilaianAlternatif, 2, 10);
-            
-            TabelWidth(tblMatrixNormalisasi, 0, 0);
-            TabelWidth(tblMatrixNormalisasi, 2, 10);
-            
-            TabelWidth(tblHasilPembobotan, 0, 0);
-            TabelWidth(tblHasilPembobotan, 2, 30);
-            TabelWidth(tblHasilPembobotan, 6, 10);
-            
-            TabelWidth(tblPerankingan, 0, 0);
-            TabelWidth(tblPerankingan, 2, 10);
+            TabelWidth();
+
       }
       
-      private void TabelWidth (JTable tabel, int index, int width) {
-            tabel.getColumnModel().getColumn(index).setPreferredWidth(width);
+      private void TabelWidth () {
+            tblPenilaianAlternatif.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblPenilaianAlternatif.getColumnModel().getColumn(2).setPreferredWidth(10);
+            tblDataPenilaianAlternatif.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblDataPenilaianAlternatif.getColumnModel().getColumn(2).setPreferredWidth(10);
+            tblMatrixNormalisasi.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblMatrixNormalisasi.getColumnModel().getColumn(2).setPreferredWidth(10);
+            tblHasilPembobotan.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblHasilPembobotan.getColumnModel().getColumn(2).setPreferredWidth(30);
+            tblHasilPembobotan.getColumnModel().getColumn(6).setPreferredWidth(10);
+            tblPerankingan.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblPerankingan.getColumnModel().getColumn(2).setPreferredWidth(10);
       }
     
       private void TScrolPane (JScrollPane scroll) {
@@ -117,7 +112,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
             jLabel2.setText("Data Penilaian Alternatif");
             panelBorder.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 220, -1));
 
-            btn_refresh.setText("Refresh");
+            btn_refresh.setText("Hitung");
             btn_refresh.setColor1(new java.awt.Color(35, 20, 226));
             btn_refresh.setColor2(new java.awt.Color(209, 18, 235));
             btn_refresh.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +120,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
                         btn_refreshActionPerformed(evt);
                   }
             });
-            panelBorder.add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 90, 30));
+            panelBorder.add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 110, 30));
 
             add(panelBorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 900, 460));
 
@@ -156,7 +151,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             jLabel5.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel5.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel5.setText("Data Alternatif Terbaik");
+            jLabel5.setText("Data Peringkat Alternatif");
             panelBorder3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 220, -1));
 
             add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1930, 900, 370));
@@ -188,7 +183,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel3.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel3.setText("Nilai Setiap Alternatif");
+            jLabel3.setText("Bobot Alternatif");
             panelBorder2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 270, -1));
 
             add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 900, 460));
@@ -266,22 +261,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
             data.DataPenilaianAlternatif(tblDataPenilaianAlternatif);
             data.HitungNormalisasi(tblMatrixNormalisasi);
             data.HitungPembobotan(tblHasilPembobotan, tblPerankingan);
-            
-            TabelWidth(tblPenilaianAlternatif, 0, 0);
-            TabelWidth(tblPenilaianAlternatif, 2, 10);
-            
-            TabelWidth(tblDataPenilaianAlternatif, 0, 0);
-            TabelWidth(tblDataPenilaianAlternatif, 2, 10);
-            
-            TabelWidth(tblMatrixNormalisasi, 0, 0);
-            TabelWidth(tblMatrixNormalisasi, 2, 10);
-            
-            TabelWidth(tblHasilPembobotan, 0, 0);
-            TabelWidth(tblHasilPembobotan, 2, 30);
-            TabelWidth(tblHasilPembobotan, 6, 10);
-            
-            TabelWidth(tblPerankingan, 0, 0);
-            TabelWidth(tblPerankingan, 2, 10);
+            TabelWidth();
       }//GEN-LAST:event_btn_refreshActionPerformed
 
 

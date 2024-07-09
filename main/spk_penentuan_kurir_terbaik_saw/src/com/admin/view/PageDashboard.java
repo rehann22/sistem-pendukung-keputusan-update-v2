@@ -15,7 +15,7 @@ public class PageDashboard extends javax.swing.JPanel {
           
             initComponents();  
             Dashboard data = new Dashboard();
-            card1.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/11.png")), "Total Alternatif",  data.totalAlternatif()));
+            card1.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/11.png")), "Total Alternatif",  data.totalPenilainAlternatif()));
             card2.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/12.png")), "Total Kriteria", data.totalKriteria()));
             card3.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/13.png")), "Total Sub Kriteria", data.totalCrips()));
             card4.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/icon/14.png")), "Total Penilaian", data.totalPenilainAlternatif()));

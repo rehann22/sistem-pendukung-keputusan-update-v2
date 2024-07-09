@@ -20,12 +20,7 @@ public class DataKriteria {
         Locale.setDefault(Locale.US);
       }
       
-      public void bersihkanForm (JTextField kodeK, JTextField namaK, JTextField nilai, JComboBox jenis) {
-            kodeK.setText("");
-            namaK.setText("");
-            nilai.setText("");
-            jenis.setSelectedIndex(0);
-      }
+
 
       public void TabelKriteria(JTable tabel) {
             Object[] rows = {"Kode Kriteria", "Nama Kriteria", "Bobot", "Jenis"};
@@ -53,117 +48,49 @@ public class DataKriteria {
                   System.out.println("Error Method TabelKriteria");
                   e.printStackTrace();
             }
-      }  
-      
-      public void TambahDataKriteria (JTextField kodeKrit, JTextField namaKrit, JTextField bobotKrit, JComboBox jenisKrit) {
-            
-            if (!kodeKrit.getText().isEmpty() && !namaKrit.getText().isEmpty() && !bobotKrit.getText().isEmpty()) {
-                  try {
-                        Connection conn = new ConnectionDb().connect();
-                        String query = "INSERT INTO tbl_kriteria (kode_kriteria, nama_kriteria, bobot, jenis) VALUES (?, ?, ?, ?)";
-                        PreparedStatement ps = conn.prepareStatement(query);
-
-                        ps.setString(1, kodeKrit.getText());
-                        ps.setString(2, namaKrit.getText());
-                        ps.setString(3, bobotKrit.getText());
-                        ps.setString(4, (String) jenisKrit.getSelectedItem());
-
-                        ps.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "Data Tersimpan");
-                        ps.close();
-                        conn.close();
-                  } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, e);
-                        System.out.println("Error TambahData: " + e.getMessage());
-                  }
-            }else {
-                 JOptionPane.showMessageDialog(null, "Data Tidak Boleh Kosong");
-            }
       }
-      
-      public void FormEditKriteria(JTable clickTable, JTextField kodeKrit, JTextField namaKrit, JTextField bobotKrit, JComboBox<String> jenisKrit) {
+
+      public void TblSubKriteria(JTable tabel) {
+            Object[] rows = {"Kode Kriteria", "Sub Kriteria", "Keterangan", "Nilai", "Jenis"};
+            DefaultTableModel tabMode = new DefaultTableModel(null, rows);
+            tabel.setModel(tabMode);
+
             try {
-                  int selectedRow = clickTable.getSelectedRow();
-                  if (selectedRow == -1) {
-                      JOptionPane.showMessageDialog(null, "Please select a row to edit.");
-                      return;
-                  }
-
-                  String index = clickTable.getValueAt(selectedRow, 0).toString();
-                  System.out.println(index);
-
                   Connection conn = new ConnectionDb().connect();
-                  String query = "SELECT * FROM tbl_kriteria WHERE kode_kriteria = ?";
+                  String query = "SELECT \n" +
+                              "    tbl_sub_kriteria.kode_kriteria, \n" +
+                              "    tbl_kriteria.nama_kriteria, \n" +
+                              "    tbl_sub_kriteria.keterangan, \n" +
+                              "    tbl_sub_kriteria.bobot, \n" +
+                              "    tbl_kriteria.jenis\n" +
+                              "FROM \n" +
+                              "    tbl_sub_kriteria\n" +
+                              "INNER JOIN \n" +
+                              "    tbl_kriteria \n" +
+                              "    ON tbl_sub_kriteria.kode_kriteria = tbl_kriteria.kode_kriteria\n" +
+                              "ORDER BY \n" +
+                              "    tbl_sub_kriteria.kode_kriteria, \n" +
+                              "    tbl_sub_kriteria.bobot ASC";
+
                   PreparedStatement ps = conn.prepareStatement(query);
-                  ps.setString(1, index);
                   ResultSet rs = ps.executeQuery();
 
-                  if (rs.next()) {
-                      String kode = rs.getString("kode_kriteria");
-                      String nama = rs.getString("nama_kriteria");
-                      String bobot = rs.getString("bobot");
-                      String jenis = rs.getString("jenis");
+                  while (rs.next()) {
+                      String a = rs.getString("kode_kriteria");
+                      String b = rs.getString("nama_kriteria");
+                      String c = rs.getString("keterangan");
+                      String d = rs.getString("bobot");
+                      String e = rs.getString("jenis");
 
-                      kodeKrit.setText(kode);
-                      namaKrit.setText(nama);
-                      bobotKrit.setText(bobot);
-                      jenisKrit.setSelectedItem(jenis);
+                      String[] data = {a, b, c, d, e};
+                      tabMode.addRow(data);
                   }
 
-                  rs.close();
-                  ps.close();
-                  conn.close();
+                rs.close();
+                ps.close();
+                conn.close();
             } catch (SQLException ex) {
-                  ex.printStackTrace();
+                System.out.println("Error TblSubKriteria: " + ex.getMessage());
             }
       }
-
-      public void UbahDataKriteria(JTextField kodeKrit, JTextField namaKrit, JTextField bobotKrit, JComboBox<String> jenisKrit) {
-            try {
-                  Connection conn = new ConnectionDb().connect();
-                  String query = "UPDATE tbl_kriteria SET nama_kriteria = ?, bobot = ?, jenis = ? WHERE kode_kriteria = ?";
-                  PreparedStatement ps = conn.prepareStatement(query);
-
-                  ps.setString(1, namaKrit.getText());
-                  ps.setString(2, bobotKrit.getText());
-                  ps.setString(3, (String) jenisKrit.getSelectedItem());
-                  ps.setString(4, kodeKrit.getText());
-
-                  ps.executeUpdate();
-                  JOptionPane.showMessageDialog(null, "Data Berhasil Terubah");
-                  ps.close();
-                  conn.close();
-            } catch (SQLException e) {
-                  System.out.println("Error UbahDataKriteria: " + e.getMessage());
-                  JOptionPane.showMessageDialog(null, "Data Gagal Diubah");
-            }
-      }
-      
-      
-      public void HapusDataKriteria(JTable tabel){
-            int selectedRow = tabel.getSelectedRow();
-            String index = tabel.getValueAt(selectedRow, 0).toString();
-            System.out.println(index);
-            
-            int ok = JOptionPane.showConfirmDialog(null, "Hapus Data Kriteria??", "Konfirmasi Dialog",
-                  JOptionPane.YES_NO_CANCEL_OPTION);
-            if (ok==0) {
-                  try {
-                        Connection conn = new ConnectionDb().connect();
-                        String query = "DELETE FROM `tbl_kriteria` WHERE `kode_kriteria`= ?";
-                        PreparedStatement st = conn.prepareStatement(query);
-                        
-                        st.setString(1, index);
-                        
-                        st.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "Data Terhapus");
-                        TabelKriteria(tabel);
- 
-                  } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Data Gagal Dihapus");
-                  }
-            }
-      }
-
-
 }

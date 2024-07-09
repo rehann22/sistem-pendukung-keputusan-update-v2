@@ -1,5 +1,4 @@
 package com.admin.controler;
-
 import com.admin.view.PageDataKriteria;
 import com.database.ConnectionDb;
 import java.sql.Connection;
@@ -37,89 +36,81 @@ public class ProsesPerhitungan {
                   }
             }
       }
-
+      
       public void DataPenilaianAlternatif(JTable tabel) {
             Object[] rows = {"Id Kurir", "Nama Kurir", "Presensi", "Kecepatan Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal"};
             modelTabelNilaiAlternatif = new DefaultTableModel(null, rows);
             tabel.setModel(modelTabelNilaiAlternatif);
 
-            try {
-                  Connection conn = new ConnectionDb().connect();
+            try (Connection conn = new ConnectionDb().connect();
+                  PreparedStatement ps = conn.prepareStatement("SELECT * FROM tbl_penilaian");
+                  ResultSet rs = ps.executeQuery()) {
 
-                  // Query untuk mengambil data dari tbl_penilaian
-                  String query = "SELECT * FROM tbl_penilaian";
-                  PreparedStatement ps = conn.prepareStatement(query);
-                  ResultSet rs = ps.executeQuery();
-
-                  // Menyimpan nilai maksimum dan minimum untuk setiap kriteria
-                  double[] maxValues = new double[5];
-                  double[] minValues = new double[5];
-                  for (int i = 0; i < 5; i++) {
+                 double[] maxValues = new double[4];
+                 double[] minValues = new double[4];
+                  for (int i = 0; i < 4; i++) {
                       maxValues[i] = Double.NEGATIVE_INFINITY;
                       minValues[i] = Double.POSITIVE_INFINITY;
                   }
 
-                // Memproses hasil query
                   while (rs.next()) {
-                        String idKurir = rs.getString("id_kurir");
-                        String namaKurir = rs.getString("nama_kurir");
-                        String presensi = rs.getString("presensi");
-                        String kecepatanPengiriman = rs.getString("kecepatan_pengiriman");
-                        String pengirimanBerhasil = rs.getString("pengiriman_berhasil");
-                        String pengirimanGagal = rs.getString("pengiriman_gagal");
+                      String idKurir = rs.getString("id_kurir");
+                      String namaKurir = rs.getString("nama_kurir");
+                      double presensi = rs.getDouble("presensi");
+                      double kecepatanPengiriman = rs.getDouble("kecepatan_pengiriman");
+                      double pengirimanBerhasil = rs.getDouble("pengiriman_berhasil");
+                      double pengirimanGagal = rs.getDouble("pengiriman_gagal");
 
-                        // Mendapatkan bobot untuk setiap kriteria
-                        double bobotLamaBekerja = getBobot(presensi);
-                        double bobotKecepatanPengiriman = getBobot(kecepatanPengiriman);
-                        double bobotPengirimanBerhasil = getBobot(pengirimanBerhasil);
-                        double bobotPengirimanGagal = getBobot(pengirimanGagal);
+                      double bobotPresensi = getBobotPresensi(presensi);
+                      double bobotKecepatanPengiriman = getBobotKecepatanPengiriman(kecepatanPengiriman);
+                      double bobotPengirimanBerhasil = getBobotPengirimanBerhasil(pengirimanBerhasil);
+                      double bobotPengirimanGagal = getBobotPengirimanGagal(pengirimanGagal);
 
-                        // Memperbarui nilai maksimum dan minimum untuk setiap kriteria
-                        updateMinMaxValues(maxValues, minValues, bobotLamaBekerja, bobotKecepatanPengiriman, bobotPengirimanBerhasil, bobotPengirimanGagal);
+                      updateMinMaxValues(maxValues, minValues, bobotPresensi, bobotKecepatanPengiriman, bobotPengirimanBerhasil, bobotPengirimanGagal);
 
-                        // Menambahkan data ke dalam tabel
-                        Object[] data = {idKurir, namaKurir, bobotLamaBekerja, bobotKecepatanPengiriman, bobotPengirimanBerhasil, bobotPengirimanGagal};
-                        modelTabelNilaiAlternatif.addRow(data);
-
+                      Object[] data = {idKurir, namaKurir, bobotPresensi, bobotKecepatanPengiriman, bobotPengirimanBerhasil, bobotPengirimanGagal};
+                      modelTabelNilaiAlternatif.addRow(data);
                   }
 
-            // Menambahkan footer untuk nilai maksimum ("Benefit") dan nilai minimum ("Cost")
-            Object[] maxFooter = {"", "Nilai Max", maxValues[0], maxValues[1], maxValues[2], maxValues[3], maxValues[4]};
-            modelTabelNilaiAlternatif.addRow(maxFooter);
+                  Object[] maxFooter = {"", "Nilai Max", maxValues[0], maxValues[1], maxValues[2], maxValues[3]};
+                  modelTabelNilaiAlternatif.addRow(maxFooter);
 
-            Object[] minFooter = {"", "Nilai Min", minValues[0], minValues[1], minValues[2], minValues[3], minValues[4]};
-            modelTabelNilaiAlternatif.addRow(minFooter);
-            
-            conn.close();
-            rs.close();
-            ps.close();
+                  Object[] minFooter = {"", "Nilai Min", minValues[0], minValues[1], minValues[2], minValues[3]};
+                  modelTabelNilaiAlternatif.addRow(minFooter);
+
             } catch (Exception e) {
                 System.out.println("Eror Method DataPenilaianAlternatif");
                 e.printStackTrace();
             }
       }
 
-      // Method untuk mendapatkan bobot berdasarkan keterangan
-      private static double getBobot(String keterangan) {
-            double bobot = 0; // Default value jika tidak ditemukan
-            try {
-                  Connection conn = new ConnectionDb().connect();
-                  String query = "SELECT bobot FROM tbl_sub_kriteria WHERE keterangan = ?";
-                  PreparedStatement ps = conn.prepareStatement(query);
-                  ps.setString(1, keterangan);
-                  ResultSet rs = ps.executeQuery();
+      private double getBobotPresensi(double presensi) {
+          if (presensi <= 15) return 1;
+          if (presensi <= 25) return 2;
+          if (presensi >= 26) return 3;
+          return 0;
+      }
 
-                  if (rs.next()) {
-                      bobot = rs.getDouble("bobot");
-                  }
+      private double getBobotKecepatanPengiriman(double kecepatanPengiriman) {
+          if (kecepatanPengiriman > 3) return 1;
+          if (kecepatanPengiriman < 4) return 2;
+          return 0;
+      }
 
-                  conn.close();
-                  rs.close();
-                  ps.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-          return bobot;
+      private double getBobotPengirimanBerhasil(double pengirimanBerhasil) {
+          if (pengirimanBerhasil >= 500 && pengirimanBerhasil <= 1000) return 1;
+          if (pengirimanBerhasil > 1000 && pengirimanBerhasil <= 1500) return 2;
+          if (pengirimanBerhasil > 1500 && pengirimanBerhasil <= 2000) return 3;
+          if (pengirimanBerhasil > 2000 && pengirimanBerhasil <= 2500) return 4;
+          return 0;
+      }
+
+      private double getBobotPengirimanGagal(double pengirimanGagal) {
+          if (pengirimanGagal >= 10 && pengirimanGagal <= 60) return 1;
+          if (pengirimanGagal > 60 && pengirimanGagal <= 110) return 2;
+          if (pengirimanGagal > 110 && pengirimanGagal <= 160) return 3;
+          if (pengirimanGagal > 160 && pengirimanGagal <= 220) return 4;
+          return 0;
       }
 
       // Metode untuk mengambil tipe kriteria dari database

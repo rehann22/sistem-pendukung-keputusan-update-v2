@@ -2,8 +2,6 @@ package com.admin.main;
 import com.admin.view.FormDataAdmin;
 import com.admin.view.PageLaporan;
 import com.admin.view.PageDataKriteria;
-import com.admin.view.PageDataKurir;
-import com.admin.view.PageDataSubKriteria;
 import com.admin.view.PagePenilaianKurir;
 import com.admin.view.PageProsesPerhitungan;
 import com.event.EventMenuSelected;
@@ -17,9 +15,7 @@ import javax.swing.JScrollPane;
 public class MainDashboard extends javax.swing.JFrame {
 
       private PageDashboard admin_dashboard;
-      private PageDataKurir dataKurir;
       private PageDataKriteria datakriteria;
-      private PageDataSubKriteria dataSubKriteria;
       private PagePenilaianKurir penilaianKurir;
       private PageProsesPerhitungan prosesPerhitungan;
       private PageLaporan laporan;
@@ -28,9 +24,7 @@ public class MainDashboard extends javax.swing.JFrame {
             initComponents();
             setBackground(new Color(0, 0, 0, 0));
             admin_dashboard = new PageDashboard();
-            dataKurir = new PageDataKurir();
             datakriteria = new PageDataKriteria();
-            dataSubKriteria = new PageDataSubKriteria();
             penilaianKurir = new PagePenilaianKurir();
             prosesPerhitungan = new PageProsesPerhitungan();
             laporan = new PageLaporan();
@@ -41,27 +35,25 @@ public class MainDashboard extends javax.swing.JFrame {
                         if (index == 0) {
                             setForm(admin_dashboard); 
                         } else if (index == 1) {
-                            setForm(dataKurir);
-                        } else if (index == 2) {
                             setForm(datakriteria);
-                        } else if (index == 3) {
-                            setForm(dataSubKriteria);
-                        } else if (index == 4) {
+                        } else if (index == 2) {
                             setForm(penilaianKurir);
+                        } else if (index == 3) {
+                            setForm(prosesPerhitungan);
+                        } else if (index == 4) {
+                            setForm(laporan);
                         } else if (index == 5) {
                             setForm(prosesPerhitungan);
                         } else if (index == 7) {  
-                              setForm(laporan);
-                        } else if (index == 8) {
                               FormDataAdmin data = new FormDataAdmin();
                               data.setVisible(true);
-                        } else if (index == 11) { //logout
-                            int jawaban = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
-                            if (jawaban == JOptionPane.YES_OPTION) {
-                                System.exit(0);
+                        } else if (index == 8) {
+                              int jawaban = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+                              if (jawaban == JOptionPane.YES_OPTION) {
+                              System.exit(0);
+                              }
                         }
-                    }
-                }
+                  }
             });
             setForm(new PageDashboard());
       }
