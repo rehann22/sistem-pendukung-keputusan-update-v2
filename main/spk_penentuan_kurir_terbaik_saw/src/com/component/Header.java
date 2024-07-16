@@ -6,12 +6,12 @@ import java.awt.RenderingHints;
 
 public class Header extends javax.swing.JPanel {
 
-    public Header() {
-        initComponents();
-        setOpaque(false);
-    }
+      public Header() {
+            initComponents();
+            setOpaque(false);
+      }
 
-    @SuppressWarnings("unchecked")
+      @SuppressWarnings("unchecked")
       // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
       private void initComponents() {
 
@@ -22,7 +22,6 @@ public class Header extends javax.swing.JPanel {
             jLabel1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
             jLabel1.setForeground(new java.awt.Color(97, 103, 122));
             jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            jLabel1.setText("Sistem Pendukung Keputusan Pemilihan Kurir Paket Terbaik PT SAPX Express");
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
             this.setLayout(layout);
@@ -39,16 +38,16 @@ public class Header extends javax.swing.JPanel {
             );
       }// </editor-fold>//GEN-END:initComponents
 
-    @Override
-    protected void paintComponent(Graphics grphcs) {
-        Graphics2D g2 = (Graphics2D) grphcs;
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setColor(getBackground());
-        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
-        g2.fillRect(0, 0, 25, getHeight());
-        g2.fillRect(getWidth() - 25, getHeight() - 25, getWidth(), getHeight());
-        super.paintComponent(grphcs);
-    }
+      @Override
+      protected void paintComponent(Graphics grphcs) {
+            Graphics2D g2 = (Graphics2D) grphcs;
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.setColor(getBackground());
+            g2.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
+            g2.fillRect(0, 0, 25, getHeight());
+            g2.fillRect(getWidth() - 25, getHeight() - 25, getWidth(), getHeight());
+            super.paintComponent(grphcs);
+      }
 
       // Variables declaration - do not modify//GEN-BEGIN:variables
       private javax.swing.JLabel jLabel1;

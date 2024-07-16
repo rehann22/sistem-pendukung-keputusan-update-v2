@@ -1,48 +1,68 @@
 package com.admin.view;
 
-import com.admin.controler.PenilaianKurir;
 import com.admin.controler.ProsesPerhitungan;
+import com.admin.controler.Report;
 import com.swing.ScrollBar;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.Cell;
+import static org.apache.poi.ss.usermodel.CellType.BOOLEAN;
+import static org.apache.poi.ss.usermodel.CellType.FORMULA;
+import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
+import static org.apache.poi.ss.usermodel.CellType.STRING;
+import org.apache.poi.ss.usermodel.DateUtil;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class PageProsesPerhitungan extends javax.swing.JPanel {
-      public DefaultTableModel tableModel;
+
+      public DefaultTableModel modelTabelUploadData;
+
       public PageProsesPerhitungan() {
             initComponents();
-            
-            PenilaianKurir pnl = new PenilaianKurir();
-            pnl.TabelPenilaian(tblPenilaianAlternatif);
+            TabelUpload();
             ProsesPerhitungan data = new ProsesPerhitungan();
-            data.DataPenilaianAlternatif(tblDataPenilaianAlternatif);
-            data.HitungNormalisasi(tblMatrixNormalisasi);
-            data.HitungPembobotan(tblHasilPembobotan, tblPerankingan);
+            data.BobotPenilaianAlternatif(modelTabelUploadData, tblBobotSubKriteria);
+            data.HitungNormalisasi(tblDataNormalisasi);
+            data.HitungNilaiPreferensi(tblDataPreferensi, tblPerankingan);
+
             TScrolPane(spTable1);
             TScrolPane(spTable2);
             TScrolPane(spTable4);
             TScrolPane(spTable5);
             TScrolPane(spTable6);
-            TabelWidth();
-
       }
-      
-      private void TabelWidth () {
-            tblPenilaianAlternatif.getColumnModel().getColumn(0).setPreferredWidth(0);
-            tblPenilaianAlternatif.getColumnModel().getColumn(2).setPreferredWidth(10);
-            tblDataPenilaianAlternatif.getColumnModel().getColumn(0).setPreferredWidth(0);
-            tblDataPenilaianAlternatif.getColumnModel().getColumn(2).setPreferredWidth(10);
-            tblMatrixNormalisasi.getColumnModel().getColumn(0).setPreferredWidth(0);
-            tblMatrixNormalisasi.getColumnModel().getColumn(2).setPreferredWidth(10);
-            tblHasilPembobotan.getColumnModel().getColumn(0).setPreferredWidth(0);
-            tblHasilPembobotan.getColumnModel().getColumn(2).setPreferredWidth(30);
-            tblHasilPembobotan.getColumnModel().getColumn(6).setPreferredWidth(10);
+
+      public void TabelUpload() {
+            Object[] rows = {"Id Kurir", "Nama Kurir", "Presensi", "Waktu Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal"};
+            modelTabelUploadData = new DefaultTableModel(null, rows);
+            tblDataUpload.setModel(modelTabelUploadData);
+      }
+
+      private void TabelWidth() {
+            tblDataUpload.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblDataUpload.getColumnModel().getColumn(2).setPreferredWidth(10);
+            tblBobotSubKriteria.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblBobotSubKriteria.getColumnModel().getColumn(2).setPreferredWidth(10);
+            tblDataNormalisasi.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblDataNormalisasi.getColumnModel().getColumn(2).setPreferredWidth(10);
+            tblDataPreferensi.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblDataPreferensi.getColumnModel().getColumn(2).setPreferredWidth(30);
+            tblDataPreferensi.getColumnModel().getColumn(6).setPreferredWidth(10);
             tblPerankingan.getColumnModel().getColumn(0).setPreferredWidth(0);
             tblPerankingan.getColumnModel().getColumn(2).setPreferredWidth(10);
       }
-    
-      private void TScrolPane (JScrollPane scroll) {
+
+      private void TScrolPane(JScrollPane scroll) {
             scroll.setVerticalScrollBar(new ScrollBar());
             scroll.getVerticalScrollBar().setBackground(Color.WHITE);
             scroll.getViewport().setBackground(Color.WHITE);
@@ -51,30 +71,123 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
             scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
       }
 
-    @SuppressWarnings("unchecked")
+      private void bacaExcelDanTampilkan(File file) {
+
+            try (FileInputStream fis = new FileInputStream(file); XSSFWorkbook workbook = new XSSFWorkbook(fis)) {
+
+                  XSSFSheet sheet = workbook.getSheetAt(0);
+
+                  // Pastikan sheet tidak null
+                  if (sheet == null) {
+                        JOptionPane.showMessageDialog(this, "Lembar kerja tidak ditemukan!", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                  }
+
+                  modelTabelUploadData.setRowCount(0);   // Bersihkan semua baris
+                  modelTabelUploadData.setColumnCount(0); // Bersihkan semua kolom
+
+                  // Ambil baris pertama (header)
+                  Row headerRow = sheet.getRow(0);
+
+                  // Pastikan headerRow tidak null
+                  if (headerRow == null) {
+                        JOptionPane.showMessageDialog(this, "Baris header tidak ditemukan!", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                  }
+
+                  // Mulai dari cell index 1 untuk mengabaikan kolom pertama
+                  for (int cellIndex = 1; cellIndex < headerRow.getLastCellNum(); cellIndex++) {
+                        Cell cell = headerRow.getCell(cellIndex);
+                        modelTabelUploadData.addColumn(cell.toString()); // Tambahkan nama kolom ke tableModel
+                  }
+
+                  // Tambahkan data baris ke tableModel
+                  for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
+                        Row row = sheet.getRow(rowIndex);
+
+                        // Pastikan row tidak null
+                        if (row != null) {
+                              boolean isEmptyRow = true;
+                              Object[] rowData = new Object[row.getLastCellNum() - 1];
+                              for (int cellIndex = 1; cellIndex < row.getLastCellNum(); cellIndex++) {
+                                    Cell cell = row.getCell(cellIndex);
+                                    if (cell == null) {
+                                          rowData[cellIndex - 1] = "";
+                                    } else {
+                                          switch (cell.getCellType()) {
+                                                case STRING:
+                                                      rowData[cellIndex - 1] = cell.getStringCellValue();
+                                                      isEmptyRow = isEmptyRow && cell.getStringCellValue().isEmpty();
+                                                      break;
+                                                case NUMERIC:
+                                                      if (DateUtil.isCellDateFormatted(cell)) {
+                                                            rowData[cellIndex - 1] = cell.getDateCellValue();
+                                                      } else {
+                                                            double numericValue = cell.getNumericCellValue();
+                                                            if (numericValue == (int) numericValue) {
+                                                                  rowData[cellIndex - 1] = (int) numericValue;
+                                                            } else {
+                                                                  rowData[cellIndex - 1] = numericValue;
+                                                            }
+                                                      }
+                                                      isEmptyRow = false;
+                                                      break;
+                                                case BOOLEAN:
+                                                      rowData[cellIndex - 1] = cell.getBooleanCellValue();
+                                                      isEmptyRow = false;
+                                                      break;
+                                                case FORMULA:
+                                                      rowData[cellIndex - 1] = cell.getCellFormula();
+                                                      isEmptyRow = false;
+                                                      break;
+                                                default:
+                                                      rowData[cellIndex - 1] = "";
+                                          }
+                                    }
+                              }
+
+                              // Hanya tambahkan baris jika tidak kosong
+                              if (!isEmptyRow) {
+                                    modelTabelUploadData.addRow(rowData);
+                              }
+                        }
+                  }
+
+                  tblDataUpload.getColumnModel().getColumn(0).setPreferredWidth(0);
+                  tblDataUpload.getColumnModel().getColumn(2).setPreferredWidth(10);
+                  JOptionPane.showMessageDialog(null, "Import Data Berhasil", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException e) {
+                  e.printStackTrace();
+                  JOptionPane.showMessageDialog(null, "Gagal membaca file Excel!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+      }
+
+      @SuppressWarnings("unchecked")
       // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
       private void initComponents() {
 
             panelBorder = new com.swing.PanelBorder();
             spTable1 = new javax.swing.JScrollPane();
-            tblPenilaianAlternatif = new com.swing.Table();
+            tblDataUpload = new com.swing.Table();
             jLabel2 = new javax.swing.JLabel();
-            btn_refresh = new swing.ButtonGradient();
+            btn_hitung = new swing.ButtonGradient();
+            btn_upload = new swing.ButtonGradient();
             panelBorder3 = new com.swing.PanelBorder();
             spTable4 = new javax.swing.JScrollPane();
             tblPerankingan = new com.swing.Table();
             jLabel5 = new javax.swing.JLabel();
+            btn_print = new swing.ButtonGradient();
             panelBorder2 = new com.swing.PanelBorder();
             spTable2 = new javax.swing.JScrollPane();
-            tblDataPenilaianAlternatif = new com.swing.Table();
+            tblBobotSubKriteria = new com.swing.Table();
             jLabel3 = new javax.swing.JLabel();
             panelBorder5 = new com.swing.PanelBorder();
             spTable6 = new javax.swing.JScrollPane();
-            tblHasilPembobotan = new com.swing.Table();
+            tblDataPreferensi = new com.swing.Table();
             jLabel7 = new javax.swing.JLabel();
             panelBorder4 = new com.swing.PanelBorder();
             spTable5 = new javax.swing.JScrollPane();
-            tblMatrixNormalisasi = new com.swing.Table();
+            tblDataNormalisasi = new com.swing.Table();
             jLabel6 = new javax.swing.JLabel();
 
             setBackground(new java.awt.Color(242, 242, 242));
@@ -87,7 +200,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             spTable1.setBorder(null);
 
-            tblPenilaianAlternatif.setModel(new javax.swing.table.DefaultTableModel(
+            tblDataUpload.setModel(new javax.swing.table.DefaultTableModel(
                   new Object [][] {
 
                   },
@@ -103,24 +216,34 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
                         return canEdit [columnIndex];
                   }
             });
-            spTable1.setViewportView(tblPenilaianAlternatif);
+            spTable1.setViewportView(tblDataUpload);
 
             panelBorder.add(spTable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 370));
 
             jLabel2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel2.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel2.setText("Data Penilaian Alternatif");
+            jLabel2.setText("Data Alternatif");
             panelBorder.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 220, -1));
 
-            btn_refresh.setText("Hitung");
-            btn_refresh.setColor1(new java.awt.Color(35, 20, 226));
-            btn_refresh.setColor2(new java.awt.Color(209, 18, 235));
-            btn_refresh.addActionListener(new java.awt.event.ActionListener() {
+            btn_hitung.setText("Hitung SAW");
+            btn_hitung.setColor1(new java.awt.Color(35, 20, 226));
+            btn_hitung.setColor2(new java.awt.Color(209, 18, 235));
+            btn_hitung.addActionListener(new java.awt.event.ActionListener() {
                   public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_refreshActionPerformed(evt);
+                        btn_hitungActionPerformed(evt);
                   }
             });
-            panelBorder.add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 110, 30));
+            panelBorder.add(btn_hitung, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 110, 30));
+
+            btn_upload.setText("Upload Data");
+            btn_upload.setColor1(new java.awt.Color(35, 20, 226));
+            btn_upload.setColor2(new java.awt.Color(209, 18, 235));
+            btn_upload.addActionListener(new java.awt.event.ActionListener() {
+                  public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        btn_uploadActionPerformed(evt);
+                  }
+            });
+            panelBorder.add(btn_upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 110, 30));
 
             add(panelBorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 900, 460));
 
@@ -151,8 +274,18 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             jLabel5.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel5.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel5.setText("Data Peringkat Alternatif");
+            jLabel5.setText("Peringkat Alternatif");
             panelBorder3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 220, -1));
+
+            btn_print.setText("Export Data");
+            btn_print.setColor1(new java.awt.Color(35, 20, 226));
+            btn_print.setColor2(new java.awt.Color(209, 18, 235));
+            btn_print.addActionListener(new java.awt.event.ActionListener() {
+                  public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        btn_printActionPerformed(evt);
+                  }
+            });
+            panelBorder3.add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 110, 30));
 
             add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1930, 900, 370));
 
@@ -161,7 +294,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             spTable2.setBorder(null);
 
-            tblDataPenilaianAlternatif.setModel(new javax.swing.table.DefaultTableModel(
+            tblBobotSubKriteria.setModel(new javax.swing.table.DefaultTableModel(
                   new Object [][] {
 
                   },
@@ -177,13 +310,13 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
                         return canEdit [columnIndex];
                   }
             });
-            spTable2.setViewportView(tblDataPenilaianAlternatif);
+            spTable2.setViewportView(tblBobotSubKriteria);
 
             panelBorder2.add(spTable2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 370));
 
             jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel3.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel3.setText("Bobot Alternatif");
+            jLabel3.setText("Rating Kecocokan Alternatif");
             panelBorder2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 270, -1));
 
             add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 900, 460));
@@ -193,7 +326,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             spTable6.setBorder(null);
 
-            tblHasilPembobotan.setModel(new javax.swing.table.DefaultTableModel(
+            tblDataPreferensi.setModel(new javax.swing.table.DefaultTableModel(
                   new Object [][] {
 
                   },
@@ -209,7 +342,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
                         return canEdit [columnIndex];
                   }
             });
-            spTable6.setViewportView(tblHasilPembobotan);
+            spTable6.setViewportView(tblDataPreferensi);
 
             panelBorder5.add(spTable6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 370));
 
@@ -225,7 +358,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             spTable5.setBorder(null);
 
-            tblMatrixNormalisasi.setModel(new javax.swing.table.DefaultTableModel(
+            tblDataNormalisasi.setModel(new javax.swing.table.DefaultTableModel(
                   new Object [][] {
 
                   },
@@ -241,7 +374,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
                         return canEdit [columnIndex];
                   }
             });
-            spTable5.setViewportView(tblMatrixNormalisasi);
+            spTable5.setViewportView(tblDataNormalisasi);
 
             panelBorder4.add(spTable5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 370));
 
@@ -253,20 +386,39 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
             add(panelBorder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 970, 900, 460));
       }// </editor-fold>//GEN-END:initComponents
 
-      private void btn_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refreshActionPerformed
-            PenilaianKurir pnl = new PenilaianKurir();
-            pnl.TabelPenilaian(tblPenilaianAlternatif);
-
+      private void btn_hitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hitungActionPerformed
             ProsesPerhitungan data = new ProsesPerhitungan();
-            data.DataPenilaianAlternatif(tblDataPenilaianAlternatif);
-            data.HitungNormalisasi(tblMatrixNormalisasi);
-            data.HitungPembobotan(tblHasilPembobotan, tblPerankingan);
+            data.BobotPenilaianAlternatif(modelTabelUploadData, tblBobotSubKriteria);
+            data.HitungNormalisasi(tblDataNormalisasi);
+            data.HitungNilaiPreferensi(tblDataPreferensi, tblPerankingan);
             TabelWidth();
-      }//GEN-LAST:event_btn_refreshActionPerformed
+      }//GEN-LAST:event_btn_hitungActionPerformed
+
+      private void btn_uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uploadActionPerformed
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setCurrentDirectory(new File(System.getProperty("user.home") + "\\Downloads"));
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            // Set preferred size
+            fileChooser.setPreferredSize(new Dimension(700, 400));
+            int result = fileChooser.showOpenDialog(null);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                  File selectedFile = fileChooser.getSelectedFile();
+                  bacaExcelDanTampilkan(selectedFile);
+            } else {
+                  JOptionPane.showMessageDialog(null, "Tidak ada file yang dipilih", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+            }
+      }//GEN-LAST:event_btn_uploadActionPerformed
+
+      private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
+            Report reportGenerator = new Report();
+            reportGenerator.ReportPeringkat(tblPerankingan);
+      }//GEN-LAST:event_btn_printActionPerformed
 
 
       // Variables declaration - do not modify//GEN-BEGIN:variables
-      private swing.ButtonGradient btn_refresh;
+      private swing.ButtonGradient btn_hitung;
+      private swing.ButtonGradient btn_print;
+      private swing.ButtonGradient btn_upload;
       private javax.swing.JLabel jLabel2;
       private javax.swing.JLabel jLabel3;
       private javax.swing.JLabel jLabel5;
@@ -282,10 +434,10 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
       private javax.swing.JScrollPane spTable4;
       private javax.swing.JScrollPane spTable5;
       private javax.swing.JScrollPane spTable6;
-      public com.swing.Table tblDataPenilaianAlternatif;
-      public com.swing.Table tblHasilPembobotan;
-      public com.swing.Table tblMatrixNormalisasi;
-      public com.swing.Table tblPenilaianAlternatif;
+      public com.swing.Table tblBobotSubKriteria;
+      public com.swing.Table tblDataNormalisasi;
+      public com.swing.Table tblDataPreferensi;
+      public com.swing.Table tblDataUpload;
       public com.swing.Table tblPerankingan;
       // End of variables declaration//GEN-END:variables
 }

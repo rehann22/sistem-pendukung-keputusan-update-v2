@@ -1,8 +1,7 @@
 package com.admin.main;
+
 import com.admin.view.FormDataAdmin;
-import com.admin.view.PageLaporan;
 import com.admin.view.PageDataKriteria;
-import com.admin.view.PagePenilaianKurir;
 import com.admin.view.PageProsesPerhitungan;
 import com.event.EventMenuSelected;
 import com.admin.view.PageDashboard;
@@ -16,41 +15,31 @@ public class MainDashboard extends javax.swing.JFrame {
 
       private PageDashboard admin_dashboard;
       private PageDataKriteria datakriteria;
-      private PagePenilaianKurir penilaianKurir;
       private PageProsesPerhitungan prosesPerhitungan;
-      private PageLaporan laporan;
-      
+
       public MainDashboard() {
             initComponents();
             setBackground(new Color(0, 0, 0, 0));
             admin_dashboard = new PageDashboard();
             datakriteria = new PageDataKriteria();
-            penilaianKurir = new PagePenilaianKurir();
             prosesPerhitungan = new PageProsesPerhitungan();
-            laporan = new PageLaporan();
             menu.initMoving(MainDashboard.this);
             menu.addEventMenuSelected(new EventMenuSelected() {
-                @Override
-                public void selected(int index) {
+                  @Override
+                  public void selected(int index) {
                         if (index == 0) {
-                            setForm(admin_dashboard); 
+                              setForm(admin_dashboard);
                         } else if (index == 1) {
-                            setForm(datakriteria);
+                              setForm(datakriteria);
                         } else if (index == 2) {
-                            setForm(penilaianKurir);
-                        } else if (index == 3) {
-                            setForm(prosesPerhitungan);
+                              setForm(prosesPerhitungan);
                         } else if (index == 4) {
-                            setForm(laporan);
-                        } else if (index == 5) {
-                            setForm(prosesPerhitungan);
-                        } else if (index == 7) {  
                               FormDataAdmin data = new FormDataAdmin();
                               data.setVisible(true);
-                        } else if (index == 8) {
+                        } else if (index == 5) {
                               int jawaban = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
                               if (jawaban == JOptionPane.YES_OPTION) {
-                              System.exit(0);
+                                    System.exit(0);
                               }
                         }
                   }
@@ -74,11 +63,9 @@ public class MainDashboard extends javax.swing.JFrame {
             mainPanel.add(scrollPane);
             mainPanel.repaint();
             mainPanel.revalidate();
-    }
+      }
 
-
-
-    @SuppressWarnings("unchecked")
+      @SuppressWarnings("unchecked")
       // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
       private void initComponents() {
 
@@ -135,41 +122,41 @@ public class MainDashboard extends javax.swing.JFrame {
             setLocationRelativeTo(null);
       }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+      /**
+       * @param args the command line arguments
+       */
+      public static void main(String args[]) {
+            /* Set the Nimbus look and feel */
+            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+             */
+            try {
+                  for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                        if ("Nimbus".equals(info.getName())) {
+                              javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                              break;
+                        }
+                  }
+            } catch (ClassNotFoundException ex) {
+                  java.util.logging.Logger.getLogger(MainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                  java.util.logging.Logger.getLogger(MainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                  java.util.logging.Logger.getLogger(MainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                  java.util.logging.Logger.getLogger(MainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+            //</editor-fold>
+            //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainDashboard().setVisible(true);
-            }
-        });
-    }
+            /* Create and display the form */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                  public void run() {
+                        new MainDashboard().setVisible(true);
+                  }
+            });
+      }
 
       // Variables declaration - do not modify//GEN-BEGIN:variables
       private com.component.Header header2;

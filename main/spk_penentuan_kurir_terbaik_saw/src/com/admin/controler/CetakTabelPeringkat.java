@@ -13,13 +13,13 @@ public class CetakTabelPeringkat implements JRDataSource {
       private int rowIndex = -1;
 
       public CetakTabelPeringkat(JTable table) {
-          this.tableModel = table.getModel();
+            this.tableModel = table.getModel();
       }
 
       @Override
       public boolean next() throws JRException {
-          rowIndex++;
-          return rowIndex < tableModel.getRowCount();
+            rowIndex++;
+            return rowIndex < tableModel.getRowCount();
       }
 
       @Override
@@ -28,12 +28,12 @@ public class CetakTabelPeringkat implements JRDataSource {
             int columnIndex = -1;
             for (int i = 0; i < tableModel.getColumnCount(); i++) {
                   if (tableModel.getColumnName(i).equalsIgnoreCase(fieldName)) {
-                      columnIndex = i;
-                      break;
+                        columnIndex = i;
+                        break;
                   }
             }
             if (columnIndex == -1) {
-                throw new JRException("Field not found: " + fieldName);
+                  throw new JRException("Field not found: " + fieldName);
             }
             return tableModel.getValueAt(rowIndex, columnIndex);
       }

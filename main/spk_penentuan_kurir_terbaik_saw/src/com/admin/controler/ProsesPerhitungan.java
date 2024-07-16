@@ -1,4 +1,5 @@
 package com.admin.controler;
+
 import com.admin.view.PageDataKriteria;
 import com.database.ConnectionDb;
 import java.sql.Connection;
@@ -15,102 +16,99 @@ import java.util.List;
 
 public class ProsesPerhitungan {
 
-      public DefaultTableModel modelTabelNilaiAlternatif;
+      public DefaultTableModel modelTabelBobotSubCriteria;
       public DefaultTableModel modelTabelNormalisasi;
-      public DefaultTableModel modelTabelPembobotan;
+      public DefaultTableModel modelTabelPreferensi;
       public DefaultTableModel modelTabelPerankingan;
 
       static {
-          // Atur locale default ke Locale.US
-          Locale.setDefault(Locale.US);
+            // Atur locale default ke Locale.US
+            Locale.setDefault(Locale.US);
       }
-      
+
+      // Helper method to check if a string is numeric
+      private boolean isNumeric(String str) {
+            try {
+                  Double.parseDouble(str);
+                  return true;
+            } catch (NumberFormatException e) {
+                  System.out.println("not numeric");
+                  return false;
+            }
+      }
+
       // Method untuk memperbarui nilai maksimum dan minimum untuk setiap kriteria
       private static void updateMinMaxValues(double[] maxValues, double[] minValues, double... values) {
             for (int i = 0; i < values.length; i++) {
                   if (values[i] > maxValues[i]) {
-                      maxValues[i] = values[i];
+                        maxValues[i] = values[i];
                   }
                   if (values[i] < minValues[i]) {
-                      minValues[i] = values[i];
+                        minValues[i] = values[i];
                   }
             }
       }
-      
-      public void DataPenilaianAlternatif(JTable tabel) {
-            Object[] rows = {"Id Kurir", "Nama Kurir", "Presensi", "Kecepatan Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal"};
-            modelTabelNilaiAlternatif = new DefaultTableModel(null, rows);
-            tabel.setModel(modelTabelNilaiAlternatif);
 
-            try (Connection conn = new ConnectionDb().connect();
-                  PreparedStatement ps = conn.prepareStatement("SELECT * FROM tbl_penilaian");
-                  ResultSet rs = ps.executeQuery()) {
-
-                 double[] maxValues = new double[4];
-                 double[] minValues = new double[4];
-                  for (int i = 0; i < 4; i++) {
-                      maxValues[i] = Double.NEGATIVE_INFINITY;
-                      minValues[i] = Double.POSITIVE_INFINITY;
-                  }
-
-                  while (rs.next()) {
-                      String idKurir = rs.getString("id_kurir");
-                      String namaKurir = rs.getString("nama_kurir");
-                      double presensi = rs.getDouble("presensi");
-                      double kecepatanPengiriman = rs.getDouble("kecepatan_pengiriman");
-                      double pengirimanBerhasil = rs.getDouble("pengiriman_berhasil");
-                      double pengirimanGagal = rs.getDouble("pengiriman_gagal");
-
-                      double bobotPresensi = getBobotPresensi(presensi);
-                      double bobotKecepatanPengiriman = getBobotKecepatanPengiriman(kecepatanPengiriman);
-                      double bobotPengirimanBerhasil = getBobotPengirimanBerhasil(pengirimanBerhasil);
-                      double bobotPengirimanGagal = getBobotPengirimanGagal(pengirimanGagal);
-
-                      updateMinMaxValues(maxValues, minValues, bobotPresensi, bobotKecepatanPengiriman, bobotPengirimanBerhasil, bobotPengirimanGagal);
-
-                      Object[] data = {idKurir, namaKurir, bobotPresensi, bobotKecepatanPengiriman, bobotPengirimanBerhasil, bobotPengirimanGagal};
-                      modelTabelNilaiAlternatif.addRow(data);
-                  }
-
-                  Object[] maxFooter = {"", "Nilai Max", maxValues[0], maxValues[1], maxValues[2], maxValues[3]};
-                  modelTabelNilaiAlternatif.addRow(maxFooter);
-
-                  Object[] minFooter = {"", "Nilai Min", minValues[0], minValues[1], minValues[2], minValues[3]};
-                  modelTabelNilaiAlternatif.addRow(minFooter);
-
-            } catch (Exception e) {
-                System.out.println("Eror Method DataPenilaianAlternatif");
-                e.printStackTrace();
+      private double getDoubleValue(Object value) {
+            if (value instanceof Number) {
+                  return ((Number) value).doubleValue();
             }
+            return 0;
       }
 
       private double getBobotPresensi(double presensi) {
-          if (presensi <= 15) return 1;
-          if (presensi <= 25) return 2;
-          if (presensi >= 26) return 3;
-          return 0;
+            if (presensi <= 15) {
+                  return 1;
+            }
+            if (presensi <= 25) {
+                  return 2;
+            }
+            if (presensi >= 26) {
+                  return 3;
+            }
+            return 0;
       }
 
       private double getBobotKecepatanPengiriman(double kecepatanPengiriman) {
-          if (kecepatanPengiriman > 3) return 1;
-          if (kecepatanPengiriman < 4) return 2;
-          return 0;
+            if (kecepatanPengiriman > 3) {
+                  return 1;
+            }
+            if (kecepatanPengiriman < 4) {
+                  return 2;
+            }
+            return 0;
       }
 
       private double getBobotPengirimanBerhasil(double pengirimanBerhasil) {
-          if (pengirimanBerhasil >= 500 && pengirimanBerhasil <= 1000) return 1;
-          if (pengirimanBerhasil > 1000 && pengirimanBerhasil <= 1500) return 2;
-          if (pengirimanBerhasil > 1500 && pengirimanBerhasil <= 2000) return 3;
-          if (pengirimanBerhasil > 2000 && pengirimanBerhasil <= 2500) return 4;
-          return 0;
+            if (pengirimanBerhasil >= 500 && pengirimanBerhasil <= 1000) {
+                  return 1;
+            }
+            if (pengirimanBerhasil > 1000 && pengirimanBerhasil <= 1500) {
+                  return 2;
+            }
+            if (pengirimanBerhasil > 1500 && pengirimanBerhasil <= 2000) {
+                  return 3;
+            }
+            if (pengirimanBerhasil > 2000 && pengirimanBerhasil <= 2500) {
+                  return 4;
+            }
+            return 0;
       }
 
       private double getBobotPengirimanGagal(double pengirimanGagal) {
-          if (pengirimanGagal >= 10 && pengirimanGagal <= 60) return 1;
-          if (pengirimanGagal > 60 && pengirimanGagal <= 110) return 2;
-          if (pengirimanGagal > 110 && pengirimanGagal <= 160) return 3;
-          if (pengirimanGagal > 160 && pengirimanGagal <= 220) return 4;
-          return 0;
+            if (pengirimanGagal >= 10 && pengirimanGagal <= 60) {
+                  return 1;
+            }
+            if (pengirimanGagal > 60 && pengirimanGagal <= 110) {
+                  return 2;
+            }
+            if (pengirimanGagal > 110 && pengirimanGagal <= 160) {
+                  return 3;
+            }
+            if (pengirimanGagal > 160 && pengirimanGagal <= 220) {
+                  return 4;
+            }
+            return 0;
       }
 
       // Metode untuk mengambil tipe kriteria dari database
@@ -123,9 +121,9 @@ public class ProsesPerhitungan {
                   ResultSet rs = ps.executeQuery();
                   int index = 0;
                   while (rs.next()) {
-                      criteriaType[index] = rs.getString("jenis");
-                      System.out.println("Kriteria " + (index + 1) + ": " + criteriaType[index]);
-                      index++;
+                        criteriaType[index] = rs.getString("jenis");
+                        System.out.println("Kriteria " + (index + 1) + ": " + criteriaType[index]);
+                        index++;
                   }
                   conn.close();
                   rs.close();
@@ -136,8 +134,58 @@ public class ProsesPerhitungan {
             return criteriaType;
       }
 
-      public void HitungNormalisasi (JTable tabel) {
-            Object[] rows2 = {"Id Kurir", "Nama Kurir", "Presensi", "Kecepatan Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal"};
+      public void BobotPenilaianAlternatif(DefaultTableModel tableModelUpload, JTable tabel) {
+            Object[] rows = {"Id Kurir", "Nama Kurir", "Presensi", "Waktu Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal"};
+            modelTabelBobotSubCriteria = new DefaultTableModel(null, rows);
+            tabel.setModel(modelTabelBobotSubCriteria);
+
+            try {
+                  double[] maxValues = new double[4];
+                  double[] minValues = new double[4];
+                  for (int i = 0; i < 4; i++) {
+                        maxValues[i] = Double.NEGATIVE_INFINITY;
+                        minValues[i] = Double.POSITIVE_INFINITY;
+                  }
+
+                  if (tableModelUpload == null) {
+                        System.out.println("modelTabelUploadData is null");
+                        return;
+                  }
+
+                  // looping dari tab.tblDataUpload dimulai dari kolom ke 2 dan cek setiap nilainya jika nilai sesuai
+                  for (int row = 0; row < tableModelUpload.getRowCount(); row++) {
+                        String idKurir = (String) tableModelUpload.getValueAt(row, 0);
+                        String namaKurir = (String) tableModelUpload.getValueAt(row, 1);
+                        double presensi = getDoubleValue(tableModelUpload.getValueAt(row, 2));
+                        double kecepatanPengiriman = getDoubleValue(tableModelUpload.getValueAt(row, 3));
+                        double pengirimanBerhasil = getDoubleValue(tableModelUpload.getValueAt(row, 4));
+                        double pengirimanGagal = getDoubleValue(tableModelUpload.getValueAt(row, 5));
+
+                        double bobotPresensi = getBobotPresensi(presensi);
+                        double bobotKecepatanPengiriman = getBobotKecepatanPengiriman(kecepatanPengiriman);
+                        double bobotPengirimanBerhasil = getBobotPengirimanBerhasil(pengirimanBerhasil);
+                        double bobotPengirimanGagal = getBobotPengirimanGagal(pengirimanGagal);
+
+                        updateMinMaxValues(maxValues, minValues, bobotPresensi, bobotKecepatanPengiriman, bobotPengirimanBerhasil, bobotPengirimanGagal);
+
+                        Object[] data = {idKurir, namaKurir, bobotPresensi, bobotKecepatanPengiriman, bobotPengirimanBerhasil, bobotPengirimanGagal};
+                        modelTabelBobotSubCriteria.addRow(data);
+                  }
+
+                  Object[] maxFooter = {"", "NILAI MAX", maxValues[0], maxValues[1], maxValues[2], maxValues[3]};
+                  modelTabelBobotSubCriteria.addRow(maxFooter);
+
+                  Object[] minFooter = {"", "NILAI MIN", minValues[0], minValues[1], minValues[2], minValues[3]};
+                  modelTabelBobotSubCriteria.addRow(minFooter);
+
+            } catch (Exception e) {
+                  System.out.println("Eror Method DataPenilaianAlternatif");
+                  e.printStackTrace();
+            }
+      }
+
+      public void HitungNormalisasi(JTable tabel) {
+            Object[] rows2 = {"Id Kurir", "Nama Kurir", "Presensi", "Waktu Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal"};
             modelTabelNormalisasi = new DefaultTableModel(null, rows2);
             tabel.setModel(modelTabelNormalisasi);
 
@@ -145,60 +193,65 @@ public class ProsesPerhitungan {
             double[] maxValues = new double[4];
             double[] minValues = new double[4];
             for (int i = 0; i < 4; i++) {
-                maxValues[i] = Double.NEGATIVE_INFINITY;
-                minValues[i] = Double.POSITIVE_INFINITY;
+                  maxValues[i] = Double.NEGATIVE_INFINITY;
+                  minValues[i] = Double.POSITIVE_INFINITY;
             }
 
-            // Print isi dari modelTabelNilaiAlternatif
+            if (modelTabelBobotSubCriteria == null) {
+                  System.out.println("tabel kosong");
+                  return;
+            }
+
+            // Print isi dari modelTabelBobotSubCriteria
             System.out.println("\nData Penilaian Alternatif");
-            for (int row = 0; row < modelTabelNilaiAlternatif.getRowCount() -2 ; row++) {
-                for (int col = 2; col < modelTabelNilaiAlternatif.getColumnCount(); col++) {
-                    Object value = modelTabelNilaiAlternatif.getValueAt(row, col);
-                    System.out.print(value + "\t");
-                }
-                System.out.println();
+            for (int row = 0; row < modelTabelBobotSubCriteria.getRowCount() - 2; row++) {
+                  for (int col = 2; col < modelTabelBobotSubCriteria.getColumnCount(); col++) {
+                        Object value = modelTabelBobotSubCriteria.getValueAt(row, col);
+                        System.out.print(value + "\t");
+                  }
+                  System.out.println();
             }
 
             // Mencari nilai maksimal dan minimal untuk setiap kriteria
-            for (int row = 0; row < modelTabelNilaiAlternatif.getRowCount(); row++) {
-                for (int col = 2; col < 6; col++) {
-                    Object cellValue = modelTabelNilaiAlternatif.getValueAt(row, col);
-                    if (cellValue != null && isNumeric(cellValue.toString())) {
-                        double value = Double.parseDouble(cellValue.toString());
-                        int criteriaIndex = col - 2;
+            for (int row = 0; row < modelTabelBobotSubCriteria.getRowCount(); row++) {
+                  for (int col = 2; col < 6; col++) {
+                        Object cellValue = modelTabelBobotSubCriteria.getValueAt(row, col);
+                        if (cellValue != null && isNumeric(cellValue.toString())) {
+                              double value = Double.parseDouble(cellValue.toString());
+                              int criteriaIndex = col - 2;
 
-                        if (value > maxValues[criteriaIndex]) {
-                            maxValues[criteriaIndex] = value;
+                              if (value > maxValues[criteriaIndex]) {
+                                    maxValues[criteriaIndex] = value;
+                              }
+                              if (value < minValues[criteriaIndex]) {
+                                    minValues[criteriaIndex] = value;
+                              }
                         }
-                        if (value < minValues[criteriaIndex]) {
-                            minValues[criteriaIndex] = value;
-                        }
-                    }
-                }
+                  }
             }
 
             // Print nilai maksimal dan minimal untuk setiap kriteria
             System.out.println("\nNilai Maksimal dan Minimal untuk Setiap Kriteria:");
             for (int i = 0; i < 4; i++) {
-                System.out.println("Kriteria " + i + ": Max = " + maxValues[i] + ", Min = " + minValues[i]);
+                  System.out.println("Kriteria " + i + ": Max = " + maxValues[i] + ", Min = " + minValues[i]);
             }
 
             // Normalisasi dan tambahkan ke tabel modelTabelNormalisasi
-            for (int row = 0; row < modelTabelNilaiAlternatif.getRowCount() -2 ; row++) {
+            for (int row = 0; row < modelTabelBobotSubCriteria.getRowCount() - 2; row++) {
                   double[] normalizedValues = new double[4];
-                  String idKurir = modelTabelNilaiAlternatif.getValueAt(row, 0).toString();
-                  String namaKurir = modelTabelNilaiAlternatif.getValueAt(row, 1).toString();
+                  String idKurir = modelTabelBobotSubCriteria.getValueAt(row, 0).toString();
+                  String namaKurir = modelTabelBobotSubCriteria.getValueAt(row, 1).toString();
 
                   for (int col = 2; col < 6; col++) {
-                        Object cellValue = modelTabelNilaiAlternatif.getValueAt(row, col);
+                        Object cellValue = modelTabelBobotSubCriteria.getValueAt(row, col);
                         if (cellValue != null && isNumeric(cellValue.toString())) {
                               double value = Double.parseDouble(cellValue.toString());
                               int criteriaIndex = col - 2;
 
                               if (criteriaType[criteriaIndex].equalsIgnoreCase("Cost")) {
-                                  normalizedValues[criteriaIndex] = minValues[criteriaIndex] / value;
+                                    normalizedValues[criteriaIndex] = minValues[criteriaIndex] / value;
                               } else {
-                                  normalizedValues[criteriaIndex] = value / maxValues[criteriaIndex];
+                                    normalizedValues[criteriaIndex] = value / maxValues[criteriaIndex];
                               }
 
                               // Format nilai ke dua angka di belakang koma
@@ -217,42 +270,31 @@ public class ProsesPerhitungan {
             // Buat baris footer dengan nilai pembobotan
             String[] footer = new String[6];
             footer[0] = "";
-            footer[1] = "Pembobotan";
+            footer[1] = "BOBOT";
 
             PageDataKriteria data = new PageDataKriteria();
             for (int i = 0; i < data.tblKriteria.getRowCount(); i++) {
-                footer[i + 2] = data.tblKriteria.getValueAt(i, 2).toString();
+                  footer[i + 2] = data.tblKriteria.getValueAt(i, 2).toString();
             }
             modelTabelNormalisasi.addRow(footer);
 
             // Print Hasil normalisasi
             System.out.println("\nHasil Normalisasi:");
-            for (int row = 0; row < modelTabelNormalisasi.getRowCount() -2 ; row++) {
+            for (int row = 0; row < modelTabelNormalisasi.getRowCount() - 2; row++) {
                   for (int col = 2; col < modelTabelNormalisasi.getColumnCount(); col++) {
-                      Object value = modelTabelNormalisasi.getValueAt(row, col);
-                      System.out.print(value + "\t");
+                        Object value = modelTabelNormalisasi.getValueAt(row, col);
+                        System.out.print(value + "\t");
                   }
                   System.out.println();
             }
-      } 
-      
-      // Helper method to check if a string is numeric
-      private boolean isNumeric(String str) {
-            try {
-                  Double.parseDouble(str);
-                  return true;
-            } catch (NumberFormatException e) {
-                  System.out.println("not numeric");
-                   return false;
-            }
-      }   
+      }
 
-      public void HitungPembobotan (JTable tblHasilPembobotan, JTable tblHasilPerankingan) {
-            
+      public void HitungNilaiPreferensi(JTable tblHasilPembobotan, JTable tblHasilPerankingan) {
+
             // Model untuk tabel pembobotan
-            Object[] hasilPembobotan = {"Id Kurir", "Nama Kurir", "Presensi", "Kecepatan Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal", "Total"};
-            modelTabelPembobotan = new DefaultTableModel(null, hasilPembobotan);
-            tblHasilPembobotan.setModel(modelTabelPembobotan);
+            Object[] hasilPembobotan = {"Id Kurir", "Nama Kurir", "Presensi", "Waktu Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal", "Total"};
+            modelTabelPreferensi = new DefaultTableModel(null, hasilPembobotan);
+            tblHasilPembobotan.setModel(modelTabelPreferensi);
 
             // Model untuk tabel peringkat
             Object[] rankingRows = {"Id Kurir", "Nama", "Nilai", "Peringkat"};
@@ -265,13 +307,13 @@ public class ProsesPerhitungan {
             double[] bobot = new double[rowCount];
 
             for (int i = 0; i < rowCount; i++) {
-                bobot[i] = Double.parseDouble(data.tblKriteria.getValueAt(i, 2).toString());
+                  bobot[i] = Double.parseDouble(data.tblKriteria.getValueAt(i, 2).toString());
             }
 
             // Print array bobot
             System.out.println("\n" + "Bobot");
             for (int i = 0; i < rowCount; i++) {
-                System.out.println("Bobot[" + i + "]: " + bobot[i]);
+                  System.out.println("Bobot[" + i + "]: " + bobot[i]);
             }
 
             // Hitung nilai total preferensi
@@ -293,24 +335,24 @@ public class ProsesPerhitungan {
                         for (int col = 2; col < 6; col++) { // Loop melalui kolom nilai normalisasi
                               Object cellValue = modelTabelNormalisasi.getValueAt(row, col);
                               if (cellValue != null && isNumeric(cellValue.toString())) {
-                                  BigDecimal value = new BigDecimal(cellValue.toString());
-                                  BigDecimal weight = BigDecimal.valueOf(bobot[col-2]);
-                                  BigDecimal weightedValue = value.multiply(weight); // Perkalian bobot dengan nilai normalisasi
-                                  weightedValue = weightedValue.setScale(2, RoundingMode.HALF_UP);
-                                  weightedValuesRow[col] = weightedValue; // Simpan weightedValue ke array baris
-                                  nilaiPreferensi = nilaiPreferensi.add(weightedValue);
-                                  System.out.println("    Nilai: " + value + ", Bobot: " + weight + ", Setelah Perkalian: " + weightedValue);
+                                    BigDecimal value = new BigDecimal(cellValue.toString());
+                                    BigDecimal weight = BigDecimal.valueOf(bobot[col - 2]);
+                                    BigDecimal weightedValue = value.multiply(weight); // Perkalian bobot dengan nilai normalisasi
+                                    weightedValue = weightedValue.setScale(2, RoundingMode.HALF_UP);
+                                    weightedValuesRow[col] = weightedValue; // Simpan weightedValue ke array baris
+                                    nilaiPreferensi = nilaiPreferensi.add(weightedValue);
+                                    System.out.println("    Nilai: " + value + ", Bobot: " + weight + ", Setelah Perkalian: " + weightedValue);
                               } else {
-                                  System.err.println("Non-numeric value in row " + row + ", col " + col + ": " + cellValue);
+                                    System.err.println("Non-numeric value in row " + row + ", col " + col + ": " + cellValue);
                               }
                         }
-                      
+
                         //Tambahkan total preferensi ke kolom Total
                         nilaiPreferensi = nilaiPreferensi.setScale(2, RoundingMode.HALF_UP); // Membulatkan nilai preferensi ke dua angka di belakang koma
                         weightedValuesRow[6] = nilaiPreferensi; // Tambahkan total preferensi ke array baris
                         nilaiPreferensiTotal.add(weightedValuesRow); // Simpan nilai preferensi total untuk baris saat ini
 
-                        modelTabelPembobotan.addRow(weightedValuesRow); // Tambahkan baris ke tabel pembobotan
+                        modelTabelPreferensi.addRow(weightedValuesRow); // Tambahkan baris ke tabel pembobotan
 
                   }
 
@@ -319,22 +361,20 @@ public class ProsesPerhitungan {
 
                   // Menambahkan peringkat ke tabel
                   for (int i = 0; i < nilaiPreferensiTotal.size(); i++) {
-                      Object[] row = nilaiPreferensiTotal.get(i);
-                      String[] rankingData = {row[0].toString(), row[1].toString(), row[6].toString(), String.valueOf(i + 1)};
-                      modelTabelPerankingan.addRow(rankingData);
+                        Object[] row = nilaiPreferensiTotal.get(i);
+                        String[] rankingData = {row[0].toString(), row[1].toString(), row[6].toString(), String.valueOf(i + 1)};
+                        modelTabelPerankingan.addRow(rankingData);
                   }
 
                   // Cetak nilai total preferensi untuk setiap baris
                   System.out.println("\n" + "Nilai Preferensi Total untuk Setiap Baris:");
                   for (int row = 0; row < nilaiPreferensiTotal.size(); row++) {
-                      System.out.println("Baris " + row + " " + nilaiPreferensiTotal.get(row)[6]);
+                        System.out.println("Baris " + row + " " + nilaiPreferensiTotal.get(row)[6]);
                   }
 
             } else {
-                System.err.println("Tidak ada data yang tersedia untuk dihitung.");
+                  System.err.println("Tidak ada data yang tersedia untuk dihitung.");
             }
       }
 
 }
-
-

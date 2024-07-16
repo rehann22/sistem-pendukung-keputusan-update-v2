@@ -6,34 +6,30 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Locale;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class DataKriteria {
-      private DefaultTableModel tabMode;
-      
-      static {
-        // Atur locale default ke Locale.US
-        Locale.setDefault(Locale.US);
-      }
-      
 
+      private DefaultTableModel tabMode;
+
+      static {
+            // Atur locale default ke Locale.US
+            Locale.setDefault(Locale.US);
+      }
 
       public void TabelKriteria(JTable tabel) {
             Object[] rows = {"Kode Kriteria", "Nama Kriteria", "Bobot", "Jenis"};
             tabMode = new DefaultTableModel(null, rows);
             tabel.setModel(tabMode);
 
-              try {
+            try {
                   Connection conn = new ConnectionDb().connect();
                   String query = "SELECT * FROM `tbl_kriteria`";
                   PreparedStatement ps = conn.prepareStatement(query);
                   ResultSet rs = ps.executeQuery();
 
-                    while (rs.next()) {
+                  while (rs.next()) {
                         String a = rs.getString("kode_kriteria");
                         String b = rs.getString("nama_kriteria");
                         String c = rs.getString("bobot");
@@ -41,10 +37,10 @@ public class DataKriteria {
 
                         String[] data = {a, b, c, d};
                         tabMode.addRow(data);
-                    }
-                    conn.close();
+                  }
+                  conn.close();
 
-              } catch (SQLException e) {
+            } catch (SQLException e) {
                   System.out.println("Error Method TabelKriteria");
                   e.printStackTrace();
             }
@@ -57,40 +53,40 @@ public class DataKriteria {
 
             try {
                   Connection conn = new ConnectionDb().connect();
-                  String query = "SELECT \n" +
-                              "    tbl_sub_kriteria.kode_kriteria, \n" +
-                              "    tbl_kriteria.nama_kriteria, \n" +
-                              "    tbl_sub_kriteria.keterangan, \n" +
-                              "    tbl_sub_kriteria.bobot, \n" +
-                              "    tbl_kriteria.jenis\n" +
-                              "FROM \n" +
-                              "    tbl_sub_kriteria\n" +
-                              "INNER JOIN \n" +
-                              "    tbl_kriteria \n" +
-                              "    ON tbl_sub_kriteria.kode_kriteria = tbl_kriteria.kode_kriteria\n" +
-                              "ORDER BY \n" +
-                              "    tbl_sub_kriteria.kode_kriteria, \n" +
-                              "    tbl_sub_kriteria.bobot ASC";
+                  String query = "SELECT \n"
+                          + "    tbl_sub_kriteria.kode_kriteria, \n"
+                          + "    tbl_kriteria.nama_kriteria, \n"
+                          + "    tbl_sub_kriteria.keterangan, \n"
+                          + "    tbl_sub_kriteria.bobot, \n"
+                          + "    tbl_kriteria.jenis\n"
+                          + "FROM \n"
+                          + "    tbl_sub_kriteria\n"
+                          + "INNER JOIN \n"
+                          + "    tbl_kriteria \n"
+                          + "    ON tbl_sub_kriteria.kode_kriteria = tbl_kriteria.kode_kriteria\n"
+                          + "ORDER BY \n"
+                          + "    tbl_sub_kriteria.kode_kriteria, \n"
+                          + "    tbl_sub_kriteria.bobot ASC";
 
                   PreparedStatement ps = conn.prepareStatement(query);
                   ResultSet rs = ps.executeQuery();
 
                   while (rs.next()) {
-                      String a = rs.getString("kode_kriteria");
-                      String b = rs.getString("nama_kriteria");
-                      String c = rs.getString("keterangan");
-                      String d = rs.getString("bobot");
-                      String e = rs.getString("jenis");
+                        String a = rs.getString("kode_kriteria");
+                        String b = rs.getString("nama_kriteria");
+                        String c = rs.getString("keterangan");
+                        String d = rs.getString("bobot");
+                        String e = rs.getString("jenis");
 
-                      String[] data = {a, b, c, d, e};
-                      tabMode.addRow(data);
+                        String[] data = {a, b, c, d, e};
+                        tabMode.addRow(data);
                   }
 
-                rs.close();
-                ps.close();
-                conn.close();
+                  rs.close();
+                  ps.close();
+                  conn.close();
             } catch (SQLException ex) {
-                System.out.println("Error TblSubKriteria: " + ex.getMessage());
+                  System.out.println("Error TblSubKriteria: " + ex.getMessage());
             }
       }
 }
