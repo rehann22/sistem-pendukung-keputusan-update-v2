@@ -1,6 +1,5 @@
 package com.admin.main;
 
-import com.admin.view.FormDataAdmin;
 import com.admin.view.PageDataKriteria;
 import com.admin.view.PageProsesPerhitungan;
 import com.event.EventMenuSelected;
@@ -34,9 +33,6 @@ public class MainDashboard extends javax.swing.JFrame {
                         } else if (index == 2) {
                               setForm(prosesPerhitungan);
                         } else if (index == 4) {
-                              FormDataAdmin data = new FormDataAdmin();
-                              data.setVisible(true);
-                        } else if (index == 5) {
                               int jawaban = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
                               if (jawaban == JOptionPane.YES_OPTION) {
                                     System.exit(0);
@@ -47,7 +43,7 @@ public class MainDashboard extends javax.swing.JFrame {
             setForm(new PageDashboard());
       }
 
-      private void setForm(JComponent com) {
+      public void setForm(JComponent com) {
             mainPanel.removeAll();
 
             // Create a JScrollPane and add the component

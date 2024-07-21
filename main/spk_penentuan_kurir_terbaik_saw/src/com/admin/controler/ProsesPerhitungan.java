@@ -184,10 +184,10 @@ public class ProsesPerhitungan {
             }
       }
 
-      public void HitungNormalisasi(JTable tabel) {
+      public void AlgortimaSaw(JTable tblNormalisasi, JTable tblNilaiPreferensi, JTable tblHasilPerankingan) {
             Object[] rows2 = {"Id Kurir", "Nama Kurir", "Presensi", "Waktu Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal"};
             modelTabelNormalisasi = new DefaultTableModel(null, rows2);
-            tabel.setModel(modelTabelNormalisasi);
+            tblNormalisasi.setModel(modelTabelNormalisasi);
 
             String[] criteriaType = getCriteriaTypesFromDatabase();
             double[] maxValues = new double[4];
@@ -287,14 +287,11 @@ public class ProsesPerhitungan {
                   }
                   System.out.println();
             }
-      }
 
-      public void HitungNilaiPreferensi(JTable tblHasilPembobotan, JTable tblHasilPerankingan) {
-
-            // Model untuk tabel pembobotan
+            // Model untuk tabel data preferensi
             Object[] hasilPembobotan = {"Id Kurir", "Nama Kurir", "Presensi", "Waktu Pengiriman", "Pengiriman Berhasil", "Pengiriman Gagal", "Total"};
             modelTabelPreferensi = new DefaultTableModel(null, hasilPembobotan);
-            tblHasilPembobotan.setModel(modelTabelPreferensi);
+            tblNilaiPreferensi.setModel(modelTabelPreferensi);
 
             // Model untuk tabel peringkat
             Object[] rankingRows = {"Id Kurir", "Nama", "Nilai", "Peringkat"};
@@ -302,12 +299,12 @@ public class ProsesPerhitungan {
             tblHasilPerankingan.setModel(modelTabelPerankingan);
 
             // Mendapatkan bobot kriteria
-            PageDataKriteria data = new PageDataKriteria();
-            int rowCount = data.tblKriteria.getRowCount();
+            PageDataKriteria tab = new PageDataKriteria();
+            int rowCount = tab.tblKriteria.getRowCount();
             double[] bobot = new double[rowCount];
 
             for (int i = 0; i < rowCount; i++) {
-                  bobot[i] = Double.parseDouble(data.tblKriteria.getValueAt(i, 2).toString());
+                  bobot[i] = Double.parseDouble(tab.tblKriteria.getValueAt(i, 2).toString());
             }
 
             // Print array bobot
@@ -376,5 +373,4 @@ public class ProsesPerhitungan {
                   System.err.println("Tidak ada data yang tersedia untuk dihitung.");
             }
       }
-
 }

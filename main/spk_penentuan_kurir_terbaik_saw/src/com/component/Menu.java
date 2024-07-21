@@ -1,6 +1,5 @@
 package com.component;
 
-import com.admin.controler.SessionAdmin;
 import com.event.EventMenuSelected;
 import com.model.Model_Menu;
 import java.awt.Color;
@@ -15,8 +14,6 @@ import javax.swing.JFrame;
 
 public class Menu extends javax.swing.JPanel {
 
-      String logName = SessionAdmin.log_nama();
-      String logId = SessionAdmin.log_idAdmin();
       private EventMenuSelected event;
 
       public void addEventMenuSelected(EventMenuSelected event) {
@@ -33,10 +30,9 @@ public class Menu extends javax.swing.JPanel {
 
       private void init() {
             listMenu1.addItem(new Model_Menu("1", "Dashboard", Model_Menu.MenuType.MENU));
-            listMenu1.addItem(new Model_Menu("3", "Data Kriteria", Model_Menu.MenuType.MENU));
+            listMenu1.addItem(new Model_Menu("3", "Kriteria & Sub Kriteria", Model_Menu.MenuType.MENU));
             listMenu1.addItem(new Model_Menu("5", "Proses Perhitungan", Model_Menu.MenuType.MENU));
             listMenu1.addItem(new Model_Menu("", " ", Model_Menu.MenuType.EMPTY));
-            listMenu1.addItem(new Model_Menu("8", "Profile", Model_Menu.MenuType.MENU));
             listMenu1.addItem(new Model_Menu("9", "Keluar ", Model_Menu.MenuType.MENU));
       }
 

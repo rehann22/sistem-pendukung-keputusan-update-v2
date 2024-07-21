@@ -32,8 +32,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
             TabelUpload();
             ProsesPerhitungan data = new ProsesPerhitungan();
             data.BobotPenilaianAlternatif(modelTabelUploadData, tblBobotSubKriteria);
-            data.HitungNormalisasi(tblDataNormalisasi);
-            data.HitungNilaiPreferensi(tblDataPreferensi, tblPerankingan);
+            data.AlgortimaSaw(tblDataNormalisasi, tblDataPreferensi, tblPerankingan);
 
             TScrolPane(spTable1);
             TScrolPane(spTable2);
@@ -172,11 +171,11 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
             jLabel2 = new javax.swing.JLabel();
             btn_hitung = new swing.ButtonGradient();
             btn_upload = new swing.ButtonGradient();
+            btn_print = new swing.ButtonGradient();
             panelBorder3 = new com.swing.PanelBorder();
             spTable4 = new javax.swing.JScrollPane();
             tblPerankingan = new com.swing.Table();
             jLabel5 = new javax.swing.JLabel();
-            btn_print = new swing.ButtonGradient();
             panelBorder2 = new com.swing.PanelBorder();
             spTable2 = new javax.swing.JScrollPane();
             tblBobotSubKriteria = new com.swing.Table();
@@ -233,7 +232,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
                         btn_hitungActionPerformed(evt);
                   }
             });
-            panelBorder.add(btn_hitung, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 110, 30));
+            panelBorder.add(btn_hitung, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 120, 30));
 
             btn_upload.setText("Upload Data");
             btn_upload.setColor1(new java.awt.Color(35, 20, 226));
@@ -243,7 +242,17 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
                         btn_uploadActionPerformed(evt);
                   }
             });
-            panelBorder.add(btn_upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 110, 30));
+            panelBorder.add(btn_upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 120, 30));
+
+            btn_print.setText("Cetak Ranking");
+            btn_print.setColor1(new java.awt.Color(35, 20, 226));
+            btn_print.setColor2(new java.awt.Color(209, 18, 235));
+            btn_print.addActionListener(new java.awt.event.ActionListener() {
+                  public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        btn_printActionPerformed(evt);
+                  }
+            });
+            panelBorder.add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 120, 30));
 
             add(panelBorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 900, 460));
 
@@ -274,18 +283,8 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
 
             jLabel5.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
             jLabel5.setForeground(new java.awt.Color(97, 103, 122));
-            jLabel5.setText("Peringkat Alternatif");
+            jLabel5.setText("Ranking Alternatif");
             panelBorder3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 220, -1));
-
-            btn_print.setText("Export Data");
-            btn_print.setColor1(new java.awt.Color(35, 20, 226));
-            btn_print.setColor2(new java.awt.Color(209, 18, 235));
-            btn_print.addActionListener(new java.awt.event.ActionListener() {
-                  public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btn_printActionPerformed(evt);
-                  }
-            });
-            panelBorder3.add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 110, 30));
 
             add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1930, 900, 370));
 
@@ -389,8 +388,7 @@ public class PageProsesPerhitungan extends javax.swing.JPanel {
       private void btn_hitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hitungActionPerformed
             ProsesPerhitungan data = new ProsesPerhitungan();
             data.BobotPenilaianAlternatif(modelTabelUploadData, tblBobotSubKriteria);
-            data.HitungNormalisasi(tblDataNormalisasi);
-            data.HitungNilaiPreferensi(tblDataPreferensi, tblPerankingan);
+            data.AlgortimaSaw(tblDataNormalisasi, tblDataPreferensi, tblPerankingan);
             TabelWidth();
       }//GEN-LAST:event_btn_hitungActionPerformed
 

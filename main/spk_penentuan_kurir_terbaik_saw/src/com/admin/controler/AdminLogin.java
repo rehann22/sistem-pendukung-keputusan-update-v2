@@ -20,7 +20,6 @@ public class AdminLogin {
                   try (ResultSet rs = ps.executeQuery()) {
                         if (rs.next()) {
                               x = true;
-                              SessionAdmin.setLoggedInAdmin(rs.getString("id_admin"), rs.getString("nama_admin"), rs.getString("email_admin"), rs.getString("password_admin"));
                               MainDashboard dashboard = new MainDashboard();
                               dashboard.setVisible(true);
                         }
